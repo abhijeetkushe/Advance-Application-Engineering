@@ -19,3 +19,6 @@ Our Focus was Lab Module.Details about the module can be found in the specs http
 ### Technical Challenges
 * Decision Making based on Lab Results
 * Lab Reports (Test Tube, Monroe Chart) 
+
+### Video Demo Link
+http://www.youtube.com/watch?v=Xj-EwuAFM74&t=1m17s
