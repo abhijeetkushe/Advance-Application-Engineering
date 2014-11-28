@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template>
+	#set($dateTool = $flowRequestContext.flowScope.dateTool)
+	#set($cbcTestList =	$flowRequestContext.flowScope.selectedBaby.labDir.cbcTestList)
+	#set($crpTestList = $flowRequestContext.flowScope.selectedBaby.labDir.crpTestList)
+	#set($bgTestList =$flowRequestContext.flowScope.selectedBaby.labDir.bgTestList)
+	#set($elecTestList = $flowRequestContext.flowScope.selectedBaby.labDir.elecTestList)
+	#set($csTestList =$flowRequestContext.flowScope.selectedBaby.labDir.csTestList)
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+	#set($errorBundle=$flowRequestContext.flowScope.medicalTests)
+	<View name="MandbabyTests">
+	 <testList>
+            #foreach ($test in $cbcTestList)
+            <test>
+                <name>
+                    $test.testName
+                </name>                                
+            </test>
+            #end
+             #foreach ($test in $crpTestList)
+            <test>
+                <name>
+                    $test.testName
+                </name>                                
+            </test>
+            #end
+             #foreach ($test in $bgTestList)
+            <test>
+                <name>
+                    $test.testName
+                </name>                                
+            </test>
+            #end
+             #foreach ($test in $elecTestList)
+            <test>
+                <name>
+                    $test.testName
+                </name>                                
+            </test>
+            #end
+             #foreach ($test in $csTestList)
+            <test>
+                <name>
+                    $test.testName
+                </name>                                
+            </test>
+            #end
+        </testList>	
+	<errorMessages>
+		<error id="error.selectonetest">Please select at least one Test</error> 
+	</errorMessages>
+	</View>
+</Template>

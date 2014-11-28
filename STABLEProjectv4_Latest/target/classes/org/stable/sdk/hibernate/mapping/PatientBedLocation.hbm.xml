@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.stable.sdk.model.patient.PatientBedLocation"
+		table="patient_bedlocation">
+		<id name="patientBedLocID" type="int">
+			<column name="patient_bedlocation_id" length="10" not-null="true" />
+			<generator class="native" />
+		</id>
+		<many-to-one name="patient" class="org.stable.sdk.model.patient.Patient"
+			fetch="select" optimistic-lock="true" not-null="true">
+			<column name="patient_id" />
+		</many-to-one>
+		<many-to-one name="bedLocation"
+			class="org.stable.sdk.model.bedlocation.BedLocation" fetch="select"
+			optimistic-lock="true" not-null="true">
+			<column name="bedlocation_id" />
+		</many-to-one>
+		<property name="status" type="int" length="2" not-null="false">
+			<column name="status" />
+		</property>
+		<property name="admittedOn" type="java.util.Date" not-null="true">
+			<column name="admitted_on" />
+		</property>
+		<property name="dischargedOn" type="java.util.Date" not-null="false">
+			<column name="discharged_on" />
+		</property>
+		<list name="careTakers" table="employee_pbl" lazy="true" fetch="select"
+			optimistic-lock="true">
+			<key>
+				<column name="patient_bedlocation_id" />
+			</key>
+			<list-index column="id" base="1" />
+			<many-to-many column="employee_id"
+				class="org.stable.sdk.model.person.Employee" />
+		</list>
+
+		<map name="deviceList" table="device_pbl" lazy="true" fetch="select"
+			optimistic-lock="true">
+			<key>
+				<column name="patientbedlocation_id" />
+			</key>
+			<map-key type="java.lang.String">
+				<formula>
+					(SELECT d.name FROM device AS d WHERE
+					d.device_id=device_id)
+				</formula>
+			</map-key>
+			<many-to-many column="device_id"
+				class="org.stable.sdk.model.device.IDevice" />
+		</map>
+
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="start" view="ManagePatient/Add/LabWork/referenceCards">
+        <transition on="doctor" to="labWork" />
+        <transition on="logout" to="logout" />
+        <transition on="cbcnormals" to="cbcNormals" />
+        <transition on="fourbs" to="fourBs" />
+        <transition on="neonatalrisks" to="neonatalRisks" />
+        <transition on="clinicalinfections" to="clinicalInfections" />
+     </view-state>
+	
+	<subflow-state id="labWork" subflow="ManagePatientAdd_LabWork-flow">
+		<transition on="referencecards" to="start" />
+	</subflow-state>
+	
+	<!-- Start of CBCNormals -->
+	<view-state id="cbcNormals" view="ManagePatient/Add/LabWork/cbcNormals">
+	    <transition on="referencecards" to="start" />
+
+        <transition on="cbc" to="cbc" />
+        
+        <transition on="logout" to="logout" />
+    </view-state>
+
+	<view-state id="cbc" view="ManagePatient/Add/LabWork/cbc">
+        <transition on="logout" to="logout" />
+        <transition on="cbcnormals" to="cbcNormals" />
+	</view-state>
+		
+	<!-- end of CBCNormals flow -->
+	
+	<!-- Start of FourBsFlow -->
+	<view-state id="fourBs" view="ManagePatient/Add/LabWork/fourBs">
+        <transition on="referencecards" to="start" />
+	</view-state>
+
+	<!-- End of FourBsFlow -->	
+	
+		
+	<!-- Start of Neonatal Risks Risks -->
+	<view-state id="neonatalRisks" view="ManagePatient/Add/LabWork/neonatalRisks">
+        <transition on="referencecards" to="start" />
+	</view-state>
+	<!-- End of Neonatal Risks Risks -->
+
+	<!-- Start of Clinical Infections -->
+	<view-state id="clinicalInfections" view="ManagePatient/Add/LabWork/clinicalInfections">
+		<transition on="referencecards" to="start" />
+	</view-state>
+	<!-- End of Clinical Infections -->
+		
+   <end-state id="end"/>
+   
+</flow>

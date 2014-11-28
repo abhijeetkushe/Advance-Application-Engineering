@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views2:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:views2="views.*"
+			  xmlns:components="components.*"
+			  chromeColor="#D2D2E0" contentBackgroundColor="#F6F0F0" title="babyTests" creationComplete="vtask1_creationCompleteHandler(event)" actionBarVisible="false">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.controls.Alert;
+			import mx.core.IFlexDisplayObject;
+			import mx.events.CloseEvent;
+			import mx.events.FlexEvent;
+			import mx.managers.PopUpManager;
+			
+			import spark.components.TitleWindow;
+			
+			public var myParentObject:DisplayObject;
+			
+			public var tw:TitleWindow = new TitleWindow();
+			
+			[Bindable]
+			private var riskList:XMLList = new XMLList();
+			
+			[Bindable]
+			private var rList:XMLList = new XMLList();
+			
+			[Bindable]
+			private var risk:Object=new Object();
+			
+			private function createPopup():void
+			{
+//				var label:Label = new Label();   
+				tw.title = "Tests have been ordered successfully";
+				tw.y=300;
+				tw.x=80;
+				tw.addEventListener(CloseEvent.CLOSE, titleWindow_close);   
+				mx.managers.PopUpManager.addPopUp(tw, this, false);
+				nextPageHandler('babymenu');
+			}
+			
+			private function titleWindow_close(evt:CloseEvent):void {   
+				PopUpManager.removePopUp(tw);  
+				//navigator.pushView(BabyHome);
+				
+			}
+			
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				//navigator.pushView(DoctorWorkArea);
+			}
+			
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				createPopup();
+				
+			}
+			
+			
+			protected function button3_clickHandler(event:MouseEvent):void
+			{
+				if(cbc.selected||crp.selected||elec.selected||cs.selected||bg.selected)
+				{	
+					nextPageHandler('babymenu');// TODO Auto-generated method stub
+					Alert.show("Tests have been ordered successfully");
+				}
+				else{
+					errorMessage.visible=true;
+				}
+
+			}
+			
+			public override function getOutputVariables():URLVariables{
+				var urlVariables:URLVariables = new URLVariables();
+				/* var xmlIp:String=new String();
+				xmlIp+="<person>"+
+					"<personId>"+0+"</personId>"+
+					"<patientProfile>"+
+					"<patientId>"+0+"</patientId>"+   
+					"</patientProfile>"+
+					"<doctor>"+
+					"<doctorId>"+0+"</doctorId>"+
+					"</doctor>"+
+					"<testList>";					
+				if(cbc.selected==true){
+					xmlIp+=	"<test><name>CBC</name></test>";
+				} if(crp.selected==true){
+					xmlIp+=	"<test><name>CRP</name></test>";
+				} if(elec.selected==true){
+					xmlIp+=	"<test><name>ELEC</name></test>";
+				} if(cs.selected==true){
+					xmlIp+=	"<test><name>CS</name></test>";
+				}
+				if(bg.selected==true){
+					xmlIp+=	"<test><name>BG</name></test>";
+				}
+				xmlIp+="</testList></person>"; */	
+				var urlVariables:URLVariables = new URLVariables();
+				urlVariables.patientId="52";
+				if(cbc.selected==true){
+					urlVariables.CBC="true";
+				} if(crp.selected==true){
+					urlVariables.CRP="true";
+				} if(elec.selected==true){
+					urlVariables.ELEC="true";
+				} if(cs.selected==true){
+					urlVariables.CS="true";
+				}
+				if(bg.selected==true){
+					urlVariables.BG="true";
+				}
+				/* urlVariables.xmlInput=xmlIp; */
+				return urlVariables;				
+			}
+
+			protected function button4_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				BGPanel.visible=false;
+			}
+
+
+			protected function image1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				BGPanel.visible=true;
+			}
+
+
+			protected function button5_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				elecPanel.visible=false;
+			}
+
+
+			protected function button6_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				csPanel.visible=false;
+			}
+
+
+			protected function image2_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				elecPanel.visible=true;
+			}
+
+
+			protected function image3_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				csPanel.visible=true;
+			}
+
+
+			protected function vtask1_creationCompleteHandler(event:FlexEvent):void
+			{
+				var flag:Boolean = true;
+				// TODO Auto-generated method stub
+				if(inputVariables!=null )
+				{	
+					
+					rList=inputVariables.persons.person.patient.infants.infant.riskFactors;
+					reflexLabel.visible=false;
+					respLabel.visible=false;
+
+					
+					if(rList!=null && rList.length()>0)
+					{
+						for(var j:int=0;j<=rList.length()-1;j++)
+						{
+							flag=true;						
+							normalLabel.visible=false;
+							riskList = rList[j].riskFactor;					
+							for(var i:int=0;i<=riskList.length()-1;i++)
+							{
+								//riskList = rList.riskFactor[i];
+
+								risk=riskList[i];
+							
+								if(risk.name=="resp" && risk.value=="Abnormal")
+								{
+									bg.visible=true;
+									bgImg.visible=true;
+									flag=false;
+									respLabel.visible=true;
+								}
+								else if(risk.name=="reflex" && risk.value=="Abnormal")
+								{
+									cs.visible=true;
+									csImg.visible=true;
+									flag=false;
+									reflexLabel.visible=true;
+								}
+								else if(risk.name=="life" && parseInt(risk.value)>24)
+								{
+									elec.visible=true;
+									elecImg.visible=true;
+									flag=false;
+								}
+							}	
+						
+						}
+						if(flag)
+						{
+							normalLabel.visible=true;
+							reflexLabel.visible=false;
+							respLabel.visible=false;
+							
+						}
+					}
+				}
+			}
+		
+
+		]]>
+		
+	</fx:Script>
+	
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect x="10" y="10" width="460" height="778" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<mx:MenuBar x="23" y="20" width="432" height="102" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="190" y="59" color="#FCFCFC" fontFamily="Arial" fontSize="22" text="Infant Medical Tests"/>
+	<s:Image x="44" y="43" width="52" height="47" source="../assets/downicon.jpg"/>
+	<mx:MenuBar x="23" y="301" width="432" height="358" chromeColor="#FAFAFE" cornerRadius="0"></mx:MenuBar>
+	<mx:MenuBar x="23" y="120" width="432" height="185" chromeColor="#FAFAFE" cornerRadius="0"></mx:MenuBar>
+	<s:Label x="152" y="130" color="#0C0B0B" fontSize="15" fontStyle="normal"
+			 text="Essential Medical Tests"/>
+	<s:CheckBox x="0" y="182" width="443.5" height="29.5"
+				label="Daily repeated CBC with differential" color="#0C0B0B" id="cbc" selected="true"/>
+	<s:CheckBox x="14" y="242" width="321.5" height="29.5" id="crp" label="CRP (C-Reactive Protein)"
+				color="#0C0B0B" selected="true"/>
+	<s:Label x="160" y="313" color="#080808" fontSize="15" fontStyle="normal"
+			 text="Risk-specific Medical Tests"/>
+	<s:CheckBox x="-108" y="345" width="443.5" height="29.5" id="bg" label="Blood Gas" color="#080808"
+				selected="false"  visible="false"/>
+	<s:CheckBox x="-101" y="469" width="443.5" height="29.5" id="elec" label="Electrolytes" color="#080808"
+				selected="false" visible="false"/>
+	<s:Image id="bgImg" x="265" y="345" width="42" height="37" click="image1_clickHandler(event)"
+			 source="../assets/faq.jpg" visible="false"/>
+	<s:Image id="csImg" x="265" y="579" width="42" height="37" click="image3_clickHandler(event)"
+			 source="../assets/faq.jpg" visible="false"/>
+	<s:CheckBox x="14" y="572" width="252.5" height="29.5" id="cs" label="Clotting Studies" color="#080808"
+				selected="false" visible="false"/>
+	<s:Image id="elecImg" x="265" y="474" width="42" height="37" click="image2_clickHandler(event)"
+			 source="../assets/faq.jpg" visible="false"/>
+	
+	<s:Panel id="BGPanel" x="33" y="120" width="411" height="430" color="#2A2B2F" title="Blood Gas" visible="false">
+		<s:Label x="10" width="389" height="320" fontSize="14" color="#A35F0E"
+				 text="Also known as Arterial Blood Gas (ABG). &#xd;&#xd;Used to evaluate oxygenation and acid-base status.&#xd;&#xd;&#xd;Blood gas measurements are ordered when the infant has symptoms of an oxygen/carbon dioxide or pH imbalance, such as difficulty breathing, shortness of breath, nausea or vomiting.&#xd;&#xd;Blood gas measurements may be ordered when the infant is known to have a respiratory, metabolic, or kidney disease and is experiencing respiratory distress.&#xd;&#xd;When the infant is &quot;on oxygen&quot; (ventilation), you the blood gas may be measured at regular intervals to monitor the effectiveness of treatment."></s:Label>
+		<s:Button x="154" y="328" label="CLOSE" chromeColor="#484848"
+				  click="button4_clickHandler(event)" color="#F9FAFC"/>
+			
+	</s:Panel>
+	
+	<s:Panel id="elecPanel" x="34" y="46" width="411" height="487" color="#2A2B2F" title="Electrolytes Test" visible="false">
+		<s:Label x="10" width="389" height="390" color="#A35F0E" fontSize="14"
+				 text="&#xd;The electrolyte panel is frequently ordered as part of a routine physical, either by itself or as components of a basic metabolic panel or comprehensive metabolic panel. &#xd;&#xd;It is used to screen for an electrolyte or acid-base imbalance and to monitor the effect of treatment on a known imbalance that is affecting bodily organ function.&#xd;&#xd;It may be ordered as part of a routine screening or as a diagnostic aid when an infant has symptoms, such as edema, weakness or cardiac arrhythmias. &#xd;&#xd;It is frequently ordered as part of an evaluation when an infant has an acute or chronic illness and at regular intervals when the infant has a disease or condition or is taking a medication that can cause an electrolyte imbalance. Electrolytes are commonly used to monitor treatment of certain problems, including high blood pressure (hypertension), heart failure, and liver and kidney disease.&#xd;&#xd;&#xd;"></s:Label>
+		<s:Button x="161" y="398" width="109" height="53" label="CLOSE" chromeColor="#484848"
+				  click="button5_clickHandler(event)" color="#F9FAFC"/>
+		
+	</s:Panel>
+	
+	
+	
+	<s:Panel id="csPanel" x="33" y="30" width="411" height="550" color="#2A2B2F" title="Clotting Studies" visible="false">
+		<s:Label x="10" width="389" height="470" color="#A35F0E" fontFamily="Arial" fontSize="13"
+				 text="Clotting studies assess an infant's ability to form clots in their blood. Certain substances must be present in adequate amounts in the infant's blood for clotting to occur.&#xd;&#xd;The most common tests done are the protime (PT) , activated partial thromboplastin (PTT), and Fibrinogen Test.&#xd;&#xd;Procedure:&#xd;Clotting studies are obtained as follows: &#xd;A blood sample is drawn from the infant's heel, vein or artery, or an indwelling arterial catheter (UAC or PAL), and sent to the lab. Results are usually available within 1-2 hours. &#xd;&#xd;The lab reports results as follows:&#xd;&#xd;PT (Prothrombin time) – measures part of the clotting pathway&#xd;&#xd;PTT (Partial thromboplastin time) – measures another part of the clotting pathway&#xd;&#xd;Fibrinogen&#xd;&#xd;Risks:&#xd;Risks are small and include Bleeding or bruising at the sample site if drawn from a vein or artery; particularly, if there are clotting problems.&#xd;Introducing infection anytime the skin is punctured; minimized by careful cleaning of the site prior to obtaining the sample.&#xd;&#xd;"></s:Label>
+		<s:Button x="149" y="469" width="110" height="39" label="CLOSE" chromeColor="#484848"
+				  click="button6_clickHandler(event)" color="#F9FAFC"/>
+		
+	</s:Panel>
+	<components:BackButton x="24" y="684" click="nextPageHandler('back');"/>
+	<components:SubmitButton x="336" y="684" click="button3_clickHandler(event);"/>
+	<s:Label id="normalLabel" x="35" y="336" color="#F36700" text="The baby looks stable. No additional tests &#xd;needed, at the moment." visible="false"/>
+	<s:Label id="reflexLabel" x="37" y="529" color="#EE5806"
+			 text="Owing to, abnormal reflex, the following test is &#xd;recommended." visible="false"/>
+	<s:Label id="respLabel" x="38" y="409" color="#F5680B"
+			 text="Respiratory abnormality encountered. Hence the &#xd;above test is essential." visible="false"/>
+	<s:Label id="errorMessage" x="39" y="169" color="#F11313" text="Please select at least one test for order" visible="false"/>
+
+</views2:vTask>

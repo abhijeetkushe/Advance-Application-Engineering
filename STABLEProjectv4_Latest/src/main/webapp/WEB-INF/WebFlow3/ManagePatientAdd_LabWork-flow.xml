@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow start-state="start" xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+        
+        <view-state id="start" view="ManagePatient/Add/LabWork/babyMenu">
+
+        <transition on="medicalreport" to="medicalReport" />
+
+        <transition on="medication" to="medication" />
+
+        <transition on="entermedicalreport" to="enterMedicalReport" />
+
+        <transition on="babyTests" to="babyTests" />
+        
+        <transition on="mandbabyTests" to="mandbabyTests" />
+        
+        <transition on="calc" to="calc" />
+        
+        <transition on="referencecards" to="referenceCards" />	
+        
+		<transition on="back" to="managePatientAdd"/>
+        </view-state>
+
+
+	<subflow-state id="managePatientAdd" subflow="ManagePatientAdd-flow">
+		<transition on="labWork" to="start"/>
+	</subflow-state>
+	
+	<subflow-state id="calc" subflow="calc-flow">
+		<transition on="back" to="start"/>
+	</subflow-state>
+	
+	<subflow-state id="referenceCards" subflow="referencecards-flow">
+		<transition on="back" to="start"/>
+	</subflow-state>
+
+    <subflow-state id="medicalReport" subflow="medicalreport-flow">
+		<transition on="back" to="start"/>
+	</subflow-state>
+
+
+        <subflow-state id="enterMedicalReport" subflow="entermedicalreport-flow">
+	<transition on="back" to="start"/>
+	</subflow-state>
+
+
+        <subflow-state id="babyTests" subflow="babyTests-flow">
+	<transition on="back" to="start"/>
+	</subflow-state>
+
+
+        <subflow-state id="medication" subflow="medication-flow">
+	<transition on="back" to="start"/>
+	</subflow-state>
+
+
+        <subflow-state id="viewBabies" subflow="viewbabies-flow">
+	<transition on="babymenu" to="start"/>
+	</subflow-state>
+	
+	<view-state id="mandbabyTests" view="ManagePatient/Add/LabWork/MandbabyTests">
+<!--		<on-entry>-->
+<!--			<evaluate expression="doctorService.getMedicalTestReport(flowRequestContext)" />-->
+<!--		</on-entry>-->
+		<transition on="back" to="start" />
+		<transition on="babymenu" to="start">
+				<evaluate expression="doctorService.enterMedicalTest(flowRequestContext)"></evaluate>
+		</transition>
+		<transition on="home" to="doctorWorkArea" />
+	</view-state>
+        
+   <end-state id="end"/>
+   
+        
+</flow>
+ 

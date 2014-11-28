@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+
+
+	<view-state id="start" view="ManagePatient/Add/LabWork/enterMedicalReport">
+        <on-entry>
+			<evaluate expression="doctorService1.getMedicalTestReport(flowRequestContext)" />
+		</on-entry>
+		<transition on="cbcForm" to="selectForm" />
+		<transition on="bgForm" to="selectForm" />
+		<transition on="crpForm" to="selectForm" />
+		<transition on="csForm" to="selectForm" />
+		<transition on="elecForm" to="selectForm" />
+		<transition on="back" to="labWork" />
+	</view-state>
+	
+	
+	<subflow-state id="labWork" subflow="ManagePatientAdd_LabWork-flow">
+		<transition on="entermedicalreport" to="start" />
+	</subflow-state>
+	
+	<action-state id="selectForm">
+		<evaluate expression="webFlowService.getViewName(flowRequestContext)" />
+		<transition on="success" to="medicalForm" />
+	</action-state>
+
+
+    
+    <view-state id="medicalForm" view="ManagePatient/Add/LabWork/entermedicalForm">
+    	<on-entry>
+			<evaluate expression="doctorService1.getUpdatedMeasurements(flowRequestContext)" />
+		</on-entry>
+		<transition on="ttube" to="tTube" />
+		<transition on="manroe" to="manroe" />
+		<transition on="enterMedicalReport" to="start">
+			<evaluate expression="doctorService1.enterMedicalTestAsEncounter(flowRequestContext)"></evaluate>
+		</transition>
+	</view-state>
+	
+
+	
+	<view-state id="manroe" view="ManagePatient/Add/LabWork/manroe">
+		<transition on="medicalreport" to="medicalForm" />
+	</view-state>
+
+	<view-state id="tTube" view="ManagePatient/Add/LabWork/tTube">
+		<transition on="medicalreport" to="medicalForm" />
+	</view-state>
+	
+        
+    
+	<global-transitions>
+		<transition on="back" to="start" />
+		<transition on="logout" to="logout" />
+		<transition on="medicalreport" to="medicalForm" />
+	</global-transitions>
+</flow>

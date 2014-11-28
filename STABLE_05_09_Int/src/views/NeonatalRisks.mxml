@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views2:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:views2="views.*"
+			  xmlns:components="components.*"
+			  actionBarVisible="false" chromeColor="#D2D2E0" contentBackgroundColor="#F6F0F0">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+		<![CDATA[
+
+		
+
+		]]>
+
+	</fx:Script>
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect x="11" y="14" width="459" height="729" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:Label x="42" y="159" width="423" height="114" color="#2F2FB1" fontSize="15" fontStyle="normal"
+			 text="Neonatal Infections can be devastating for the &#xd;immunologically immature infant. &#xd;&#xd;In preparation for transport, almost every infant is treated with antibiotics, particularly if there are"/>
+	<s:Label x="37" y="251" height="20" color="#FA1200" text="risk factors"/>
+	<s:Label x="139" y="251" width="298" height="18" color="#2F2FB1" fontSize="15" fontStyle="normal"
+			 text="that predispose the infant to infection."/>
+	<s:Label x="36" y="290" height="20" color="#FA1200" text="Some of these risk factors include:"/>
+	<s:Image x="10" y="317" width="49" height="26" source="/assets/redarrow.jpg"/>
+	<s:Image x="10" y="385" width="49" height="26" source="/assets/redarrow.jpg"/>
+	<s:Image x="10" y="351" width="49" height="26" source="/assets/redarrow.jpg"/>
+	<s:Label x="60" y="324" width="298" height="18" color="#2F2FB1" fontSize="15" fontStyle="normal"
+			 text="Premature rupture of membranes"/>
+	<s:Label x="56" y="361" width="298" height="18" color="#2F2FB1" fontSize="15" fontStyle="normal"
+			 text="Premature onset of labor"/>
+	<s:Label x="56" y="398" width="298" height="18" color="#2F2FB1" fontSize="15" fontStyle="normal"
+			 text="Chorioamniotis"/>
+	<s:Image x="11" y="423" width="49" height="26" source="/assets/redarrow.jpg"/>
+	<s:Image x="11" y="491" width="49" height="26" source="/assets/redarrow.jpg"/>
+	<s:Image x="11" y="457" width="49" height="26" source="/assets/redarrow.jpg"/>
+	<s:Label x="61" y="430" width="298" height="18" color="#2F2FB1" fontSize="15" fontStyle="normal"
+			 text="Recent maternal infection or illness"/>
+	<s:Label x="57" y="467" width="298" height="18" color="#2F2FB1" fontSize="15" fontStyle="normal"
+			 text="Maternal Genitourinary tract infection"/>
+	<s:Label x="57" y="504" width="361" height="18" color="#2F2FB1" fontSize="15" fontStyle="normal"
+			 text="Rupture of membranes longer that 18 hours"/>
+	<s:Label x="57" y="534" width="361" height="18" color="#2F2FB1" fontSize="15" fontStyle="normal"
+			 text="Instrumentation at delivery or in the nursery"/>
+	<s:Image x="11" y="525" width="49" height="26" source="/assets/redarrow.jpg"/>
+	<s:Label x="57" y="559" width="392" height="18" color="#2F2FB1" fontSize="15" fontStyle="normal"
+			 text="(e.g., placing lines and endotracheal intubation)"/>
+	<mx:MenuBar x="28" y="23" width="426" height="82" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="118" y="53" color="#FCFCFC" fontFamily="Arial" fontSize="22" text="Neonatal Health Risk Factors"/>
+	<s:Image x="47" y="40" width="52" height="47" source="../assets/downicon.jpg"/>
+	<components:BackButton x="23" y="586" width="94" height="49" click="nextPageHandler('referencecards');"/>
+</views2:vTask>

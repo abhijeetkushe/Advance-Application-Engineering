@@ -1,0 +1,26 @@
+<Template>
+    
+    <flowExecutionUrl>
+        $flowExecutionUrl
+    </flowExecutionUrl>
+    <flowExecutionKey>
+        $flowExecutionKey
+    </flowExecutionKey>
+    
+    <View name="medication">
+        <persons>
+            <person>
+                <patient>
+                    <infants>
+                        <infant>
+                            <cbcresult>
+                                $flowRequestContext.conversationScope.cbcResult
+                            </cbcresult>
+                        </infant>
+                    </infants>
+                </patient>
+            </person>
+        </persons>
+    </View>
+    
+</Template>

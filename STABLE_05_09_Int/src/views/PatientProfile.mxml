@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:patientservice="services.patientservice.*"
+		initialize="init()" xmlns:components="components.*" xmlns:mx="library://ns.adobe.com/flex/mx">	
+
+	<fx:Script>		
+		<![CDATA[
+			
+		
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+				//navigator.popToFirstView();
+			}
+					
+			protected function init():void{
+				this.submitbutton.caption="Submit";
+				this.textField.textInput = "Location";
+				this.medicalRecordNoTextField.textInput = "Medical Record No";
+				this.lastNameTextField.textInput="Last Name";
+				this.firstNameTextField.textInput="First Name";
+				this.genderTextField.textInput="Gender";
+				this.heightTextField.textInput="Height";
+				this.weightTextField.textInput="Weight";
+				this.headCircumferenceTextField.textInput="Head Circumference";
+				this.gestationalAgeTextField.textInput="Gestational Age";
+				this.birthDateTextField.textInput="Birth Date";
+				this.birthTimeTextField.textInput="Birth Time";
+				this.birthOrderTextField.textInput="Birth Order";
+				this.resuscitationAtBirthTextField.textInput="Resuscitation at Birth";
+				this.resuscitationMedsTextField.textInput="Resusciation Meds";
+				this.otherMedsTextField.textInput="Other Meds";
+//					
+			}
+			
+			
+
+			protected function submitbutton_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				trace("submit");
+				this.nextPageHandler('submit');
+			}
+
+		]]>
+	</fx:Script>
+	
+<!--	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>-->
+	<fx:Declarations>
+		<s:CallResponder id="getDataResult"/>
+		<patientservice:PatientService id="patientService"/>
+	</fx:Declarations>		
+		
+	
+<!--	<s:titleContent>
+		<mx:Spacer width="5"/>
+		<components:BackButton click="navigator.popView()"/>
+		<s:Label text="Patient Profile" color="#ffffff" textAlign="center" width="100%" />
+		<components:SubmitButton click="navigator.pushView(PatientRiskFactors)"/>
+		<mx:Spacer width="5"/>
+	</s:titleContent>-->
+	
+    <s:Scroller width="100%" height="100%" visible="true">			
+	<s:VGroup width="100%" height="100%" fontSize="18" fontStyle="normal" lineThrough="false"
+				  paddingLeft="20" paddingRight="20" paddingTop="20" horizontalCenter="0">
+			<components:DropDownListEntry color="#000000" id="textField"/>
+			<components:TextFieldEntry color="#000000" id="medicalRecordNoTextField"/>
+			<components:TextFieldEntry color="#000000" id="lastNameTextField"/>
+			<components:TextFieldEntry color="#000000" id="firstNameTextField"/>
+			<components:DropDownListEntry color="#000000" id="genderTextField"/>
+			<components:ComboEntry color="#000000" id="heightTextField"/>
+			<components:ComboEntry color="#000000" id="weightTextField"/>
+			<components:ComboEntry color="#000000" id="headCircumferenceTextField"/>
+			<components:ComboEntry color="#000000" id="gestationalAgeTextField"/>
+			<components:ComboEntry color="#000000" id="birthDateTextField"/>
+			<components:ComboEntry color="#000000" id="birthTimeTextField"/>
+			<components:ComboWithLineEntry color="#000000" id="birthOrderTextField"/>
+			<components:DropDownListEntry color="#000000" id="resuscitationAtBirthTextField"/>
+			<components:TextAreaEntry color="#000000" id="resuscitationMedsTextField"/>
+			<components:TextAreaEntry color="#000000" id="otherMedsTextField"/>
+		    <components:LoginButton id="submitbutton" width="97%" click="submitbutton_clickHandler(event)"/>		
+	</s:VGroup>
+	</s:Scroller>
+    <mx:Spacer height="100"/>
+</views:vTask>

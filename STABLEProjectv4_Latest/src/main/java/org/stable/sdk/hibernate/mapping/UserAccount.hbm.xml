@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.stable.sdk.model.person.UserAccount" table="useraccount">
+		<id name="userAccountID" type="int">
+			<column name="useraccount_id" length="10" />
+			<generator class="native" />
+		</id>
+		<property name="username" length="70" not-null="true"
+			type="java.lang.String">
+			<column name="username" />
+		</property>
+		<property name="password" not-null="true" type="java.lang.String">
+			<column name="password" />
+		</property>
+		<property name="status" length="1" not-null="true" type="int">
+			<column name="status" />
+		</property>
+		<many-to-one name="employee" class="org.stable.sdk.model.person.Employee"
+			fetch="select" optimistic-lock="true">
+			<column name="employee_id" not-null="true" />
+		</many-to-one>
+		<property name="createdOn" not-null="true" type="java.util.Date">
+			<column name="created_on" />
+		</property>
+		<many-to-one name="createdBy" not-null="false"
+			class="org.stable.sdk.model.person.Employee" fetch="select"
+			optimistic-lock="true">
+			<column name="created_by" />
+		</many-to-one>
+		<property name="expireOn" not-null="false" type="java.util.Date">
+			<column name="expire_on" />
+		</property>
+		<many-to-one name="clinic" not-null="true"
+			class="org.stable.sdk.model.clinic.Clinic" fetch="select"
+			optimistic-lock="true">
+			<column name="clinic_id" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

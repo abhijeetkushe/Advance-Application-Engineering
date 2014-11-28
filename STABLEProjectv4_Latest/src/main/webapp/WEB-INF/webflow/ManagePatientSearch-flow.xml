@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flow start-state="ManagePatient" xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+ http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="ManagePatient" view="ManagePatient/Search/SearchPatient">
+		<transition on="searchPatient" to="ManagePatient">
+			<evaluate
+				expression="doctorService1.searchForAPatientByID(flowRequestContext)"
+				result="flowScope.patientList" />
+		</transition>
+		<transition on="patientProfile" to="addpatient"/>
+		<transition on="back" to="done" />
+	</view-state>
+
+	<subflow-state id="addpatient" subflow="ManagePatientAdd-flow">
+		<transition on="done" to="ManagePatient" />
+	</subflow-state>
+
+	<end-state id="done">
+	</end-state>
+</flow>
+ 

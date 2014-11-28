@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="80%" height="90%" 
+		 xmlns:renderers="components.renderers.*"
+		 creationComplete="this.setDataSource()"
+		 >
+
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.collections.IList;
+			
+			import spark.components.View;
+			import spark.events.IndexChangeEvent;
+			
+			import views.AddPatient;
+			import views.ManagePatients;
+			import views.MothersRiskProfile;
+			import views.PSSATDirection;
+			import views.PSSATPatientInformation;
+			import views.PSSATTimeA;
+			import views.PatientProfile;
+			import views.PatientRiskFactors;
+			import views.PregnancyProfile;
+			
+			[Bindable]
+			public var dataSource:IList;
+			[Bindable]
+			public var time:String;
+			[Bindable]
+			public var buttonlabel:String;
+		
+			[Bindable]
+			protected var actions:ArrayCollection;
+			
+			[Embed("assets/icon1.png")]
+			private var icon1:Class;
+			[Embed("assets/icon2.png")]
+			private var icon2:Class;
+			[Embed("assets/icon3.png")]
+			private var icon3:Class;
+			[Embed("assets/icon4.gif")]
+			private var icon4:Class;
+			[Embed("assets/icon5.png")]
+			private var icon5:Class;
+			
+			public function  setDataSource ():void {
+	
+				this.header.text = time;				
+			}
+			
+
+			protected function list_changeHandler(event:IndexChangeEvent):void
+			{
+				var action:Object = list.selectedItem;
+				var view : View = this.parentDocument as View;
+				view.navigator.pushView(action.link);
+			}
+
+		]]>
+	</fx:Script>
+	
+	
+		<s:Rect width="100%" height="60">
+			<s:fill>
+				<s:SolidColor color="#414141" />
+			</s:fill>
+		</s:Rect> 
+		<s:Label id="header" x="10" y="33" fontFamily="_sans" fontSize="20" fontWeight="bold"
+				 text="{time}" textAlign="center"/>
+	<s:List id="list" x="0" y="100" width="100%" height="100%" color="#2C2C2C"
+			contentBackgroundColor="#FFFFFF" dataProvider="{this.actions}"
+			selectionColor="#F89000" change="list_changeHandler(event)">
+		<s:itemRenderer>
+			<fx:Component>
+				<s:MobileIconItemRenderer labelField="name" iconField="icon"/>
+			</fx:Component>
+		</s:itemRenderer>
+	</s:List>
+
+</s:Group>

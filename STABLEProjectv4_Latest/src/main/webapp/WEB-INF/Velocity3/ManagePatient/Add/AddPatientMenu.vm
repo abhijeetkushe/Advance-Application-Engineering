@@ -1,0 +1,27 @@
+## Velocity Template.
+<Template>
+		<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+		<View name="AddPatient"></View>
+        <ActionList>
+                <Action name="Patient Profile"></Action>
+                <Action name="Patient Risk Factors"></Action>
+                <Action name="mothersRiskProfile"></Action>
+                <Action name="Mothers Risk Profile"></Action>
+                <Action name="Pregnancy Profile"></Action>
+                <Action name="Current State"></Action>
+                <Action name="Lab Work"></Action>
+                <Action name="PSSAT Form"></Action>
+                <Action name="Setup Preferences"></Action>                
+                <Action name="back"></Action>
+        </ActionList>
+        
+        <a href="$flowExecutionUrl&_eventId=patientProfile">Patient Profile</a><br/>
+        <a href="$flowExecutionUrl&_eventId=patientRiskFactors">Patient Risk Factors</a><br/>
+        <a href="$flowExecutionUrl&_eventId=mothersRiskProfile">Mothers Risk Profile</a><br/>
+        <a href="$flowExecutionUrl&_eventId=pregnancyProfile">Pregnancy Profile</a><br/>
+        <a href="$flowExecutionUrl&_eventId=currentState">Current State</a><br/>
+        <a href="$flowExecutionUrl&_eventId=labWork">Lab Work</a><br/>
+        <a href="$flowExecutionUrl&_eventId=pssatForm">PSSAT Form</a><br/>
+        <a href="$flowExecutionUrl&_eventId=back">BACK</a><br/>
+        
+</Template>

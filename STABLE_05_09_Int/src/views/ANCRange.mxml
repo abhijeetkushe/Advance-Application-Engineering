@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views2:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:views2="views.*"
+			  xmlns:components="components.*"
+			  actionBarVisible="false" chromeColor="#D2D2E0" contentBackgroundColor="#F6F0F0">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+		<![CDATA[
+
+
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				nextPageHandler("anc_and_it_calc");
+			}
+
+		]]>
+
+	</fx:Script>
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect x="11" y="24" width="459" height="729" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<components:BackButton x="23" y="586" width="94" height="49" click="button1_clickHandler(event)"/>
+	<s:Image x="20" y="177" width="450" height="303"
+			 source="/assets/ancriskchart.jpg"/>
+	<s:Label x="20" y="535" text="0: Low Risk, 4: High Risk"/>
+
+	<mx:MenuBar x="24" y="28" width="426" height="82" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="167" y="53" color="#FCFCFC" fontFamily="Arial" fontSize="22" text="ANC Count"/>
+	<s:Image x="43" y="39" width="52" height="47" source="../assets/downicon.jpg"/>
+	
+</views2:vTask>

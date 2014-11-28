@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			 xmlns:s="library://ns.adobe.com/flex/spark"
+			 xmlns:mx="library://ns.adobe.com/flex/mx"
+			 chromeColor="#C0C0EC" contentBackgroundColor="#F6F0F0" title="DoctorWorkAreaNew" xmlns:views="views.*" actionBarVisible="false" 		xmlns:components="components.*">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+		<![CDATA[
+			
+			  
+			
+		]]>
+		
+	</fx:Script>
+	
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="10" y="10" width="460" height="727" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<!--<mx:MenuBar x="26" y="19" width="428" height="101" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="186" y="57" color="#FCFCFC" fontFamily="Arial" fontSize="22" text="Doctor Work Area"/>
+	<s:Image x="63" y="48" width="52" height="47" source="../assets/downicon.jpg"/>
+	<mx:Button x="27" y="119" width="427" height="88" label="MANAGE BABIES" chromeColor="#FCFCFC"
+			   click="nextPageHandler('babyhome')" color="#302B2B" cornerRadius="0"
+			   focusColor="#EE5C0C" fontFamily="Arial" fontSize="20" paddingLeft="0"
+			   paddingRight="0"/>
+	<mx:Button x="27" y="206" width="428" height="89" label="CALCULATORS" chromeColor="#FFFFFF"
+			   click="nextPageHandler('calc')" color="#302B2B" cornerRadius="0" fontFamily="Arial"
+			   fontSize="20" paddingLeft="0" paddingRight="0"/>
+	<mx:Button x="27" y="294" width="428" height="90" label="QUICK REFERENCE GUIDE (Lab Work)"
+			   chromeColor="#FFFFFF" click="nextPageHandler('referencecards')" color="#302B2B"
+			   cornerRadius="0" focusColor="#FCFDFE" fontFamily="Arial" fontSize="18"
+			   paddingLeft="0" paddingRight="0" />-->
+	<s:VGroup x="25" y="21" width="90%" height="90%">
+		<components:CustomizedList width="100%" height="100%"  vT="{this}"/>
+	</s:VGroup>
+</views:vTask>
+

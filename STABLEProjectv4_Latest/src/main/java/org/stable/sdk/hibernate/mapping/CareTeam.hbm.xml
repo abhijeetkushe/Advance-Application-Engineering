@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.stable.sdk.model.clinic.CareTeam" table="care_team">
+		<id name="careTeamID" type="int">
+			<column name="careteam_id" length="10" />
+			<generator class="native" />
+		</id>
+		<property name="careTeamName" length="70" type="java.lang.String"
+			not-null="false">
+			<column name="team_name" />
+		</property>
+		<many-to-one name="teamLeader" class="org.stable.sdk.model.person.Employee"
+			fetch="select" not-null="false" optimistic-lock="true">
+			<column name="leader_id" />
+		</many-to-one>
+		<set name="teamMembers" table="careteam_employee" lazy="true"
+			optimistic-lock="true" fetch="select">
+			<key>
+				<column name="careteam_id" />
+			</key>
+			<many-to-many column="employee_id"
+				class="org.stable.sdk.model.person.Employee" />
+		</set>
+		<map name="bedLocationList" table="bed_location" lazy="true"
+			order-by="location" optimistic-lock="true" fetch="select">
+			<key>
+				<column name="careteam_id" />
+			</key>
+			<map-key column="location" type="java.lang.String" />
+			<one-to-many class="org.stable.sdk.model.bedlocation.BedLocation" />
+		</map>
+		<list name="patientBedList" table="patient_bedlocation"
+			optimistic-lock="true" fetch="select" lazy="true" where="status = 1">
+			<key>
+				<column name="careteam_id" not-null="true" />
+			</key>
+			<list-index column="patient_bedlocation_id" base="1"/>
+			<one-to-many class="org.stable.sdk.model.patient.PatientBedLocation" />
+		</list>
+	</class>
+</hibernate-mapping>

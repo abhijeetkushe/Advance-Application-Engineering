@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"
+		 width="100%" height="98">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.events.FlexEvent;
+			
+			[Bindable] public var imageSource:String; 
+			[Bindable] public var btnImageSource:String; 
+			[Bindable] public var linkButtonText:String; 
+			
+			public function set text(text:String):void
+			{
+				this.label.text = text;				
+			}
+			
+
+		]]>
+	</fx:Script>
+	
+	<s:VGroup x="0" y="0" width="100%" height="60">
+		<s:HGroup width="100%" height="60" paddingLeft="10" verticalAlign="middle">
+			<s:Image width="85" height="60" source="{this.imageSource}" horizontalAlign="center" verticalAlign="middle"/>	
+			<s:Label id="label" width="120"/>
+			<mx:Spacer width="100%"/>
+			<s:Image width="120" height="60" source="{this.btnImageSource}"/>
+		</s:HGroup>
+	</s:VGroup>
+	<s:VGroup x="0" y="60" width="100%" height="100%" horizontalAlign="center">
+		<s:Label text="{linkButtonText}"/>
+
+	</s:VGroup>
+
+</s:Group>

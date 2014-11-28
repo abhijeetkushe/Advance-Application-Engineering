@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2011 11:46:56 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.stable.sdk.model.encounter.Assessment" table="assessment">
+        <id name="assessmentID" type="java.lang.Long">
+            <column name="assessment_id" />
+            <generator class="native" />
+        </id>
+		
+		  <bag name="orderList" table="orderqueue" lazy="true" fetch="select" optimistic-lock="true" cascade="all" >
+			<key>
+				<column name="assessment_id"/>
+			</key>
+			
+			<one-to-many class="org.stable.sdk.model.order.Order" />
+		</bag>
+    </class>
+</hibernate-mapping>

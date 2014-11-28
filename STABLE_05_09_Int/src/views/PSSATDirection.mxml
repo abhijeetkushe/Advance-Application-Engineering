@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:patientservice="services.patientservice.*"
+		xmlns:components="components.*"
+		initialize="this.initComponent()" >	
+	
+	<fx:Script>		
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.collections.IList;
+			import views.PSSATDashboard;
+			
+			[Bindable]
+			private var dataManagePatient:IList;
+			
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+				//navigator.popToFirstView();
+			}
+			
+			private function initComponent():void{
+				this.button.caption = "Next >>";
+			this.dir.direction="1. Either during pre-transport stabilization care, or immediately after" +
+					" the infant is transported, complete the demographic information in the Patient Information section of the form.\n\n "+
+		  "2. Under Indications for Referral, select all of the suspected or confirmed diagnoses that apply at the"+
+                     "time of referral.\n\n" +
+			"3. Times A, B, and C are used repetitively on the first and second pages of the form. The idea is to"+
+                     "record the vital signs, physical exam, and stabilization procedures that were performed:"+
+                     "\n\nAt the time the transport team was called (transport was requested) = Time A"+
+                     "\n\nUpon arrival of the transport team in your nursery = Time B"+
+                     "\n\nUpon departure of the transport team = Time C"+
+                     "\n\nThe transport team should help complete the Time C items, unless the infant is unstable and time does not allow."+ 
+					 "In that case, if at all possible, ask the team to leave a copy of their stabilization"+
+                     "record so you can complete the Time C item\n\n" +
+			"4. The overall idea is to evaluate stabilization care by looking at three specific time intervals:"+
+                     "\n\nWhat stabilization actions were taken at the time it was determined the infant was ill?"+
+                     "\n\nWhat stabilization actions were taken while awaiting the team’s arrival?"+
+                     "\n\nWhat stabilization actions were completed by the team? The following scenarios are possible:"+
+                     "\n\nThe team arrives and stabilization is complete so they do not need to do more than assess the"+
+                     "baby, attach the transport equipment and move the baby into the incubator."+
+                     "\n\nThe team arrives quickly and completes the stabilization procedures that you did not have time to complete."+
+                     "\n\nThe team arrives and determines that additional care is needed, and therefore, additional actions"+
+                     "are taken (such as intubating the patient, inserting lines, changing an ET tube, administering"+
+                     "certain medications, etc.)."+
+                     "\n\n\nBy recording these actions, it is hoped that the nursing and medical leadership team will be able to"+
+                     "assess adequacy of pre-transport (or transfer) stabilization care" +
+			"\n\nIf you have trouble filling out the form, or you need additional expertise to answer the questions on"+
+                                "the third page of the form, then the transport team should be consulted for assistance. It would not be"+
+                                "presumptuous to say that transport teams would love the opportunity to help their community"+
+                                "hospitals to improve their ability to provide optimal pre-transport stabilization";
+				
+			}
+			
+		]]>
+	</fx:Script>
+<!--	<s:titleContent>
+		<mx:Spacer width="5"/>
+		<components:BackButton click="navigator.popView()"/>
+		<s:Label text="PSSAT Form" color="#FFFFFF" textAlign="center" width="100%" />
+		<components:SkipButton click="navigator.pushView(PSSATDashboard)"/>
+		<mx:Spacer width="5"/>
+	</s:titleContent>-->
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="15" y="10" width="450" height="713" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:Scroller x="25" y="21" width="90%" height="90%">	
+	<s:VGroup x="25" y="21" width="90%" height="90%">
+		<components:CustomizedTextArea id="dir" width="100%" fontWeight="normal"/>
+		<components:LoginButton id="button" width="100%" chromeColor="#A4A2A2" color="#000000" click="navigator.pushView(PSSATDashboard);"/>
+	</s:VGroup>
+
+
+	</s:Scroller>
+	<mx:Spacer height="10"/>
+</views:vTask>
+	

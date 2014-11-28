@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.stable.sdk.model.patient.Patient" table="patient">
+		<id name="patientID" type="int" length="10">
+			<column name="patient_id" />
+			<generator class="native" />
+		</id>
+		<property name="patientTag" length="50" not-null="false"
+			type="java.lang.String">
+			<column name="patient_tag" />
+		</property>
+
+		<property name="medicalRecord" type="java.lang.String">
+			<column name="medicalrecord"></column>
+		</property>
+
+		<property name="status" length="1" not-null="true" type="int">
+			<column name="status" />
+		</property>
+
+		<property name="location" type="java.lang.String">
+			<column name="location"></column>
+		</property>
+
+		<many-to-one name="person" class="org.stable.sdk.model.patient.Person"
+			fetch="select" optimistic-lock="true" not-null="true" cascade="all">
+			<column name="person_id" />
+		</many-to-one>
+		<bag name="measurements" table="measurement" lazy="true"
+			optimistic-lock="false" fetch="select">
+			<key>
+				<column name="patient_id" />
+			</key>
+
+			<one-to-many class="org.stable.sdk.model.measurement.Measurement" />
+		</bag>
+		<bag name="patientBedList" table="patient_bedlocation" lazy="true"
+			fetch="select" optimistic-lock="true" where="status = 1">
+			<key>
+				<column name="patient_id" not-null="false" />
+			</key>
+			<one-to-many class="org.stable.sdk.model.patient.PatientBedLocation" />
+		</bag>
+
+		<bag name="encounters" table="encounter" lazy="true" fetch="select"
+			optimistic-lock="true">
+			<key>
+				<column name="patient_id" />
+			</key>
+			<one-to-many class="org.stable.sdk.model.encounter.Encounter" />
+		</bag>
+
+		<many-to-one name="clinic" class="org.stable.sdk.model.clinic.Clinic" fetch="select">
+			<column name="clinic_id" />
+		</many-to-one>
+
+	</class>
+
+</hibernate-mapping>

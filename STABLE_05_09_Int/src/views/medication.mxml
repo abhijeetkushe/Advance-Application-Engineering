@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views2:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:views2="views.*"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:components="components.*" actionBarVisible="false" creationComplete="vtask1_creationCompleteHandler(event)">
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+
+
+			protected function vtask1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(inputVariables!=null )
+				{
+					var isCBCPositive:XMLList=inputVariables.persons.person.patient.infants.infant.cbcresult;
+					if("true" == isCBCPositive[0].toString()){
+						 medicineCanvas.visible=true;
+					}else{
+						noMedicineCanvas.visible=true;
+					}
+				}
+			}
+
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<s:Rect x="0" y="0" width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	
+	
+	<s:Rect x="9" y="10" width="459" height="732" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	
+		
+	
+	<mx:MenuBar x="25" y="12" width="432" height="100" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="190" y="59" color="#FCFCFC" fontFamily="Arial" fontSize="22" text="Medication"/>
+	<s:Image x="44" y="43" width="52" height="47" source="../assets/downicon.jpg"/>
+	
+	<mx:Canvas id="medicineCanvas" visible="false" x="25" y="113" width="433" height="376">
+	<s:Label x="34" y="99" width="109" height="19" color="#000000" fontFamily="Arial" fontSize="18"
+			 text="AMPICILLIN"/>
+	<s:Label x="34" y="231" width="140" height="19" color="#000000" fontFamily="Arial" fontSize="18"
+			 text="GENTAMICIN"/>
+	<s:Label x="34" y="130" width="109" height="19" color="#F67502" fontFamily="Arial" fontSize="16"
+			 text="Dosage:"/>
+	<s:Label x="35" y="161" width="109" height="19" color="#F67502" fontFamily="Arial" fontSize="16"
+			 text="Frequency:"/>
+	<s:Label x="35" y="189" width="154" height="19" color="#F67502" fontFamily="Arial" fontSize="16"
+			 text="Medication Method:"/>
+	<s:Label x="34" y="279" width="109" height="19" color="#F67502" fontFamily="Arial" fontSize="16"
+			 text="Dosage:"/>
+	<s:Label x="35" y="310" width="109" height="19" color="#F67502" fontFamily="Arial" fontSize="16"
+			 text="Frequency:"/>
+	<s:Label x="35" y="338" width="154" height="19" color="#F67502" fontFamily="Arial" fontSize="16"
+			 text="Medication Method:"/>
+	<s:Label x="224" y="130" width="166" height="19" color="#020202" fontFamily="Arial" fontSize="16"
+			 text="100 mg/kg/dose"/>
+	<s:Label x="224" y="161" width="152" height="19" color="#020202" fontFamily="Arial" fontSize="16"
+			 text="every 12 hours"/>
+	<s:Label x="224" y="188" width="109" height="19" color="#020202" fontFamily="Arial" fontSize="16"
+			 text="IV"/>
+	<s:Label x="224" y="279" width="166" height="19" color="#020202" fontFamily="Arial" fontSize="16"
+			 text="2.5 mg/kg/dose"/>
+	<s:Label x="224" y="310" width="152" height="19" color="#020202" fontFamily="Arial" fontSize="16"
+			 text="every 12 hours"/>
+	<s:Label x="224" y="337" width="109" height="19" color="#020202" fontFamily="Arial" fontSize="16"
+			 text="IV"/>
+		<s:Image x="24" y="29" width="31" height="32" source="../assets/icon_small_warning.gif"/>
+		<s:Label x="91" y="26" width="332" height="56" fontStyle="normal" color="#F80505"
+				 text="Monroe Chart suggests that the ANC count is not normal.Following medications are prescribed"/>
+		
+	</mx:Canvas>
+	<mx:Canvas id="noMedicineCanvas" x="25" y="143" width="432" height="73" visible="false">
+		
+		<s:Label x="71" y="10" width="348" height="62" color="#F67502" fontStyle="normal"
+				 fontSize="16" text="Currently there are no medications recommended"/>
+		<s:Image x="10" y="20" width="40" height="32" source="../assets/small_alert_icon.gif"/>
+	</mx:Canvas>
+	<components:BackButton x="35" y="548" click="nextPageHandler('back');"/>
+		
+</views2:vTask>

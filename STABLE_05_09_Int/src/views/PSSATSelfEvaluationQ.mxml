@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:patientservice="services.patientservice.*"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:components="components.*"
+		xmlns:c="components.*"		 
+
+		initialize="this.initComponent()" >
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>		
+		<![CDATA[
+			import components.SmallButton;
+			
+			import mx.collections.ArrayCollection;
+			import mx.collections.IList;			
+			import views.PSSATTimeA;
+			import views.PSSATTimeB;
+			import views.PSSATTimeC;
+			
+			[Bindable]
+			private var dataAddPatient:IList;
+			
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+				//navigator.popToFirstView();
+			}
+			
+			private function initComponent():void{
+				this.nameOfPerson.textInput="NAME OF PERSON completing this form ";
+				this.dateOfCompletion.textInput="Date";
+				this.header.text="Self-Evaluation Questions";
+				this.timebutton.caption="Submit";
+				this.headerLabel.textInput="Healthcare providers involved with this stabilization (to be completed by initial healthcare facility providers)";
+				this.q1.textInput="Healthcare provider who requested the tranport";
+				this.q2.textInput="Was physician or primary healthcare provider PRESENT at patient’s bedside or in nursery at the time of transport team arrival?";
+				this.explain1.textInput="Explain";
+				this.timeConsultations.textInput="TIME consultations made:";
+				this.familyPractice.textInput="Family practice called";
+				this.pediatrician.textInput="Pediatrician called";
+				this.neonatologist.textInput="Neonatologist called";
+				this.healthCareTakers.textInput="Provide name or initials of other healthcare providers involved with this stabilization:";
+				this.nurse.textInput="Nurse(RN)";
+				this.rt.textInput="RT";
+				this.lpn.textInput="LPN";
+				this.other.textInput="Other";
+				this.offQ1.textInput="1. We feel our strengths with this stabilization effort were:";
+				this.offSubQ1.textInput="The following people should be commended:";
+				this.offQ2.textInput="2. We feel our weaknesses with this stabilization effort were: ";
+				
+				this.offQ3.textInput="3. We encountered the following barriers that altered our ability to work as a team:";
+				
+				this.offQ4.textInput="4. We wish we had the opportunity to learn more about (list all educational needs):";
+				
+				this.offQ5.textInput="5. We encountered the following problems that affected our ability to perform the stabilization we would like to perform (include equipment malfunction or equipment not available, slow response times from other healthcare departments, uncertainty about the diagnosis, communication issues, etc).";
+				
+				this.offQ6.textInput="6. The next time we have to stabilize a sick neonate, we would change the following:";
+				
+				 addTimeButtons();
+			}
+			
+			private function addTimeButtons():void{
+			
+				buttonbar.button1.addEventListener(MouseEvent.CLICK,clickTimeAHandler);
+				buttonbar.button2.addEventListener(MouseEvent.CLICK,clickTimeBHandler);
+				buttonbar.button3.addEventListener(MouseEvent.CLICK,clickTimCHandler);
+			}
+			private function clickTimeAHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeA);
+			}
+			private function clickTimeBHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeB);
+			}
+			private function clickTimCHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeC);
+			}
+		]]>
+	</fx:Script>
+<!--	<s:titleContent>
+		<mx:Spacer width="5"/>
+		<components:BackButton click="navigator.popView()"/>
+		<s:Label width="100%" color="#ffffff" text="PSSAT Form"
+				 textAlign="center"/>
+		<components:SkipButton click="navigator.pushView(null)"/>
+		<mx:Spacer width="5"/>
+	</s:titleContent>-->
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="15" y="10" width="450" height="713">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:VGroup x="15" y="1" width="95%" height="100%" visible="true">
+		<s:Scroller x="0" y="21" width="448" height="100%" visible="true">
+			<s:VGroup x="15" y="5"  height="90%" horizontalAlign="right" paddingLeft="3">
+				<mx:Spacer height="5"/>
+				<s:Label id="header" width="445" height="50" backgroundAlpha="0.5"
+						 backgroundColor="#414141" fontFamily="_sans" fontSize="20"
+						 fontWeight="bold" textAlign="center" verticalAlign="middle"/>
+				<components:LabelEntry id="headerLabel" width="100%" color="#000000"/>
+				<components:ComboEntry id="q1" width="100%" color="#000000"/>
+				<components:RadioButtonEntry id="q2" width="100%" color="#000000"/>
+				<mx:Spacer height="50"/>
+				<components:TextAreaEntry visible="true" id="explain1" width="100%" color="#000000"/>
+
+
+				<components:LabelEntry id="timeConsultations" width="100%" color="#000000"/>
+				<components:ComboEntry id="familyPractice" width="100%" color="#000000"/>
+				<components:ComboEntry id="pediatrician" width="100%" color="#000000"/>
+				<components:ComboEntry id="neonatologist" width="100%" color="#000000"/>
+				<components:LabelEntry id="healthCareTakers" width="100%" color="#000000"/>
+				<components:TextFieldEntry id="nurse" width="100%" color="#000000"/>
+				<components:TextFieldEntry id="rt" width="100%" color="#000000"/>
+				<components:TextFieldEntry id="lpn" width="100%" color="#000000"/>
+				<components:TextAreaEntry  id="other" width="100%" color="#000000"/>
+				<components:LabelEntry id="offQ1" width="100%" color="#000000"/>
+					<c:TextArea id="offAns1" width="440" height="90" fontWeight="normal" textAlign="left"/>
+					
+						<components:LabelEntry id="offSubQ1" width="100%" color="#000000"/>
+				<c:TextArea id="offSubAns1" width="440" height="90" fontWeight="normal" textAlign="left"/>
+				<components:LabelEntry id="offQ2" width="100%" color="#000000"/>
+				<c:TextArea id="offAns2" width="440" height="90" fontWeight="normal" textAlign="left"/>		
+				<components:LabelEntry id="offQ3" width="100%" color="#000000"/>
+				<c:TextArea id="offAns3" width="440" height="90" fontWeight="normal" textAlign="left"/>
+				<components:LabelEntry id="offQ4" width="100%" color="#000000"/>
+				<c:TextArea id="offAns4" width="440" height="90" fontWeight="normal" textAlign="left"/>
+				<components:LabelEntry id="offQ5" width="100%" color="#000000"/>
+				<c:TextArea id="offAns5" width="440" height="90" fontWeight="normal" textAlign="left"/>
+				<components:LabelEntry id="offQ6" width="100%" color="#000000"/>
+				<c:TextArea id="offAns6" width="440" height="90" fontWeight="normal" textAlign="left"/>
+				<mx:Spacer height="10"/>
+				<components:TextFieldEntry id="nameOfPerson" width="100%"/>
+				<components:TextFieldEntry id="dateOfCompletion" width="100%"/>
+				<components:LoginButton id="timebutton" color="#000000" width="100%" click="navigator.pushView(null)"/>
+	</s:VGroup>
+	</s:Scroller>	
+	<components:ButtonBar id="buttonbar" height="80" width="100%"/>
+		<mx:Spacer height="100"/>
+
+	</s:VGroup>
+</views:vTask>

@@ -1,0 +1,18 @@
+## Velocity Template.
+<Template>
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<View name="Menu1"></View>
+        <test></test>
+        <ActionList>
+				<Action name="viewpatient"/>
+                <Action name="addpatient"/>
+                <Action name="viewpatient"/>
+                <Action name="back"/>
+        </ActionList>
+
+		Manage Patient
+        <a href="$flowExecutionUrl&_eventId=addpatient">Add Paitent</a></br>
+        <a href="$flowExecutionUrl&_eventId=monitorpatient">Monitor Paitent</a></br>
+        <a href="$flowExecutionUrl&_eventId=searchpatient">Search Paitent</a></br>
+        <a href="$flowExecutionUrl&_eventId=cancel">BACK</a>
+</Template>

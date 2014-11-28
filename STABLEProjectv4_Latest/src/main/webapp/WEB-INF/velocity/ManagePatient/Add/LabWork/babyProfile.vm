@@ -1,0 +1,24 @@
+<Template>
+
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+
+	<View name="BabyProfile">
+		<infants>
+			#foreach ($infant in $flowRequestContext.flowScope.infantList)
+			<infant>
+				<babyID>$infant.patientId</babyID>
+				<dateOfBirth>$infant.dateOfBirth</dateOfBirth>
+				<timeOfBirth>$infant.timeAtBirth</timeOfBirth>
+				<gender>$infant.gender</gender>
+				<deliveryMode>$infant.deliveryMode</deliveryMode>
+				<weight>$infant.weightAtBirth</weight>
+				<height>$infant.height</height>
+				<bloodGroup>$infant.bloodGroup</bloodGroup>
+				<fullName>$infant.fullName</fullName>
+			</infant>
+			#end
+		</infants>
+	</View>
+
+</Template>

@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:patientservice="services.patientservice.*"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:components="components.*"
+		xmlns:c="components.*"
+
+		initialize="this.initComponent()" >
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>		
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.collections.IList;
+			import views.PSSATSpecificInterventions;
+			import views.PSSATTimeA;
+			import views.PSSATTimeB;
+			import views.PSSATTimeC;
+			
+			[Bindable]
+			private var dataAddPatient:IList;
+			
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+				//navigator.popToFirstView();
+			}
+			
+			private function initComponent():void{
+                 this.header.text="Time C - Transport Team Departed";
+				 this.timebutton.caption="Submit";
+				 this.timeofcalling.textInput= "Time Of Departure";
+				 this.patientalive.textInput="Patient Alive";
+				 this.ageofbaby.textInput="Age Of Baby";
+				 this.temperature.textInput="Temperature";
+				 this.temperaturemethod.textInput="Temperature Method";
+				 this.heartrate.textInput="Heart Rate";
+				 this.respiratoryrate.textInput="Respiratory Rate";
+				 this.bloodpressure.textInput="Blood Pressure (Sys/ Dia)";
+				 this.mean.textInput="Mean";
+				 this.method.textInput="Method";
+				 this.perfusionpulses.textInput="Perfusion/Pulses";
+				 this.crtoverchest.textInput="CRT Over Chest(sec)";
+				 this.crtoverknee.textInput="CRT Over Knee(sec)";
+				 this.pulses.textInput="Pulses";
+				 this.pulsesequal.textInput="Pulses Equal";
+				 this.retractions.textInput="Retractions";
+				 this.serverity.textInput="Severity";
+				 this.location.textInput="Location";
+				 this.o2.textInput="O2";
+				 this.fio2.textInput="FiO2";
+				 this.pao2.textInput="PaO2";
+				 this.Levelofconsciousness.textInput="Level of consciousness";
+				 this.responseto.textInput="Response to noxious stimuli";
+				 this.others.textInput="Others";
+				 this.paralyticused.textInput="Paralytic Used";
+				 this.reasongiven.textInput="Reson Given";
+				 this.timgdoseofallOpioids.textInput="Time/Dose Of All Opioids given past 24 hrs";
+				 this.timedoseofallSedatives.textInput="Time/Dose Of All Sedatives given past 24 hrs";
+				 this.StabilizationProcedures.textInput="Stabilization Procedures";
+				 this.ivinplace.textInput="IV in place";
+				 this.ivinplace.textInput2="Location";
+				 this.ivfluidinfusiong.textInput="IV fluid infusing";
+				 this.ivfluidinfusiong.textInput2="Type";
+				 this.uvcinplace.textInput="UVC in place";
+				 this.uvcinplace.textInput2="Trip Location";
+				 this.uacinplace.textInput="UAC in place";
+				 this.uacinplace.textInput2="Trip Location";
+				 this.glucose.textInput="Glucose";
+				 this.glucose.textInput2="Value(mg/dL)";
+				 this.Glucosebolusgive.textInput="Glucose bolus give";
+				 this.Glucosebolusgive.textInput2="Fluid Amount";
+				 this.Oxygeninus.textInput="Oxygen in use";
+				 this.Oxygeninus.textInput2="%";
+				 this.Pulseoximetryon.textInput="Pulse oxime try on";
+				 this.Pulseoximetryon.textInput2="O2 sat";
+				 this.CPAPinuse.textInput="CPAP in use";
+				 this.CPAPinuse.textInput2="Type Pressure";
+				 this.PPVprovide.textInput="PPV provided";
+				 this.PPVprovide.textInput2="Pressures Rate";
+				 this.Trachealintubation.textInput="Tracheal intubation";
+				 this.Trachealintubation.textInput2=" Cm at li";
+				 this.ETtubeproperlysecure.textInput="ET tube properly secure";
+				 this.Chesttubeinplac.textInput="Chest tube in plac";
+				 this.Chestneedleorcathplace.textInput="Chest needle orcath placed";
+				 this.Volumebolu.textInput="Volume bolus";
+				 this.Volumebolu.textInput2="Type Amount";
+				 this.Ondopamin.textInput="On dopamin";
+				 this.Ondopamin.textInput2="Dose(mcg/kg/mi)";
+				 this.CBCwithdifferentialdon.textInput="CBC with differential done";
+				 this.Bloodculturedraw.textInput="Blood culture drawn";
+				 this.Antibioticsgiven.textInput="Antibiotics given";
+				 this.OnradiantwarmeronIS.textInput="On radiant warmer on ISC";
+				 this.InincubatoronISC.textInput="In incubator on ISC";
+				 this.Inincubatoronairtem.textInput="In incubator on air tem";
+				 this.bloodgas.textInput="Blood Gas";
+				 this.BE.textInput="BE(VentilationSettings)";
+				 this.IndicateCBGABGVenous.textInput="Indicate CBG,ABG Venous";
+				 this.pH.textInput="pH";
+				 this.pCO2.textInput="pCO2";
+				 this.pO2.textInput="pO2";
+				 this.HCO3.textInput="HCO3";
+				 this.UACinplace.textInput="UAC in place";
+				 this.Rate.textInput="Rate";
+				 this.FiO2.textInput="FiO2 %";
+				 this.method2.textInput="Method";
+				 addTimeButtons();
+			}
+			
+			private function addTimeButtons():void{
+				
+				buttonbar.button1.addEventListener(MouseEvent.CLICK,clickTimeAHandler);
+				buttonbar.button2.addEventListener(MouseEvent.CLICK,clickTimeBHandler);
+				buttonbar.button3.addEventListener(MouseEvent.CLICK,clickTimCHandler);
+			}
+			private function clickTimeAHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeA);
+			}
+			private function clickTimeBHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeB);
+			}
+			private function clickTimCHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeC);
+			}
+			
+		]]>
+	</fx:Script>
+<!--	<s:titleContent>
+		<mx:Spacer width="5"/>
+		<components:BackButton click="navigator.popView()"/>
+		<s:Label text="PSSAT Form" color="#ffffff" textAlign="center" width="100%" />
+		<components:SubmitButton click="navigator.pushView(PSSATSpecificInterventions)"/>
+		<mx:Spacer width="5"/>
+	</s:titleContent>-->
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="15" y="10" width="450" height="713">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:VGroup x="15" y="1" width="95%" height="100%" visible="true">
+		<s:Scroller x="0" y="21" width="448" height="100%" visible="true">
+			<s:VGroup x="15" y="5"  height="90%" horizontalAlign="right" paddingLeft="3">
+				<mx:Spacer height="5"/>
+				<s:Label id="header" width="445" height="50" backgroundAlpha="0.5"
+						 backgroundColor="#414141" fontFamily="_sans" fontSize="20"
+						 fontWeight="bold" textAlign="center" verticalAlign="middle"/>
+
+		<components:ComboEntry id="timeofcalling" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="patientalive" width="100%" color="#000000"/>
+		<components:DoubleDropdownListWithLabelEntry id="ageofbaby" width="100%" color="#000000"/>
+		<components:ComboEntry id="temperature" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="temperaturemethod" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="heartrate" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="respiratoryrate" width="100%" color="#000000"/>
+		<components:DoubleTextInputEntry id="bloodpressure" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="mean" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="method" width="100%" color="#000000"/>
+		<components:LabelEntry id="perfusionpulses" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="crtoverchest" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="crtoverknee" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="pulses" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="pulsesequal" width="100%" color="#000000"/>
+		<components:LabelEntry id="retractions" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="serverity" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="location" width="100%" color="#000000"/>
+		<components:TextInputWithPercentageEntry id="o2" width="100%" color="#000000"/>
+		<components:TextInputWithPercentageEntry id="fio2" width="100%" color="#000000"/>
+		<components:TextInputWithPercentageEntry id="pao2" width="100%" color="#000000"/>
+		<components:LabelEntry id="Levelofconsciousness" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="responseto" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="others" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="paralyticused" width="100%" color="#000000"/>
+		<components:TextAreaEntry id="reasongiven" width="100%" color="#000000"/>
+		<components:TextAreaEntry id="timgdoseofallOpioids" width="100%" color="#000000"/>
+		<components:TextAreaEntry id="timedoseofallSedatives" width="100%" color="#000000"/>
+		<components:LabelEntry id="StabilizationProcedures" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="ivinplace" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="ivfluidinfusiong" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="uvcinplace" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="uacinplace" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="glucose" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="Glucosebolusgive" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="Oxygeninus" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="Pulseoximetryon" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="CPAPinuse" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="PPVprovide" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="Trachealintubation" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="ETtubeproperlysecure" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="Chesttubeinplac" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="Chestneedleorcathplace" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="Volumebolu" width="100%" color="#000000"/>
+		<components:RadioButtonWithTextInputEntry id="Ondopamin" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="CBCwithdifferentialdon" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="Bloodculturedraw" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="Antibioticsgiven" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="OnradiantwarmeronIS" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="InincubatoronISC" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="Inincubatoronairtem" width="100%" color="#000000"/>
+		<components:LabelEntry id="bloodgas" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="IndicateCBGABGVenous" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="pH" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="pCO2" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="pO2" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="HCO3" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="BE" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="UACinplace" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="Rate" width="100%" color="#000000"/>
+		<components:TextFieldEntry id="FiO2" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="method2" width="100%" color="#000000"/>
+				<c:LoginButton id="timebutton" color="#000000" width="100%" click="navigator.pushView(PSSATSpecificInterventions)"/>
+	</s:VGroup>
+	</s:Scroller>	
+	<components:ButtonBar id="buttonbar" height="80" width="100%"/>
+		<mx:Spacer height="100"/>
+	</s:VGroup>
+</views:vTask>

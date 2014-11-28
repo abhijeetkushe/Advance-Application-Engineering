@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template>
+	#set ($dateTool = $flowRequestContext.flowScope.dateTool)
+	#set ($medicalTests = $flowRequestContext.flowScope.selectedBaby.labDir.labTestList)
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+    <View name="$flowRequestContext.flowScope.viewName">
+        <testList>
+        </testList>
+    </View>
+    
+</Template>

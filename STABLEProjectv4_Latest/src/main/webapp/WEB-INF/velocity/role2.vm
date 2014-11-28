@@ -1,0 +1,22 @@
+## Velocity Template.
+<Template>
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<View name="Login"></View>
+        <test></test>
+        <ActionList>
+                <Action name="managePatient"/>
+                <Action name="notes"/>
+                <Action name="Menu3"/>
+                <Action name="Menu4"/>
+                <Action name="Menu4"/>
+        </ActionList>        
+</Template>
+
+<ol>
+	<li><a href="$flowExecutionUrl&_eventId=managePatient">Manage Paitents</a></li>
+     <li><a href="$flowExecutionUrl&_eventId=notes">Manage Notes</a></li>
+     <li><a href="$flowExecutionUrl&_eventId=calculator">Calculator</a></li>
+     <li><a href="$flowExecutionUrl&_eventId=convertor">Convertor</a></li>
+     <li><a href="$flowExecutionUrl&_eventId=faq">FAQ</a></li>
+
+</ol>

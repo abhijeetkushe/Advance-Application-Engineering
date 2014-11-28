@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*"xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="PregenancyProfile">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:titleContent>
+		<s:Button width="130" label="Back"/>
+		<s:Label width="217" text="Pregnancy Profile" textAlign="center" verticalAlign="middle"/>
+		<s:Button width="130" label="Submit"/>
+	</s:titleContent>
+	<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			xmlns:s="library://ns.adobe.com/flex/spark" title="PatientProfile"
+			contentBackgroundColor="#FFFFFF">
+		<fx:Declarations>
+			<!-- Place non-visual elements (e.g., services, value objects) here -->
+		</fx:Declarations>
+		<s:titleContent>
+			<s:Button width="130" label="Back"/>
+			<s:Label x="103" width="217" text="Patient Profile" verticalAlign="middle" textAlign="center"/>
+			<s:Button width="130" label="Submit"/>
+		</s:titleContent>
+		<s:Label x="10" y="10" text="No. Of Pregnancies"/>
+		<s:Label x="10" y="59" text="No. Of Abortions"/>
+		<s:ComboBox x="288" y="10" width="174"/>
+		<s:Label x="11" y="119" text="No. Of Miscarriages"/>
+		<s:ComboBox x="288" y="114" width="173"/>
+		<s:ComboBox x="288" y="63" width="172"/>
+		<s:ComboBox x="288" y="169" width="172"/>
+		<s:ComboBox x="288" y="219" width="172"/>
+		<s:ComboBox x="286" y="272" width="176"/>
+		<s:ComboBox x="286" y="327" width="176"/>
+		<s:Label x="10" y="169" text="No. Of Preterm births"/>
+		<s:Label x="8" y="219" text="No. Of Tubal preg."/>
+		<s:Label x="10" y="272" text="No. Of Living children"/>
+		<s:Label x="10" y="327" text="Delivery Type"/>
+		<s:Label x="10" y="376" text="Complications&#xd;(if any)"/>
+		<s:TextArea x="286" y="376" width="176" height="95"/>
+	</s:View>
+	<s:Button x="10" y="479" width="452" label="Submit"/>
+</views:vTask>

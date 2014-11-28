@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="userAccountDao" class="org.stable.sdk.DAO.common.AbstractHibernateDao">
+		<constructor-arg>
+			<value>org.stable.sdk.model.person.UserAccount</value>
+		</constructor-arg>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="employeeDao" class="org.stable.sdk.DAO.common.AbstractHibernateDao">
+		<constructor-arg>
+			<value>org.stable.sdk.model.person.Employee</value>
+		</constructor-arg>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+		<bean id="personDao" class="org.stable.sdk.DAO.common.AbstractHibernateDao">
+		<constructor-arg>
+			<value>org.stable.sdk.model.patient.Person</value>
+		</constructor-arg>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="deviceDao" class="org.stable.sdk.DAO.common.AbstractHibernateDao">
+		<constructor-arg>
+			<value>org.stable.sdk.model.device.AbstractDevice</value>
+		</constructor-arg>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean id="patientDao" class="org.stable.sdk.DAO.common.AbstractHibernateDao">
+		<constructor-arg>
+			<value>org.stable.sdk.model.patient.Patient</value>
+		</constructor-arg>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="clinicDao" class="org.stable.sdk.DAO.common.AbstractHibernateDao">
+		<constructor-arg>
+			<value>org.stable.sdk.model.clinic.Clinic</value>
+		</constructor-arg>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="careTeamDao" class="org.stable.sdk.DAO.common.AbstractHibernateDao">
+		<constructor-arg>
+			<value>org.stable.sdk.model.clinic.CareTeam</value>
+		</constructor-arg>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="measurementDao" class="org.stable.sdk.DAO.common.AbstractHibernateDao">
+		<constructor-arg>
+			<value>org.stable.sdk.model.measurement.Measurement</value>
+		</constructor-arg>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="encounterDao" class="org.stable.sdk.DAO.common.AbstractHibernateDao">
+		<constructor-arg>
+			<value>org.stable.sdk.model.encounter.Encounter</value>
+		</constructor-arg>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="birthDetailsDao" class="org.stable.sdk.DAO.common.AbstractHibernateDao">
+		<constructor-arg>
+			<value>org.stable.sdk.model.patient.BirthDetails</value>
+		</constructor-arg>
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+</beans>

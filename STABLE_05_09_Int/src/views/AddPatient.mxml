@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:patientservice="services.patientservice.*"
+		xmlns:components="components.*"
+		actionBarVisible="false" initialize="this.initComponent()" >	
+	
+	<fx:Script>		
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.collections.IList;
+			
+			[Bindable]
+			private var dataAddPatient:IList;
+			
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+				//navigator.popToFirstView();
+			}
+			
+			private function initComponent():void{
+				//dataAddPatient = new ArrayCollection();
+				//dataAddPatient.addItem("Patient Profile");
+				//dataAddPatient.addItem("Patient Risk Factors");
+				//dataAddPatient.addItem("Mothers Risk Profile");
+				//dataAddPatient.addItem("Pregnancy Profile");
+				//dataAddPatient.addItem("Current State");
+				//dataAddPatient.addItem("Lab Work");
+				//dataAddPatient.addItem("PSSAT Form");
+				//dataAddPatient.addItem("Setup Preferences");
+			}
+			
+		]]>
+	</fx:Script>
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="15" y="10" width="450" height="713" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:VGroup x="25" y="21" width="90%" height="90%">
+		<components:CustomizedList width="100%" height="100%" vT="{this}" />
+	</s:VGroup>
+</views:vTask>

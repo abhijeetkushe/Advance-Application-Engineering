@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PatientList>
+	<patient>
+		<fname>Add Patient</fname>
+		<lname>Pang</lname>
+	</patient>
+	<patient>
+		<fname>View My Patients</fname>
+		<lname>Zhang</lname>
+	</patient>
+	<patient>
+		<fname>Search Patients</fname>
+		<lname>Ge</lname>
+	</patient>
+	
+</PatientList>

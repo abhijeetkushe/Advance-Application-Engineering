@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.stable.sdk.model.patient.Person" table="person">
+		<id name="personID" type="int">
+			<column name="person_id" length="10" not-null="true"  />
+			<generator class="native" />
+		</id>
+		<property name="firstName" length="50" type="java.lang.String">
+			<column name="first_name" />
+		</property>
+		<property name="lastName" length="50" type="java.lang.String">
+			<column name="last_name" />
+		</property>
+		<property name="preferredName" length="50" type="java.lang.String">
+			<column name="preferred_name" />
+		</property>
+		<property name="isMother" type="boolean" access="field">
+			<column name="is_mother" />
+		</property>
+		<many-to-one name="myMother" class="org.stable.sdk.model.patient.Person"
+			fetch="select">
+			<column name="mother_id" />
+		</many-to-one>
+		<many-to-one name="father" class="org.stable.sdk.model.patient.Person"
+			fetch="select">
+			<column name="father_id" />
+		</many-to-one>
+		<set name="myBabies" table="person" lazy="true" fetch="select"
+			optimistic-lock="true">
+			<key>
+				<column name="person_id"    />
+			</key>
+			<one-to-many class="org.stable.sdk.model.patient.Person" />
+		</set>
+	<!--<many-to-one name="birthDetails" class="org.stable.sdk.model.patient.BirthDetails" fetch="join" unique="true" insert="false" update="false">
+			<column name="person_id" />
+		</many-to-one>-->
+		
+		<one-to-one name="birthDetails" class="org.stable.sdk.model.patient.BirthDetails" property-ref="person" />
+	</class>
+</hibernate-mapping>

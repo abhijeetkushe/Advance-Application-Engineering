@@ -1,0 +1,12 @@
+<Template>
+
+        <flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+	<ActionList>
+            <Action name="Back to Previous Page"/>
+			<Action name="ANC Ratio"/>
+            <Action name="I/T Ratio"/>
+         </ActionList>
+        <View name="CalcHome">
+        </View>
+</Template>

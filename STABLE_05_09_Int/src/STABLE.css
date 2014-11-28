@@ -1,0 +1,19 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+
+
+global
+{
+	content-background-alpha: 0.32;
+	font-size: 16;
+	color: #212225;
+	font-family: Georgia;
+	font-weight: bold;
+}
+s|RadioButton
+{
+	color: #000000;
+	chrome-color: #00FFFF;
+	symbol-color:FF0000;
+}
+	

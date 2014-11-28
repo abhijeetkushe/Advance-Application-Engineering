@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="start" view="ManagePatient/Add/LabWork/calc">
+
+        <transition on="anc_and_it_calc" to="anc_and_it_calc" />
+        <transition on="doctor" to="labWork" />
+        <transition on="back" to="labWork" />
+        <transition on="logout" to="logout" />
+        <transition on="bmi" to="bmi" />
+
+   </view-state>
+   
+   <subflow-state id="labWork" subflow="ManagePatientAdd_LabWork-flow">
+		<transition on="calc" to="start" />
+	</subflow-state>
+
+	<!-- Start of ANC and I/T Flow -->
+    <view-state id="anc_and_it_calc" view="ManagePatient/Add/LabWork/anc_and_it_calc">
+    	<transition on="calc" to="start"/>
+    	<transition on="ancrange" to="ancRange" />    		
+    </view-state>
+        
+    <view-state id="ancRange" view="ManagePatient/Add/LabWork/ancRange">
+        <transition on="anc_and_it_calc" to="anc_and_it_calc" />
+    </view-state>
+	<!-- End of ANC and I/T Flow -->
+	
+	<!-- Start of BMI Flow -->
+    <view-state id="bmi" view="ManagePatient/Add/LabWork/bmi">
+        <transition on="calc" to="start" />
+        <transition on="bmiguide" to="bmiGuide" /> 
+    </view-state>
+    
+    <view-state id="bmiGuide" view="ManagePatient/Add/LabWork/bmiGuide">
+        <transition on="bmi" to="bmi" />
+    </view-state>
+	<!-- End of BMI Flow -->
+	
+    
+	
+	
+ 
+   <end-state id="end"/>
+   
+</flow>

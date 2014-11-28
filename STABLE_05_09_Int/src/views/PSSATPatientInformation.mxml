@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:patientservice="services.patientservice.*"
+		xmlns:c="components.*"
+		xmlns:components="components.*" xmlns:mx="library://ns.adobe.com/flex/mx" creationComplete="initComponent();">	
+	
+	<fx:Script>		
+		<![CDATA[
+			import views.PSSATTimeA;
+			import views.PSSATTimeB;
+			import views.PSSATTimeC;
+			
+			protected function submitPregProfileButton_clickHandler(event:MouseEvent):void
+			{
+				// Placeholder credential check
+				
+				//navigator.popAll();
+				// Set the new root
+				//navigator.pushView(views.PatientRiskFactors);
+				
+			}
+			private function initComponent():void{
+				this.header.text="Patient Information";
+				this.timebutton.caption="Submit";
+				this.birthWeight.textInput="Birth Weight";
+				this.birthOrder.textInput="Birth Order";
+				this.gender.textInput="Gender";
+				this.estGA.textInput="Est.GA";
+				this.growth.textInput="Growth";
+				this.babyAdmitted.textInput ="Baby Admitted Form";
+				this.ResuscitationatBirth.textInput="Resuscitation at Birth";
+				this.Indicationsforreferral.textInput ="Indications for referral";
+				this.ResuscitationMeds.textInput="Resuscitation Meds (list)";
+				this.OtherMeds.textInput="Other Meds (list)";
+				this.at1min.textInput="At 1 min";
+				this.at5min.textInput="At 5 min";
+				this.at10min.textInput="At 10 min";
+				this.at15min.textInput="At 15 min";
+				this.at20min.textInput="At 20 min";
+				addTimeButtons();
+			}
+			
+			private function addTimeButtons():void{
+				
+				buttonbar.button1.addEventListener(MouseEvent.CLICK,clickTimeAHandler);
+				buttonbar.button2.addEventListener(MouseEvent.CLICK,clickTimeBHandler);
+				buttonbar.button3.addEventListener(MouseEvent.CLICK,clickTimCHandler);
+			}
+			private function clickTimeAHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeA);
+			}
+			private function clickTimeBHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeB);
+			}
+			private function clickTimCHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeC);
+			}
+			
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+				navigator.popToFirstView();
+			}
+
+			
+			
+		]]>
+	</fx:Script>
+	
+<!--	<s:titleContent>
+		<mx:Spacer width="5"/>
+		<components:BackButton click="navigator.popView()"/>
+		<s:Label width="100%" chromeColor="#FFFFFF" color="#FFFFFF" text="PSSAT Form" textAlign="center"/>
+		<components:SubmitButton click="navigator.pushView(PSSATTimeA)"/>
+		<mx:Spacer width="5"/>
+	</s:titleContent>-->
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="15" y="10" width="450" height="713">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:VGroup x="15" y="1" width="95%" height="100%" visible="true">
+		<s:Scroller x="0" y="21" width="448" height="100%" visible="true">
+			<s:VGroup x="15" y="5"  height="90%" horizontalAlign="right" paddingLeft="3">
+				<mx:Spacer height="5"/>
+				<s:Label id="header" width="445" height="50" backgroundAlpha="0.5"
+						 backgroundColor="#414141" fontFamily="_sans" fontSize="20"
+						 fontWeight="bold" textAlign="center" verticalAlign="middle"/>
+			<components:TextFieldEntry id="birthWeight" width="100%" color="#000000"/>
+			<components:ComboEntry id="birthOrder" width="100%" color="#000000"/>
+			<components:DropDownListEntry id="gender" width="100%" color="#000000"/>
+			<components:DropDownListEntry id="estGA" width="100%" color="#000000"/>
+			<components:TextFieldWithHelpButtonEntry id="growth" width="100%" color="#000000"/>
+			<components:ComboEntry id="babyAdmitted" width="100%" color="#000000"/>
+			<components:DropDownListEntry id="ResuscitationatBirth" width="100%" color="#000000"/>
+			<components:DropDownListEntry id="Indicationsforreferral" width="100%" color="#000000"/>
+			<components:TextAreaEntry id="ResuscitationMeds" width="100%" color="#000000"/>
+			<components:TextAreaEntry id="OtherMeds" width="100%" color="#000000"/>				
+			<s:Label width="100%" fontFamily="_sans" fontSize="20" fontWeight="bold" text="Apgar" backgroundAlpha="0.5"
+						 textAlign="center" backgroundColor="#414141" height="50" verticalAlign="middle"/>				
+			<components:TextFieldWithHelpButtonEntry id="at1min" width="100%" color="#000000"/>
+			<components:TextFieldWithHelpButtonEntry id="at5min" width="100%" color="#000000"/>
+			<components:TextFieldWithHelpButtonEntry id="at10min" width="100%" color="#000000"/>
+			<components:TextFieldWithHelpButtonEntry id="at15min" width="100%" color="#000000"/>
+			<components:TextFieldWithHelpButtonEntry id="at20min" width="100%" color="#000000"/>
+			<c:LoginButton id="timebutton" color="#000000" width="100%" click="navigator.pushView(PSSATTimeA)"/>
+		</s:VGroup>
+	</s:Scroller>	
+		<components:ButtonBar id="buttonbar" height="80" width="100%"/>
+		<mx:Spacer height="100"/>
+	</s:VGroup>
+	
+</views:vTask>

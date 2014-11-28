@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views2:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:views2="views.*"
+			  xmlns:components="components.*"
+			  actionBarVisible="false" chromeColor="#D2D2E0" contentBackgroundColor="#F6F0F0">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+		<![CDATA[
+
+	
+
+		]]>
+
+	</fx:Script>
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect x="11" y="24" width="459" height="729" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<mx:MenuBar x="23" y="42" width="426" height="82" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="107" y="71" color="#FCFCFC" fontFamily="Arial" fontSize="22" text="The &quot;4 B's&quot; of Laboratory Work"/>
+	<s:Image x="43" y="57" width="52" height="47" source="../assets/downicon.jpg"/>
+
+	<components:BackButton x="23" y="496" width="94" height="49" click="nextPageHandler('referencecards');"/>
+	<s:Label x="38" y="168" color="#F50B06" fontSize="20" fontStyle="normal"
+			 text="B"/>
+	<s:Label x="38" y="298" color="#F50B06" fontSize="20" fontStyle="normal"
+			 text="B"/>
+	<s:Label x="39" y="259" color="#F50B06" fontSize="20" fontStyle="normal"
+			 text="B"/>
+	<s:Label x="40" y="216" color="#F50B06" fontSize="20" fontStyle="normal"
+			 text="B"/>
+	<s:Label x="57" y="168" height="20" text="lood Culture (before starting antibiotics)"/>
+	<s:Label x="57" y="298" height="20" text="lood Gas (if respiratory distress is present)"/>
+	<s:Label x="57" y="260" height="20" text="lood Count (CBC with differential)"/>
+	<s:Label x="57" y="216" height="20" text="lood Sugar"/>
+	<s:Label x="34" y="346" width="423" height="139" color="#273FBA"
+			 text="** Draw from UAC, radial or posterior tibial artery.&#xd;&#xd;** Avoid brachial and femoral arterial sticks.&#xd;&#xd;** Warm the heel for 3-5 minutes if drawing a capillary blood gas."/>
+</views2:vTask>

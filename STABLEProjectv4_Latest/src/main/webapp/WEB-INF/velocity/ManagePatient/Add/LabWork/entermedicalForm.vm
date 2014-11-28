@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template>
+	#set ($dateTool = $flowRequestContext.flowScope.dateTool)
+	#set($measurementList =	$flowRequestContext.flowScope.staticMeasurements)
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+    <View name="$flowRequestContext.flowScope.viewName">
+		<measurmentList>
+			#foreach($measurement in $measurementList)
+				<measurement>
+						<deviceType>$measurement.defineMeasurementType().toString()</deviceType>
+						<measurementValue>$measurement.value</measurementValue>
+				</measurement>
+			#end
+    	</measurmentList>    	       
+    </View>
+    
+</Template>

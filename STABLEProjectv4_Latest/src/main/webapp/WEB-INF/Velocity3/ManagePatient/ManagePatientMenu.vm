@@ -1,0 +1,14 @@
+<Template>
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<View name="ManagePatients"/>
+        <ActionList>
+				<Action name="Add Patient"/>
+                <Action name="Monitor Patients"/>
+                <Action name="Search Patient"/>
+                <Action name="back"/>
+        </ActionList>
+        <a href="$flowExecutionUrl&_eventId=addpatient">Add Paitent</a><br/>
+        <a href="$flowExecutionUrl&_eventId=monitorpatient">Monitor Paitent</a><br/>
+        <a href="$flowExecutionUrl&_eventId=searchpatient">Search Paitent</a><br/>
+        <a href="$flowExecutionUrl&_eventId=cancel">BACK</a>
+</Template>

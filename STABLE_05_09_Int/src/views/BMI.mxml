@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views2:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:views2="views.*"
+			  xmlns:components="components.*"
+			  actionBarVisible="false" chromeColor="#D2D2E0" contentBackgroundColor="#F6F0F0">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+		<![CDATA[
+			import spark.components.ViewNavigator;
+			
+			
+			protected function button4_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+				var feetFloat:Number = parseFloat(ft.text);
+				var inchesFloat:Number = parseFloat(inches.text);
+				var cmsFloat:Number = parseFloat(cms.text);
+				var weightFloat:Number = parseFloat(weight.text);
+				var bmi:Number = 0.0;
+				if(lbs.selected==true)
+				{
+				
+						bmi = weightFloat*703.0/((feetFloat*12.0+inchesFloat)*(feetFloat*12.0+inchesFloat));
+			
+				}
+				else if(kgs.selected=true)
+				{
+					
+						bmi = weightFloat/((cmsFloat/100.0)*(cmsFloat/100.0));
+				
+				}
+				bmiText.text = bmi.toString();
+				
+			}
+			
+			
+			protected function engButton_changeHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				ft.text="0";
+				cms.text="0";
+				inches.text="0";
+				metricButton.visible=false;
+				cms.visible=false;
+				engButton.visible=false;
+				cmsLabel.visible=false;
+				orText.visible=false;
+				lbs.visible=true;
+				lbs.selected=true;
+				kgs.visible=false;
+				metricLinkButton.visible=true;
+				engLinkButton.visible=false;
+				ft.visible=true;
+				inches.visible=true;
+				ftLabel.visible=true;
+				inchesLabel.visible=true;
+				engButton.visible=false;
+				
+				
+			}
+			
+			
+			protected function metricButton_changeHandler(event:Event):void
+			{
+				// TODO Auto-generated method stub
+				ft.text="0";
+				cms.text="0";
+				inches.text="0";
+				metricLinkButton.visible=false;
+				engButton.visible=false;
+				metricButton.visible=false;
+				ft.visible=false;
+				lbs.visible=false;
+				kgs.visible=true;
+				kgs.selected=true;
+				inches.visible=false;
+				ftLabel.visible=false;
+				inchesLabel.visible=false;
+				orText.visible=false;
+				engLinkButton.visible=true;
+				cms.visible=true;
+				cmsLabel.visible=true;
+				
+			}
+			
+			
+			protected function metricLinkButton_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				ft.text="0";
+				cms.text="0";
+				inches.text="0";
+				metricLinkButton.visible=false;
+				engButton.visible=false;
+				ft.visible=false;
+				lbs.visible=false;
+				kgs.visible=true;
+				kgs.selected=true;
+				inches.visible=false;
+				ftLabel.visible=false;
+				inchesLabel.visible=false;
+				orText.visible=false;
+				engLinkButton.visible=true;
+				cms.visible=true;
+				cmsLabel.visible=true;
+				
+			}
+			
+			
+			protected function engLinkButton_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				ft.text="0";
+				cms.text="0";
+				inches.text="0";
+				metricButton.visible=false;
+				cms.visible=false;
+				cmsLabel.visible=false;
+				orText.visible=false;
+				metricLinkButton.visible=true;
+				engLinkButton.visible=false;
+				ft.visible=true;
+				lbs.visible=true;
+				lbs.selected=true;
+				kgs.visible=false;
+				inches.visible=true;
+				ftLabel.visible=true;
+				inchesLabel.visible=true;
+				engButton.visible=false;
+			}
+			
+
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				nextPageHandler("ancrange");
+				
+			}
+
+
+			protected function linkbutton2_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				nextPageHandler("bmiguide");
+			}
+
+		]]>
+
+	</fx:Script>
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect x="10" y="28" width="459" height="729" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	
+	
+	<mx:MenuBar x="24" y="38" width="426" height="82" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="87" y="63" color="#FCFCFC" fontFamily="Arial" fontSize="22" text="Body Mass Index (BMI) Calculation"/>
+	<s:Image x="31" y="48" width="52" height="47" source="../assets/downicon.jpg"/>
+	<s:TextInput x="98" y="169" fontWeight="bold" id="ft" width="43" text="0" visible="false"/>
+	<s:TextInput x="114" y="283" editable="true" fontWeight="bold" id="weight" width="81" />
+	<s:Label x="26" y="302" text="Weight:" textDecoration="none" fontWeight="bold" fontStyle="italic"/>
+	<s:RadioButton x="199" y="267" label="LBS" id="lbs"/>
+	<s:RadioButton label="KGS" x="312.3" y="268.65" id="kgs"/>
+	<s:TextInput x="172" y="170" fontWeight="bold" id="inches" width="45" text="0" visible="false"/>
+	<s:Label x="141" y="185" text="FT" textDecoration="none" fontWeight="bold" fontStyle="italic" id="ftLabel" visible="false"/>
+	<s:Label x="225" y="185" text="IN" textDecoration="none" fontWeight="bold" fontStyle="italic" height="15" id="inchesLabel" visible="false"/>
+	<s:Button x="291" y="365" label="Calculate &gt;&gt;" fontWeight="bold" click="button4_clickHandler(event)"/>
+	<s:TextInput x="285" y="472" fontWeight="bold" id="bmiText" width="117" editable="true"/>
+	<s:Label x="30" y="490" text="Body Mass Index (BMI):" textDecoration="none" fontWeight="bold" fontStyle="italic"/>
+	
+	<s:Label x="197" y="160" text="OR" textDecoration="underline" fontWeight="bold" fontStyle="italic" height="15" color="#2213ED" id="orText"/>
+	<s:TextInput x="124" y="170" fontWeight="bold" id="cms" width="93" text="0" visible="false"/>
+	<s:Label x="221" y="185" text="CMS" textDecoration="none" fontWeight="bold" fontStyle="italic" height="15" id="cmsLabel" visible="false"/>
+	<s:RadioButton x="38" y="129" label="English" fontSize="15" id="engButton" change="engButton_changeHandler(event)"/>
+	<s:RadioButton x="260" y="129" label="Metric" fontSize="15" id="metricButton" change="metricButton_changeHandler(event)"/>
+	<mx:LinkButton x="279" y="179" label="Metric??" textDecoration="underline" fontWeight="bold" color="#2516EC" click="metricLinkButton_clickHandler(event)" id="metricLinkButton" visible="false"/>
+	<mx:LinkButton x="279" y="179" label="English??" textDecoration="underline" fontWeight="bold" color="#2516EC" click="engLinkButton_clickHandler(event)" id="engLinkButton" visible="false"/>
+	<mx:LinkButton x="24" y="384" label="Click here for BMI Guide &gt;&gt;" textDecoration="underline" fontWeight="bold" color="#2516EC" click="linkbutton2_clickHandler(event)"/>
+	<components:BackButton x="23" y="586" width="94" height="49" click="nextPageHandler('calc');"/>
+	<s:Label x="25" y="243" text="Height:" textDecoration="none" fontWeight="bold" fontStyle="italic"/>
+</views2:vTask>

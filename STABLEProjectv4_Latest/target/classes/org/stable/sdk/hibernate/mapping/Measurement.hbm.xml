@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.stable.sdk.model.measurement.Measurement" table="measurement"
+		abstract="true">
+		<id name="measurementID" type="long">
+			<column name="measurement_id" not-null="true" />
+			<generator class="native" />
+		</id>
+		<discriminator column="discriminator" type="java.lang.String"
+			force="true" />
+		<property name="methodType" length="3" type="int">
+			<column name="methodtype_id" />
+		</property>
+		<property name="unit" length="3" type="int">
+			<column name="unit_id" />
+		</property>
+		<property name="dateTime" type="java.util.Date">
+			<column name="datetime" />
+		</property>
+		<property name="value" length="30" type="java.lang.String"
+			not-null="true">
+			<column name="value" />
+		</property>
+		<property name="measurementType" type="int">
+			<column name="measurementype_id" />
+		</property>
+		<many-to-one name="device" class="org.stable.sdk.model.device.IDevice"
+			fetch="select" optimistic-lock="true">
+			<column name="device_id" />
+		</many-to-one>
+		
+		<many-to-one name="patient" class="org.stable.sdk.model.patient.Patient">
+            <column name="patient_id" />
+        </many-to-one>
+	</class>
+</hibernate-mapping>

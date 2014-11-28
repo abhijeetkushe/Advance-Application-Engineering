@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 width="30" height="45" mouseDown="mouseDownHandler(event)" mouseUp="mouseUpHandler(event)"
+		 chromeColor.down="#F44B35" xmlns:mx="library://ns.adobe.com/flex/mx">
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="down"/>
+	</s:states>
+	
+	<fx:Script>
+		<![CDATA[
+			[Bindable]
+			[Embed(source='assets/help.png')]
+			private var helpicon:Class;
+
+			protected function mouseDownHandler(event:MouseEvent):void
+			{
+				this.currentState = "down";
+			}
+						
+			protected function mouseUpHandler(event:MouseEvent):void
+			{
+				this.currentState = "normal";
+			}
+
+			
+		]]>
+	</fx:Script>
+	<s:VGroup gap="0">
+		<s:Image source="{helpicon}" width="30" textAlign="center"/>
+		<mx:Spacer height="3"/>
+		<s:Label width="30" color.normal="#000000" text="Help" textAlign="center" fontSize="12" fontWeight="bold"
+				 color.down="#F44B35" verticalAlign="middle"/>
+	</s:VGroup>
+	
+</s:Group>

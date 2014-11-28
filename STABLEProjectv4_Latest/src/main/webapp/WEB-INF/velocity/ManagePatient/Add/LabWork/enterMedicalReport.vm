@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template>
+	#set($dateTool = $flowRequestContext.flowScope.dateTool)
+	#set($cbcCounter=0)	
+	#set($crpCounter=0)
+	#set($csCounter=0)
+	#set($elecCounter=0)
+	#set($bgCounter=0)		
+#set($encounterTestList =	$flowRequestContext.flowScope.patient.encounters)
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+    <flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+    <ActionList>
+		    	<Action name="Back to Previous Page"/>
+ 			#foreach ($encounter in $encounterTestList)
+ 				#foreach($order in $encounter.treatment.orderList)
+ 					#if($order.class.name=="org.stable.sdk.model.test.CBC")
+						#if($cbcCounter<1) 					
+	 						<Action name="CBC with Differential"/>
+	 					#end	
+ 						#set( $cbcCounter = $cbcCounter + 1 )
+ 					#elseif($order.class.name=="org.stable.sdk.model.test.CRP")
+	 					#if($crpCounter<1)
+		 					<Action name="CRP (C-Reactive Protein)"/>	
+		 				#end	
+ 						#set( $crpCounter = $crpCounter + 1 )
+		 			#elseif($order.class.name=="org.stable.sdk.model.test.Clotting")
+			 			#if($csCounter<1)
+							<Action name="Clotting Studies"/>
+						#end	
+ 						#set( $csCounter = $csCounter + 1 )
+					#elseif($order.class.name=="org.stable.sdk.model.test.Electrolytes")
+		 				#if($elecCounter<1)
+							<Action name="Electrolytes"/>
+						#end	
+ 						#set( $elecCounter = $elecCounter + 1 )	
+					#elseif($order.class.name=="org.stable.sdk.model.test.BloodGas")
+						#if($bgCounter<1)
+						<Action name="Blood Gas"/>	
+	 					#end
+	 					#set( $bgCounter = $bgCounter + 1 )
+	 				#end	
+				#end
+			#end				 						
+    </ActionList>
+   
+        <View name="MedicalTestList"> 
+    </View>
+    
+</Template>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.stable.sdk.model.bedlocation.BedLocation" table="bed_location">
+		<id name="bedLocationID" type="int">
+			<column name="bedlocation_id" length="10" not-null="true" />
+			<generator class="native" />
+		</id>
+		<property name="location" length="50" type="java.lang.String"
+			not-null="true">
+			<column name="location" />
+		</property>
+		<property name="type" length="2" not-null="false" type="int">
+			<column name="type" />
+		</property>
+		<property name="bedLocStatus" length="2" not-null="false"
+			type="int">
+			<column name="status" />
+		</property>
+		<map name="deviceList" table="device_bl" lazy="true" fetch="select"
+			optimistic-lock="true">
+			<key>
+				<column name="bedlocation_id" />
+			</key>
+			<map-key type="java.lang.String">
+				<formula>
+					(SELECT d.name FROM device AS d WHERE
+					d.device_id=device_id)
+				</formula>
+			</map-key>
+			<many-to-many column="device_id"
+				class="org.stable.sdk.model.device.IDevice" />
+		</map>
+	</class>
+</hibernate-mapping>

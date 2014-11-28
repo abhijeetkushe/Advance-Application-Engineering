@@ -1,0 +1,78 @@
+<Template>
+	#set($dateTool = $flowRequestContext.flowScope.dateTool)
+	#set($encounterTestList =	$flowRequestContext.flowScope.patient.encounters)
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+	<View name="ManroeChart">
+		<testList>		
+			#foreach ($encounter in $encounterTestList)
+				#foreach($order in $encounter.treatment.orderList)
+`					#set($encounterDate=$dateTool.parseLong($encounter.encounterDate))
+					#if($order.class.name=="org.stable.sdk.model.test.CBC")
+					<test>
+					<name>CBC</name>
+					<date>
+						$dateTool.format("MM-dd-yyyy",$encounterDate)
+				    </date>
+					<hour>$dateTool.format("HH",$encounterDate)</hour>
+					<min>$dateTool.format("mm",$encounterDate)</min>
+			 		<measurementList>
+							<measurement>
+								<deviceType>$order.wbc_Measurement.defineMeasurementType().toString()</deviceType>
+								<methodType>TEST</methodType>
+								<measurementValue>$order.wbc_Measurement.value</measurementValue>
+							</measurement>
+							<measurement>
+								<deviceType>$order.hgb_Measurement.defineMeasurementType().toString()</deviceType>
+								<methodType>TEST</methodType>
+								<measurementValue>$order.hgb_Measurement.value</measurementValue>
+							</measurement>
+							<measurement>
+								<deviceType>$order.neutrophils_Measurement.defineMeasurementType().toString()</deviceType>
+								<methodType>TEST</methodType>
+								<measurementValue>$order.neutrophils_Measurement.value</measurementValue>
+							</measurement>
+							<measurement>
+								<deviceType>$order.bands_Measurement.defineMeasurementType().toString()</deviceType>
+								<methodType>TEST</methodType>
+								<measurementValue>$order.bands_Measurement.value</measurementValue>
+							</measurement>
+							<measurement>
+								<deviceType>$order.metamyelocytes_Measurement.defineMeasurementType().toString()</deviceType>
+								<methodType>TEST</methodType>
+								<measurementValue>$order.metamyelocytes_Measurement.value</measurementValue>
+							</measurement>
+							<measurement>
+								<deviceType>$order.lymphs_Measurement.defineMeasurementType().toString()</deviceType>
+								<methodType>TEST</methodType>
+								<measurementValue>$order.lymphs_Measurement.value</measurementValue>
+							</measurement>
+							<measurement>
+								<deviceType>$order.eos_Measurement.defineMeasurementType().toString()</deviceType>
+								<methodType>TEST</methodType>
+								<measurementValue>$order.eos_Measurement.value</measurementValue>
+							</measurement>
+							<measurement>
+								<deviceType>$order.basos_Measurement.defineMeasurementType().toString()</deviceType>
+								<methodType>TEST</methodType>
+								<measurementValue>$order.basos_Measurement.value</measurementValue>
+							</measurement>	
+							<measurement>
+								<deviceType>$order.plts_Measurement.defineMeasurementType().toString()</deviceType>
+								<methodType>TEST</methodType>
+								<measurementValue>$order.plts_Measurement.value</measurementValue>
+							</measurement>			
+							<measurement>
+								<deviceType>$order.hct_Measurement.defineMeasurementType().toString()</deviceType>
+								<methodType>TEST</methodType>
+								<measurementValue>$order.hct_Measurement.value</measurementValue>
+							</measurement>							
+						</measurementList>
+						</test>
+					#end					
+				#end
+			#end							
+		</testList>	
+	</View>
+
+</Template>

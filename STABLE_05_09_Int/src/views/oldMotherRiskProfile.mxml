@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="MotherRiskProfile">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:titleContent>
+		<s:Button width="105" label="Back"/>
+		<s:Label width="244" text="Mother Risk Profile" textAlign="center" verticalAlign="middle"/>
+		<s:Button width="130" label="Submit"/>
+	</s:titleContent>
+	<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			xmlns:s="library://ns.adobe.com/flex/spark" title="PatientProfile"
+			contentBackgroundColor="#FFFFFF">
+		
+		<s:titleContent>
+			<s:Button width="130" label="Back"/>
+			<s:Label x="103" width="217" text="Patient Profile" verticalAlign="middle" textAlign="center"/>
+			<s:Button width="130" label="Submit"/>
+		</s:titleContent>
+		<s:Label x="10" y="20" text="Child"/>
+		<s:Label x="11" y="68" text="Lastname"/>
+		<s:Label x="10" y="102" text="Firstname"/>
+		<s:ComboBox x="176" y="10" width="286"/>
+		<s:TextInput x="176" y="51" width="285" height="33"/>
+		<s:TextInput x="176" y="92" width="285" height="33"/>
+		<s:Label x="10" y="143" text="Age"/>
+		<s:ComboBox x="176" y="133" width="285"/>
+		<s:ComboBox x="176" y="448" width="287"/>
+		<s:ComboBox x="176" y="489" width="287"/>
+		<s:ComboBox x="176" y="530" width="287"/>
+		<s:ComboBox x="288" y="174" width="172"/>
+		<s:ComboBox x="288" y="215" width="172"/>
+		<s:ComboBox x="176" y="298" width="286"/>
+		<s:ComboBox x="176" y="339" width="286"/>
+		<s:TextInput x="175" y="215" width="103" height="33"/>
+		<s:Label x="8" y="184" text="Height"/>
+		<s:Label x="10" y="225" text="Weight"/>
+		<s:Label x="10" y="267" text="BMI"/>
+		<s:Label x="10" y="308" text="Marital Status"/>
+		<s:Label x="10" y="349" text="Ethnicity"/>
+		<s:Label x="9" y="390" text="Prenatal Care&#xd;Begin Date"/>
+		<s:Label x="10" y="499" text="Drinking"/>
+		<s:Label x="10" y="540" text="Drug Of Abuse"/>
+		<s:Label x="9" y="465" text="Smoking"/>
+		<s:TextInput x="175" y="174" width="103" height="33"/>
+		<s:TextInput x="175" y="257" width="287" height="33"/>
+		<s:TextInput x="176" y="409" width="287" height="33"/>
+	</s:View>
+	<s:Button x="13" y="593" width="453" label="Submit"/>
+</views:vTask>

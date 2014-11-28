@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 30, 2011 11:46:56 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    
+    <class name="org.stable.sdk.model.order.Order" table="orderqueue"
+     abstract="true">
+        <id name="orderid" type="long" access="field">
+            <column name="order_id"/>
+            <generator class="native"/>
+        </id>
+        <property name="orderedOn" type="long">
+            <column name="orderedon"/>
+        </property>
+        
+        <many-to-one name="assessment" class="org.stable.sdk.model.encounter.Assessment" unique="true">
+            <column name="assessment_id"/>
+        </many-to-one>
+        <many-to-one name="treatment" class="org.stable.sdk.model.encounter.Treatment" unique="true">
+            <column name="treatment_id"/>
+        </many-to-one>
+        <joined-subclass name="org.stable.sdk.model.test.CBC" table="CBC" dynamic-insert="true" extends="org.stable.sdk.model.order.Order">
+            <key column="lab_id"/>
+            <many-to-one name="wbc_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.wbc.WBC_Measurement"
+             column="wbc"
+             cascade="all"/>
+            <many-to-one name="hgb_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.hgb.Hgb_Measurement"
+             column="hgb"
+             cascade="all"/>
+            <many-to-one name="hct_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.hct.Hct_Measurement"
+             column="hct"
+             cascade="all"/>
+            <many-to-one name="plts_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.plts.PLTS_Measurement"
+             column="plts"
+             cascade="all"/>
+            <many-to-one name="neutrophils_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.neutrophils.Neutrophils_Measurement"
+             column="neutrophils"
+             cascade="all"/>
+            <many-to-one name="bands_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.bands.Bands_Measurement"
+             column="bands"
+             cascade="all"/>
+            <many-to-one name="metamyelocytes_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.metamyelocytes.Metamyelocytes_Measurement"
+             column="meta"
+             cascade="all"/>
+            <many-to-one name="lymphs_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.lymphs.Lymphs_Measurement"
+             column="lymphs"
+             cascade="all"/>
+            <many-to-one name="monos_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.monos.Monos_Measurement"
+             column="monos"
+             cascade="all"/>
+            <many-to-one name="basos_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.basos.Basos_Measurement"
+             column="basos"
+             cascade="all"/>
+            <many-to-one name="eos_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.cbc.eos.Eos_Measurement"
+             column="eos"
+             cascade="all"/>
+        </joined-subclass>
+        
+        <joined-subclass name="org.stable.sdk.model.test.CRP" table="crp" dynamic-insert="true" extends="org.stable.sdk.model.order.Order">
+            <key column="labid"/>
+            <many-to-one name="C_Reactive_Protein_measurement"
+             class="org.stable.sdk.model.measurement.labwork.crp.C_ReactiveProtein_Measurement"
+             column="C_Reactive_Protein_measurement"
+             cascade="all"/>
+        </joined-subclass>
+        
+        <joined-subclass name="org.stable.sdk.model.test.Clotting" table="clotting" dynamic-insert="true" extends="org.stable.sdk.model.order.Order">
+            <key column="labid"/>
+            <many-to-one name="fibrinogen_measurement"
+             class="org.stable.sdk.model.measurement.labwork.clotting.fibrinogen.Fibrinogen_Measurement"
+             column="fibrinogen_measurement"
+             cascade="all"/>
+            <many-to-one name="prothrombin_measurement"
+             class="org.stable.sdk.model.measurement.labwork.clotting.pt.ProthrombinTime_Measurement"
+             column="prothrombin_measurement"
+             cascade="all"/>
+            <many-to-one name="thromboplastin_measurement"
+             class="org.stable.sdk.model.measurement.labwork.clotting.ptt.PartialThromboplastinTime_Measurement"
+             column="thromboplastin_measurement"
+             cascade="all"/>
+        </joined-subclass>
+        
+        <joined-subclass name="org.stable.sdk.model.test.BloodGas" table="bloodgas" dynamic-insert="true" extends="org.stable.sdk.model.order.Order">
+            <key column="labid"/>
+            <many-to-one name="pHLevel_Measurement"
+             class="org.stable.sdk.model.measurement.vitalsigns.pHlevel.pHLevel_Measurement"
+             column="pHLevel_Measurement"
+             cascade="all"/>
+            <many-to-one name="pco2_Measurement"
+             class="org.stable.sdk.model.measurement.vitalsigns.pco2.PCO2_Measurement"
+             column="pco2_Measurement"
+             cascade="all"/>
+            <many-to-one name="hco3_Measurement"
+             class="org.stable.sdk.model.measurement.vitalsigns.hco3.HCO3_Measurement"
+             column="hco3_Measurement"
+             cascade="all"/>
+			<many-to-one name="baseExcess_Measurement"
+             class="org.stable.sdk.model.measurement.airway.baseexcess.BaseExcess_Measurement"
+             column="baseExcess_Measurement"
+             cascade="all"/>
+			<many-to-one name="metHb_Measurement"
+             class="org.stable.sdk.model.measurement.labwork.bloodgas.MetHb.MetHb_Measurement"
+             column="metHb_Measurement"
+             cascade="all"/>
+			 <many-to-one name="po2_measurment"
+             class="org.stable.sdk.model.measurement.labwork.bloodgas.PO2.PO2_Measurement"
+             column="po2_measurment"
+             cascade="all"/>
+        </joined-subclass>
+        
+        <joined-subclass name="org.stable.sdk.model.test.Electrolytes" table="electrolytes" dynamic-insert="true" extends="org.stable.sdk.model.order.Order">
+            <key column="labid"/>
+            <many-to-one name="cl_measurement"
+             class="org.stable.sdk.model.measurement.labwork.electrolytes.Cl.Cl_Measurement"
+             column="cl_measurement"
+             cascade="all"/>
+            
+            <many-to-one name="co2_measurement"
+             class="org.stable.sdk.model.measurement.labwork.electrolytes.CO2.CO2_Measurement"
+             column="co2_measurement"
+             cascade="all"/>
+            
+            <many-to-one name="ionizedcalcium_measurement"
+             class="org.stable.sdk.model.measurement.labwork.electrolytes.ionizedcalcium.IonizedCalcium_Measurement"
+             column="ionizedcalcium_measurement"
+             cascade="all"/>
+            
+            <many-to-one name="k_measurement"
+             class="org.stable.sdk.model.measurement.labwork.electrolytes.K.K_Measurement"
+             column="k_measurement"
+             cascade="all"/>
+            
+            <many-to-one name="na_measurement"
+             class="org.stable.sdk.model.measurement.labwork.electrolytes.Na.Na_Measurement"
+             column="na_measurement"
+             cascade="all"/>
+            
+            <many-to-one name="totalcalcium_measurement"
+             class="org.stable.sdk.model.measurement.labwork.electrolytes.totalcalcium.TotalCalcium_Measurement"
+             column="totalcalcium_measurement"
+             cascade="all"/>
+            
+        </joined-subclass>
+    </class>
+</hibernate-mapping>

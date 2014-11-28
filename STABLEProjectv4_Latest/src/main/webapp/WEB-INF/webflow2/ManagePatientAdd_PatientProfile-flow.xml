@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow start-state="start" xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+	<view-state id="start"
+		view="ManagePatient/Add/PatientProfile/MP_PatientProfile">
+		<transition on="submit" to="submit"></transition>
+		<transition on="back" to="back"></transition>
+	</view-state>
+	<action-state id="submit">
+		
+		<!--set name="medicalRecNo" value="requestParameters.medicalRecNo"></set>
+		<set name="lastName" value="requestParameters.lastName"></set>
+		<set name="firstName" value="requestParameters.firstName"></set>
+		<set name="gender" value="requestParameters.gender"></set>
+		<set name="height" value="requestParameters.height"></set>
+
+		<set name="weight" value="requestParameters.height"></set>
+		<set name="headCircumfrence" value="requestParameters.height"></set>
+		<set name="gestationalAge" value="requestParameters.height"></set>
+
+
+		<set name="birthDate" value="requestParameters.birthDate"></set>
+		<set name="birthTime" value="requestParameters.birthTime"></set>
+		<set name="birthOrder" value="requestParameters.birthOrder"></set>
+		<set name="resuscitationAtBirth" value="requestParameters.resuscitationAtBirth"></set>
+		<set name="resuscitationMeds" value="requestParameters.resuscitationMeds"></set>
+		<set name="otherMeds" value="requestParameters.otherMeds"></set-->
+		<evaluate expression="patientService.createPatientProfile(requestParameters.location,requestParameters.medicalRecordNo,requestParameters.firstName,requestParameters.lastName,requestParameters.gender,requestParameters.height,requestParameters.weight,requestParameters.headCircumference,requestParameters.gestationalAge,requestParameters.birthDate,requestParameters.birthTime,requestParameters.birthOrder,requestParameters.resuscitationAtBirth,requestParameters.resuscitationMeds,requestParameters.otherMeds)">
+		</evaluate>
+		<transition on="failure" to="start"></transition>
+		<transition on="success" to="back">
+			
+		</transition>
+	</action-state>
+	<end-state id="back" />
+</flow>
+ 

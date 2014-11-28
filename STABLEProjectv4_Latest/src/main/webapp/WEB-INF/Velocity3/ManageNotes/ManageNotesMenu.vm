@@ -1,0 +1,12 @@
+## Velocity Template.
+<Template>
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<View name="Menu2"></View>
+        <test></test>
+        <ActionList>
+                <Action name="Menu1"></Action>
+                <Action name="Menu2"></Action>
+        </ActionList>
+        <a href="$flowExecutionUrl&_eventId=Menu1">Menu1</a>
+        <a href="$flowExecutionUrl&_eventId=Menu2">Menu2</a>
+</Template>

@@ -1,0 +1,29 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+
+s|Button {
+	baseColor: haloBlue;
+	color: white;
+}
+
+<<<<<<< .mine
+s|Button:down,
+s|Button:over {
+	baseColor: haloGreen;
+	color: black;
+=======
+global
+{
+	chrome-color: #E3E3E3;
+	content-background-color: #BDBEBE;
+	font-size: 18;
+	selection-color: #FF7200;
+	roll-over-color: #FFA200;
+	content-background-alpha: 1.0;
+>>>>>>> .r789
+}
+
+s|Button:disabled {
+	baseColor: haloSilver;
+	color: red;
+}

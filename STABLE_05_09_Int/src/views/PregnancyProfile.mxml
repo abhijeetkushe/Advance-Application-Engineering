@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:patientservice="services.patientservice.*"
+		xmlns:c="components.*"
+		initialize="init()" xmlns:components="components.*" xmlns:mx="library://ns.adobe.com/flex/mx">	
+
+	<fx:Script>		
+		<![CDATA[
+			
+			protected function submitPregProfileButton_clickHandler(event:MouseEvent):void
+			{
+				// Placeholder credential check
+				
+					//navigator.popAll();
+					// Set the new root
+					//navigator.pushView(views.CurrentState);
+				
+			}
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+			//	navigator.popToFirstView();
+			}
+					
+			protected function init():void{
+				this.submitButton.caption="Submit";
+
+				this.pregnancies.textInput = "No. of pregnancies";
+				this.abortions.textInput = "No. of abortions";
+				this.miscarriages.textInput="No. of miscariages";
+				this.preterm.textInput="No. of preterm births";
+				this.tubal.textInput="No. of tuball pregnancies";
+				this.living.textInput="No. of living children";
+				this.delType.textInput="Delivery Type";
+				this.complications.textInput="Complications (if any)";
+			}
+		]]>
+	</fx:Script>
+	
+<!--	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>-->
+	<fx:Declarations>
+		<s:CallResponder id="getDataResult"/>
+		<patientservice:PatientService id="patientService"/>
+	</fx:Declarations>		
+		
+	
+<!--	<s:titleContent>
+		<mx:Spacer width="5"/>
+		<components:BackButton click="navigator.popView()"/>
+		<s:Label text="Pregnancy Profile" color="#ffffff" textAlign="center" width="100%" />
+		<components:SkipButton click="navigator.pushView(CurrentState)"/>
+		<mx:Spacer width="5"/>
+	</s:titleContent>-->
+
+	
+	<s:Scroller width="100%" height="100%" visible="true">
+	<s:VGroup width="100%" height="100%" fontSize="18" fontStyle="normal" lineThrough="false"
+				  paddingLeft="20" paddingRight="20" paddingTop="20">
+			<components:DropDownListEntry color="#000000" id="pregnancies"/>
+			<components:DropDownListEntry color="#000000" id="abortions"/>
+			<components:DropDownListEntry color="#000000" id="miscarriages"/>
+			<components:DropDownListEntry color="#000000" id="preterm"/>
+			<components:DropDownListEntry color="#000000" id="tubal"/>
+			<components:DropDownListEntry color="#000000" id="living"/>
+			<components:DropDownListEntry color="#000000" id="delType"/>
+			<components:TextAreaEntry color="#000000" id="complications"/>
+			<c:LoginButton click="submitPregProfileButton_clickHandler(event)" id="submitButton" width="97%"/>					
+	</s:VGroup>
+	</s:Scroller>
+	<mx:Spacer height="100"/>
+</views:vTask>

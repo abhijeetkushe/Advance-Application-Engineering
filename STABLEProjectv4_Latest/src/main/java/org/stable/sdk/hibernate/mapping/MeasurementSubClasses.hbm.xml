@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<!-- Airway measurements -->
+	<subclass
+		name="org.stable.sdk.model.measurement.airway.baseexcess.BaseExcess_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="BaseExcess_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.airway.cpap.CPAP_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="CPAP_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.airway.dopamine.Dopamine_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Dopamine_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.airway.ettube.ETTube_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="ETTube_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.airway.o2inuse.O2InUse_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="O2InUse_Measurement" lazy="false">
+	</subclass>
+	<subclass name="org.stable.sdk.model.measurement.airway.ppv.PPV_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="PPV_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.airway.trachealincubation.TrachealIncubation_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="TrachealIncubation_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.airway.volumebolusamount.VolumeBolousAmount_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="TrachealIncubation_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.airway.volumebolustype.VolumeBolusType_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="VolumeBolusType_Measurement" lazy="false">
+	</subclass>
+
+	<!-- Blood pressure measurements -->
+	<subclass
+		name="org.stable.sdk.model.measurement.bloodpressure.capillaryrefilltime.CapillaryRefillTime_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="CapillaryRefillTime_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.bloodpressure.pulsepressure.PulsePressure_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="PulsePressure_Measurement" lazy="false">
+	</subclass>
+
+	<!-- Lab work measurements -->
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.bloodgas.MetHb.MetHb_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="MetHb_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.bands.Bands_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Bands_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.basos.Basos_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Basos_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.eos.Eos_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Eos_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.hct.Hct_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Hct_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.hgb.Hgb_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Hgb_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.lymphs.Lymphs_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Lymphs_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.metamyelocytes.Metamyelocytes_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Metamyelocytes_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.monos.Monos_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Monos_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.neutrophils.Neutrophils_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Neutrophils_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.plts.PLTS_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="PLTS_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.cbc.wbc.WBC_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="WBC_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.clotting.fibrinogen.Fibrinogen_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Fibrinogen_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.clotting.pt.ProthrombinTime_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="ProthrombinTime_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.clotting.ptt.PartialThromboplastinTime_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="PartialThromboplastinTime_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.crp.C_ReactiveProtein_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="C_ReactiveProtein_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.electrolytes.Cl.Cl_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Cl_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.electrolytes.CO2.CO2_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="CO2_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.electrolytes.ionizedcalcium.IonizedCalcium_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="IonizedCalcium_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.electrolytes.K.K_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="K_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.electrolytes.Na.Na_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Na_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.electrolytes.totalcalcium.TotalCalcium_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="TotalCalcium_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.labwork.bloodgas.PO2.PO2_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="PO2_Measurement" lazy="false">
+	</subclass>
+
+	<!-- Sugar measurements -->
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.birthorder.BirthOrder_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="BirthOrder_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.gestationalage.GestationalAge_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="GestationalAge_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.glucoselevel.GlucoseLevel_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="GlucoseLevel_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.headcircumference.HeadCircumference_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="HeadCircumference_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.height.Height_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Height_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.treatment.bolusdose.BolusDose_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="BolusDose_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.treatment.bolusconc.BolusConc_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="BolusConc_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.treatment.bolusinfusionrate.BolusInfusionRate_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="BolusInfusionRate_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.treatment.dextroseconc.DextroseConc_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="DextroseConc_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.treatment.dextroseinfusionrate.DextroseInfusionRate_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="DextroseInfusionRate_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.treatment.dextrosehourlyinfusionrate.DextroseHourlyInfusionRate_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="DextroseHourlyInfusionRate_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.treatment.ivat.IV_AT_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="IV_AT_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.treatment.ivtype.IVType_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="IVType_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.treatment.uvcat.UVC_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="UVC_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.sugar.treatment.vacat.UAC_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="UAC_Measurement" lazy="false">
+	</subclass>
+
+	<!-- Vital sign measurements -->
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.bloodgas.BloodGas_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="BloodGas_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.bloodgroup.BloodGroup_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="BloodGroup_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.bloodpressure.BloodPressure_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="BloodPressure_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.fio2.FiO2_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="FiO2_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.hco3.HCO3_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="HCO3_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.heartrate.HeartRate_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="HeartRate_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.o2saturation.O2Saturation_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="O2Saturation_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.pco2.PCO2_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="PCO2_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.pHlevel.pHLevel_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="pHLevel_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.respiratoryrate.RespiratoryRate_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="RespiratoryRate_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.temperature.Temperature_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Temperature_Measurement" lazy="false">
+	</subclass>
+	<subclass
+		name="org.stable.sdk.model.measurement.vitalsigns.weight.Weight_Measurement"
+		extends="org.stable.sdk.model.measurement.Measurement"
+		discriminator-value="Weight_Measurement" lazy="false">
+	</subclass>
+
+</hibernate-mapping>

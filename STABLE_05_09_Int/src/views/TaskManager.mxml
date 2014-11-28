@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			 xmlns:s="library://ns.adobe.com/flex/spark" 
+			 xmlns:mx="library://ns.adobe.com/flex/mx"
+			 xmlns:views="views.*" 
+			 actionBarVisible="false" 
+			 creationComplete="start('LoginScreen')">	
+	
+	<fx:Declarations>
+
+		
+	</fx:Declarations>
+	
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.collections.ICollectionView;
+			import mx.collections.XMLListCollection;
+			import mx.controls.Alert;
+			import mx.events.IndexChangedEvent;
+			import mx.events.ItemClickEvent;
+			import mx.rpc.http.HTTPService;
+			
+			import spark.components.MobileApplication;
+			
+			//*************************    Attributes of Task   *****************************
+			[Bindable]public var currentvTask: vTask;
+			[Bindable]public var xmlList:XMLList;
+			[Bindable]public var xmlData:XMLList;
+			[Bindable]public var actionList: ArrayCollection;
+			[Bindable]public var flowExecutionUrl:String = "/STABLEProjectv4_Latest";
+			[Bindable]public var eventId:String;
+			private var urlVariables:URLVariables;
+			private var viewname:String = new String();
+			
+			
+			//*********************************************************************************
+			
+			public function start(viewname:String):void {	
+				//var viewData:XMLList;
+				//loadClass(viewname,viewData);
+				SelectNextTask("");
+			}
+			
+			private var strTemplate:String;
+			
+			public function getActionList(xmlList:XMLList):void
+			{
+				actionList = new ArrayCollection();
+				for each (var xml:XML in xmlList)
+				{
+					var tempString:String =xml.@name;
+					
+					//actionList.addItem(tempString);
+					actionList.addItem(tempString);
+				}	
+				
+				
+			}
+			//*************************************************************************************************************
+			override public function SelectNextTask(action:String):void
+			{
+				eventId = action;				
+				var url:String = "http://localhost:8080"+flowExecutionUrl+"/home-flow.htm";	
+				trace(url);
+				var req : URLRequest = new URLRequest(url);
+				var loader : URLLoader = new URLLoader();
+				req.method = URLRequestMethod.POST;
+				loader.addEventListener(IOErrorEvent.IO_ERROR, loaderMissing);
+				loader.addEventListener(Event.COMPLETE,completeRequestHandler);
+				loader.load(req);	
+
+			} 
+			
+			//------------------------------------------------------------------------------------------------------------------------------------------------
+			override public function nextPageHandler(action:String):void
+			{			
+				
+				eventId = action;
+				/* Create URLLoader  */
+				var url:String = "http://localhost:8080"+flowExecutionUrl+"&_eventId="+eventId;  
+				trace(url);
+				var req : URLRequest = new URLRequest(url);
+				var loader : URLLoader = new URLLoader();
+				var params : URLVariables = new URLVariables();
+				params = currentvTask.getOutputVariables();
+				//params.strTemplate=strTemplate;    	
+				req.data = params;
+				req.method = URLRequestMethod.POST;
+				loader.addEventListener(IOErrorEvent.IO_ERROR, loaderMissing);
+				loader.addEventListener(Event.COMPLETE,completeRequestHandler);
+				loader.load(req);		
+			}
+			//******************************************************************************************************
+			
+			public function NextStepHandler(event:ItemClickEvent):void //action in link bar
+			{
+				eventId=event.label;
+				/* Create URLLoader  */
+				var url:String = "http://localhost:8090"+flowExecutionUrl+"&_eventId="+eventId;
+				trace(url);
+				var req : URLRequest = new URLRequest(url);
+				var loader : URLLoader = new URLLoader();
+				var params : URLVariables = new URLVariables();
+				params = currentvTask.getOutputVariables();
+				//params.strTemplate=strTemplate;    	
+				req.data = params;
+				req.method = URLRequestMethod.POST;
+				loader.addEventListener(IOErrorEvent.IO_ERROR, loaderMissing);
+				loader.addEventListener(Event.COMPLETE,completeRequestHandler);
+				loader.load(req);		   	          	                     			
+			}
+			//------------------------------------------------------------------------------------------------------------------------------------------------
+			
+			
+			public function loaderMissing(event:IOErrorEvent):void
+			{
+				Alert.show("Error is calling server Request");		
+				trace("Error while calling the service");
+			}
+			
+			
+			
+			//[Bindable]public var flowExeutionUrl:String;
+			public function completeRequestHandler(event:Event):void
+			{
+				//Alert.show("come back!");
+				trace(event.currentTarget.data);
+				xmlData = new XMLList(event.currentTarget.data);
+				var tempXML:XML = new XML(event.currentTarget.data);
+				//Alert.show(tempXML.toXMLString(),"completeXMLtemplate",Alert.OK);
+				var viewname:String = tempXML.View.@name;
+				var tempList:XMLList= new XMLList(tempXML.ActionList.Action);
+				var viewData:XMLList=new XMLList(tempXML.View);
+				flowExecutionUrl=tempXML.flowExecutionUrl;
+				getActionList(tempList);
+				loadClass(viewname,viewData);				
+			}
+			
+			
+			public function loadClass(string:String,viewData:XMLList):void
+			{
+				trace("views."+string);
+				 if(ApplicationDomain.currentDomain.hasDefinition("views."+string)==true)
+				{
+					var classRef:Class = Class(ApplicationDomain.currentDomain.getDefinition("views."+string)); 	
+					view.removeAllElements();
+					currentvTask = new classRef();
+					currentvTask.inputVariables=viewData;
+					currentvTask.dataS = actionList;
+					
+					currentvTask.setTaskManager(this);		 
+					view.addElement(currentvTask);
+					
+					currentvTask.execute(this.flowExecutionUrl);
+					
+				 }
+				  else {
+					 trace(string+" not defined in Main mobile page");
+					 Alert.show(string+" not defined in Main mobile page");
+				 } 
+			}
+			
+			
+			
+		]]>
+	</fx:Script>
+	
+	<s:View id="view" horizontalCenter="0" verticalCenter="0">
+	</s:View>
+
+</views:vTask>

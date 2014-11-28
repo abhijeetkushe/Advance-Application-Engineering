@@ -1,0 +1,58 @@
+## Velocity Template.
+<Template>
+    <flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+	<View name="HomeDashboard"/>
+    <ActionList>
+                <Action name="Manage Patients"/>
+                <Action name="Manage Notes"/>
+                <Action name="Tools"/>
+                <Action name="My Schedule"/>
+                <Action name="FAQ"/>
+    </ActionList>        
+
+<ol>
+	<li>
+		<span>
+			<ul>
+				<li>flowRequestContext</li>
+				<li><flowRequestContext>$flowRequestContext</flowRequestContext></li>
+			</ul>
+		</span>
+	</li>
+	<li>
+		<span>
+			<ul>
+				<li>flowExecutionContext</li>
+				<li><flowExecutionContext>$flowRequestContext.flowExecutionContext</flowExecutionContext></li>
+			</ul>
+		</span>
+	</li>
+	<li>
+		<span>
+			<ul>
+				<li>externalContext</li>
+				<li><externalContext>$flowRequestContext.externalContext</externalContext></li>
+			</ul>
+		</span>
+	</li>
+	<li>
+		<span>
+			<ul>
+				<li>flowExecutionUrl</li>
+				<li><flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl></li>
+			</ul>
+		</span>
+	</li>
+</ol>	
+ROLE 1.<b>$userAccount</b>.
+<ol>
+	<li><a href="$flowExecutionUrl&_eventId=managePatient">Manage Paitents 1</a></li>
+     <li><a href="$flowExecutionUrl&_eventId=notes">Manage Notes</a></li>
+     <li><a href="$flowExecutionUrl&_eventId=schedule">Schedule</a></li>
+     <li><a href="$flowExecutionUrl&_eventId=tools">Tools</a></li>
+     <li><a href="$flowExecutionUrl&_eventId=faq">FAQ</a></li>
+     <li><a href="$flowExecutionUrl&_eventId=logout">Logout</a></li>
+
+</ol>
+</Template>

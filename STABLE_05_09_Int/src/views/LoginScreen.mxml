@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:c="components.*"
+		color="0x5B5A4B"		
+		contentBackgroundColor="0xD1DBBD"
+		actionBarVisible="false"
+		initialize="init()"
+		xmlns:components="components.*"
+		>
+
+	<fx:Script>
+		<![CDATA[
+			
+			import mx.managers.PopUpManager;
+			
+			import spark.components.Panel;
+
+			protected function init():void{
+				this.submitButton.caption="Login";
+			}
+			protected function loginButton_clickHandler(event:MouseEvent):void
+			{
+				// Placeholder credential check
+				if ( true ) 
+				{
+					//navigator.popAll();
+					// Set the new root
+					//navigator.pushView(views.HomeDashboard);
+					//server connection
+					trace("validate");
+					this.nextPageHandler('validate');
+					
+					//var panel:Panel = new Panel;
+					//panel.title="My Panel";
+					//PopUpManager.addPopUp(panel, this, true);
+					//PopUpManager.centerPopUp(panel);
+				}				
+				else
+				{
+					
+					trace("Login failure");					
+					this.username.text = "";
+					this.password.text = "";
+				}			
+				
+			}
+			override public function getOutputVariables(): URLVariables{
+				var parameters:URLVariables = new URLVariables();
+				parameters.username = this.username.text;
+				parameters.password = this.password.text;
+				return parameters; 
+				
+			}
+		]]>
+	</fx:Script>	
+	
+	<!-- Background -->
+	<s:Rect width="100%" height="682">
+		<s:fill>
+			<s:SolidColor color="0xFFFFFF"/>						  
+		</s:fill>
+	</s:Rect>
+	
+	<s:VGroup width="100%" height="646" paddingLeft="15">	
+		<s:VGroup width="100%" height="726" gap="5" paddingBottom="20"  
+				  paddingRight="20" paddingTop="65">
+			<s:Image width="449" height="103" source='/assets/stableprogram.png'/>
+			<s:VGroup  paddingLeft="40" paddingTop="50"  width="100%">
+				<s:Label text="Username"/>		
+				<c:TextInput id="username" width="367"/>			
+			</s:VGroup>
+			
+			<s:VGroup width="443" paddingTop="30" paddingLeft="40" >
+				<s:Label text="Password"/>
+				<c:TextInput id="password" width="361" displayAsPassword="true"/>
+			</s:VGroup>
+			
+			<s:HGroup width="100%" horizontalAlign="left" paddingTop="65" paddingLeft="40" >
+				<c:LoginButton click="loginButton_clickHandler(event)" id="submitButton" />	
+			</s:HGroup>
+		</s:VGroup>
+		
+		<s:Line width="100%">
+			<s:stroke>
+				<s:SolidColorStroke color="#DCE4CD" weight="1"/>		
+			</s:stroke>		
+		</s:Line>
+		
+		<mx:Spacer height="100%"/>
+		
+		<!-- Bottom bar -->
+	</s:VGroup>
+	
+	
+	
+</views:vTask>

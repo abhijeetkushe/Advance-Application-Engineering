@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:patientservice="services.patientservice.*"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:components="components.*"
+		initialize="this.initComponent()" >
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<fx:Script>		
+		<![CDATA[
+			import components.SmallButton;
+			
+			import mx.collections.ArrayCollection;
+			import mx.collections.IList;			
+			import views.PSSATTimeA;
+			import views.PSSATTimeB;
+			import views.PSSATTimeC;
+			
+			[Bindable]
+			private var dataAddPatient:IList;
+			
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+				//navigator.popToFirstView();
+			}
+			
+			private function initComponent():void{
+                 this.header.text="Specific Interventions";
+				 this.timebutton.caption="Next >>";
+				 this.airway.textInput="Airway";
+                 this.tubelocation.textInput="ET Tube location(cm marking at the lip) when Team arrived";
+				 this.tubelocation2.textInput="Was ET tube location readjusted prior to transport team arrival?";
+				 this.tubelocation3.textInput="Was ET tube location readjusted after transport team arrival?";
+				 this.transportteam.textInput="Was patient re-intubated by the transport team?";
+				 this.explain1.textInput="Explain:";
+				 this.explain2.textInput="Explain:";
+				 this.explain3.textInput="Explain:";
+				 this.other.textInput="Other:";
+				 this.otherstabilization.textInput = "Other stabilization efforts not yet described:";
+
+				 this.Antibiotics.textInput="Antibiotics";
+				 this.timefororder.textInput="Time for order of antibiotics given";
+				 this.Ordermode.textInput="Order Mode";
+				 this.TimeforBloodCultureobtained.textInput="Time for Blood Culture obtained";
+				 this.TimewhenAntibioticsbegun.textInput="Time when Antibiotics begun";
+				 addTimeButtons();
+			}
+			
+			private function addTimeButtons():void{
+			
+				buttonbar.button1.addEventListener(MouseEvent.CLICK,clickTimeAHandler);
+				buttonbar.button2.addEventListener(MouseEvent.CLICK,clickTimeBHandler);
+				buttonbar.button3.addEventListener(MouseEvent.CLICK,clickTimCHandler);
+			}
+			private function clickTimeAHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeA);
+			}
+			private function clickTimeBHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeB);
+			}
+			private function clickTimCHandler(event:MouseEvent):void{
+				navigator.pushView(PSSATTimeC);
+			}
+		]]>
+	</fx:Script>
+<!--	<s:titleContent>
+		<mx:Spacer width="5"/>
+		<components:BackButton click="navigator.popView()"/>
+		<s:Label width="100%" color="#ffffff" text="PSSAT Form"
+				 textAlign="center"/>
+		<components:SkipButton click="navigator.pushView(null)"/>
+		<mx:Spacer width="5"/>
+	</s:titleContent>-->
+	
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="15" y="10" width="450" height="713">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:VGroup x="15" y="1" width="95%" height="100%" visible="true">
+		<s:Scroller x="0" y="21" width="448" height="100%" visible="true">
+			<s:VGroup x="15" y="5"  height="90%" horizontalAlign="right" paddingLeft="3">
+				<mx:Spacer height="5"/>
+				<s:Label id="header" width="445" height="50" backgroundAlpha="0.5"
+						 backgroundColor="#414141" fontFamily="_sans" fontSize="20"
+						 fontWeight="bold" textAlign="center" verticalAlign="middle"/>
+		<components:LabelEntry id="airway" width="100%" color="#000000"/>
+		<components:TextFieldWithCMEntry id="tubelocation" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="tubelocation2" width="100%" color="#000000"/>
+		<components:TextAreaEntry visible="true" id="explain1" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="tubelocation3" width="100%" color="#000000"/>
+		<components:TextAreaEntry visible="true" id="explain2" width="100%" color="#000000"/>
+		<components:RadioButtonEntry id="transportteam" width="100%" color="#000000"/>
+		<components:TextAreaEntry visible="true" id="explain3" width="100%" color="#000000"/>
+		<components:TextAreaEntry visible="true" id="other" width="100%" color="#000000"/>
+
+		<components:LabelEntry id="Antibiotics" width="100%" color="#000000"/>
+		<components:ComboEntry id="timefororder" width="100%" color="#000000"/>
+		<components:DropDownListEntry id="Ordermode" width="100%" color="#000000"/>
+		<components:ComboEntry id="TimeforBloodCultureobtained" width="100%" color="#000000"/>
+		<components:ComboEntry id="TimewhenAntibioticsbegun" width="100%" color="#000000"/>
+		<components:TextAreaEntry id="otherstabilization" width="100%" color="#000000"/>
+		<components:LoginButton id="timebutton" color="#000000" width="100%" click="navigator.pushView(null)"/>
+	</s:VGroup>
+	</s:Scroller>	
+	<components:ButtonBar id="buttonbar" height="80" width="100%"/>
+		<mx:Spacer height="100"/>
+
+	</s:VGroup>
+</views:vTask>

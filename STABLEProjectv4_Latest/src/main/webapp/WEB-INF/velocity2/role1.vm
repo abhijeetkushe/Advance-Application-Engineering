@@ -1,0 +1,14 @@
+<Template>
+    <flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>	
+	<View name="Login"></View>
+        <test></test>
+        <ActionList>
+                <Action name="managePatient"/>
+                <Action name="notes"/>
+                <Action name="tools"/>
+                <Action name="schedule"/>
+                <Action name="faq"/>
+			<Action name="logout"/>
+        </ActionList>        
+</Template>

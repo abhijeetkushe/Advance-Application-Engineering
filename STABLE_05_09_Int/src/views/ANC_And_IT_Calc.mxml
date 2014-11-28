@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:views="views.*"
+			  xmlns:components="components.*"
+			  actionBarVisible="false" chromeColor="#D2D2E0" contentBackgroundColor="#F6F0F0"
+			  title="BabyHomeNew">
+	
+	<fx:Script>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+		<![CDATA[
+			import spark.components.ViewNavigator;
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				itratioalert.visible=false;
+				anclabel.visible=false;
+				alertImage.visible=false;
+				
+				
+				a.text = wbc.text;
+				var bandInt:Number = parseFloat(band.text);
+				var segsInt:Number = parseFloat(segs.text);
+				var metaInt:Number = parseFloat(meta.text);
+				var wbcInt:Number = parseFloat(wbc.text);
+				
+				b.text = (bandInt+segsInt+metaInt).toString();
+				
+				var bTextInt:Number = parseFloat(b.text);
+				
+				anc.text = ((wbcInt*bTextInt)/100.0).toString();
+				
+				var v_anc:Number = parseFloat(anc.text);
+				
+				if(v_anc<1500 || v_anc>8000)
+				{
+					anclabel.visible=true;
+					alertImage.visible=true;
+					
+				}
+				
+				ITRatio.text = ((metaInt+bandInt)/(metaInt+bandInt+segsInt)).toString();
+				
+				var itRatio:Number = parseFloat(ITRatio.text);
+				if(itRatio>0.25)
+				{
+					itratioalert.visible=true;
+					alertImage.visible=true;
+				}
+			}
+
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				nextPageHandler("ancrange");
+				
+			}
+
+		]]>
+
+	</fx:Script>
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect x="11" y="24" width="459" height="729" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<mx:MenuBar x="27" y="31" width="426" height="82" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="145" y="53" color="#FCFCFC" fontFamily="Arial" fontSize="22" text="ANC Count and I/T Ratio"/>
+	<s:Image x="46" y="40" width="52" height="47" source="../assets/downicon.jpg"/>
+	<s:Label x="22" y="156" height="20" text="WBC Count:"/>
+	<s:TextInput id="wbc" x="243" y="147" width="159" height="32" contentBackgroundColor="#F9EFEF"
+				 text="15000"/>
+	<s:Label x="21" y="201" text="Segmented Neutrophils:"/>
+	<s:TextInput id="segs" x="242" y="189" width="159" height="32" contentBackgroundColor="#F9EFEF"
+				 text="35"/>
+	<s:Label x="22" y="242" text="Band Neutrophils:"/>
+	<s:TextInput id="band" x="242" y="231" width="159" height="32" contentBackgroundColor="#F9EFEF"
+				 text="15"/>
+	<s:Label x="21" y="288" text="Metamyelocytes:"/>
+	<s:TextInput id="meta" x="243" y="277" width="159" height="32" contentBackgroundColor="#F9EFEF"
+				 text="3"/>
+	<s:Button x="242" y="353" width="159" height="54" label="Calculate" click="button1_clickHandler(event)"/>
+	<s:Label x="20" y="459" text="ANC Count:"/>
+	<s:TextInput id="a" x="130" y="450" width="72" height="32" contentBackgroundColor="#F9EFEF"/>
+	<s:Label x="20" y="511" text="Immature to Total Ratio (I/T):"/>
+	<s:TextInput id="ITRatio" x="302" y="501" width="159" height="32"
+				 contentBackgroundColor="#F9EFEF"/>
+	<s:Label x="43" y="538" width="168" text="(Meta+Bands)/(Meta+Bands+Segs)"/>
+	<s:TextInput id="b" x="222" y="450" width="72" height="32" contentBackgroundColor="#F9EFEF"/>
+	<s:TextInput id="anc" x="340" y="451" width="113" height="32" contentBackgroundColor="#F9EFEF"/>
+	<s:Label x="324" y="462" width="13" fontSize="16" fontStyle="normal" text="="
+			 textDecoration="none"/>
+	<s:Label x="204" y="458" height="15" text="X"/>
+	<s:Label id="anclabel" visible="false" x="53" y="510" width="427" color="#F80505"
+			 fontStyle="normal" text="ANC count is abnormal. Normal range is 1500-8000"/>
+	<s:Label id="itratioalert" visible="false" x="59" y="534" color="#F80505" fontStyle="normal"
+			 text="I/T Ratio is abnormal, since it is above 0.25."/>
+	<s:Label x="409" y="156" height="15" text="%"/>
+	<s:Label x="409" y="197" height="15" text="%"/>
+	<s:Label x="409" y="242" height="15" text="%"/>
+	<s:Label x="409" y="285" height="15" text="%"/>
+	<s:Label x="302" y="462" height="15" text="%"/>
+	<s:Button x="43" y="353" width="158" height="54" label="ANC Chart" click="button2_clickHandler(event)"/>
+	<s:Image id="alertImage" x="10" y="510" width="44" height="42" visible="false"
+			 source="/assets/Red_triangle_alert_icon.png"/>
+	<components:BackButton x="23" y="601" width="94" height="49" click="nextPageHandler('calc');"/>
+</views:vTask>

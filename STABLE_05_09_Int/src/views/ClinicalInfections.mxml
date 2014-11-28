@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views2:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:views2="views.*"
+			  xmlns:components="components.*"
+			  actionBarVisible="false" chromeColor="#D2D2E0" contentBackgroundColor="#F6F0F0">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+		<![CDATA[
+
+
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				nextPageHandler("doctor");
+			}
+
+			protected function button3_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				//navigator.pushView(LoginNew);
+			}
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				//navigator.pushView(BabyHome);
+			}
+
+
+			protected function button4_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				nextPageHandler("anc_and_it_calc");
+			}
+
+
+			protected function button5_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				//navigator.pushView(ViewBabies);
+			}
+			
+		
+
+		]]>
+
+	</fx:Script>
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect x="11" y="24" width="459" height="729" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<components:BackButton x="43" y="647" width="94" height="49" click="nextPageHandler('referencecards');"/>
+	<mx:MenuBar x="23" y="42" width="426" height="82" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="97" y="71" color="#FCFCFC" fontFamily="Arial" fontSize="22" text="CLINICAL SIGNS OF INFECTION"/>
+	<s:Image x="33" y="57" width="52" height="47" source="../assets/downicon.jpg"/>
+	
+
+
+	<s:Image x="19" y="193" width="240" height="168" source="../assets/infectedbaby.jpg"/>
+	<s:Label x="256" y="193" text="Respiratory Distress:"/>
+	<s:Label x="255" y="216" width="215" height="117" color="#AF4803" fontSize="14"
+			 text="Tachypnea, retractions, grunting, nasal flaring, apnea, cyanosis, development of an O2 requirement, and/or&#xd;ventilator support."/>
+	<s:Label x="257" y="325" text="Temperature Instability:"/>
+	<s:Label x="253" y="348" width="217" height="49" color="#AF4803" fontSize="14"
+			 text="Hypothermia (more common) and hyperthermia (less  common)."/>
+	<s:Label x="19" y="401" text="Feeding intolerance:"/>
+	<s:Label x="12" y="424" width="465" height="35" color="#AF4803" fontSize="14"
+			 text="Vomiting, abdominal distension,increased gastric pre-feeding, &#xd;residuals, poor feeding pattern."/>
+	<s:Label x="17" y="473" text="Abnormal Skin Perfusion:"/>
+	<s:Label x="18" y="497" width="465" height="20" color="#AF4803" fontSize="14"
+			 text="Mottling, pale color, gray color, prolonged cap refill time."/>
+	<s:Label x="17" y="530" text="Abnormal Heart Rate and Blood Pressure:"/>
+	<s:Label x="16" y="553" width="465" height="20" color="#AF4803" fontSize="14"
+			 text="Tachycardia, bradycardia, hypotension"/>
+	<s:Label x="19" y="581" text="Abnormal neurological status:"/>
+	<s:Label x="18" y="604" width="465" height="20" color="#AF4803" fontSize="14"
+			 text="Lethargy, hypotonia, irritability, seizures."/>
+</views2:vTask>

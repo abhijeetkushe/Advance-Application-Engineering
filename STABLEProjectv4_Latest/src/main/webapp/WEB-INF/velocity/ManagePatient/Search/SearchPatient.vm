@@ -1,0 +1,16 @@
+<Template>
+	#set ($patientList = $flowRequestContext.flowScope.patientList)
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+	<View name="ViewBabies">
+		<patientList>
+			#foreach($patient in $patientList)
+				<patient>
+					<patientId>$patient.patientID</patientId>
+					<lastName>$patient.person.lastName</lastName>
+					<firstName>$patient.person.firstName</firstName>
+            	</patient>
+            #end
+         </patientList>
+    </View>
+</Template>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" width="98" height="74"
+		 xmlns:mx="library://ns.adobe.com/flex/mx"  creationComplete="init()">
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.ToolTip;
+			
+			import org.gif.decoder.GIFDecoder;
+			import org.gif.events.FileTypeEvent;
+			import org.gif.events.FrameEvent;
+			import org.gif.events.GIFPlayerEvent;
+			import org.gif.events.TimeoutEvent;
+			import org.gif.player.GIFPlayer;
+			// we create the GIFPlayer, GIF is played automatically
+			private var myGIFPlayer:GIFPlayer = new GIFPlayer();
+			
+			public var errorTip:ToolTip;
+			public var myError:String;
+			private function init():void{
+				
+				
+				// we show it
+				//addChild ( myGIFPlayer );
+				if(!renderedAsImg){
+					gifIm.source = myGIFPlayer;
+					
+					// listen for the IOErrorEvent.IO_ERROR event, dispatched when the GIF fails to load
+					myGIFPlayer.addEventListener ( IOErrorEvent.IO_ERROR, onIOError );
+					// listen for the GIFPlayerEvent.COMPLETE event, dispatched when GIF is loaded
+					myGIFPlayer.addEventListener ( GIFPlayerEvent.COMPLETE, onCompleteGIFLoad );
+					// listen for the FrameEvent.FRAME_RENDERED event, dispatched when a GIF frame is rendered on screen
+					myGIFPlayer.addEventListener ( FrameEvent.FRAME_RENDERED, onFrameRendered );
+					// listen for the FileTypeEvent.INVALID event, dispatched when an invalid file is loaded
+					myGIFPlayer.addEventListener ( FileTypeEvent.INVALID, onInvalidFileLoaded );
+					// listen timeout
+					myGIFPlayer.addEventListener ( TimeoutEvent.TIME_OUT, onTimeoutError );
+					// we load a GIF
+					myGIFPlayer.load ( new URLRequest (imgSrc) );
+					}
+				else{
+					gifIm.source=imgSrc;
+				}
+				
+			}
+			[Bindable]
+			public var imgSrc:String;
+			
+			[Bindable]
+			public var renderedAsImg:Boolean=false;
+			
+			private function onIOError ( pEvt:IOErrorEvent ):void
+				
+			{
+				
+				//infos_txt.htmlText = "<font color='#990000'>Sorry there was an error loading the GIF file</font>";
+				
+			}
+			
+			private function onCompleteGIFLoad ( pEvt:GIFPlayerEvent ):void
+				
+			{
+				
+				var FrameRect:Rectangle = pEvt.rect;
+				
+				myGIFPlayer.x = ( stage.stageWidth - FrameRect.width ) /2;
+				myGIFPlayer.y = ( stage.stageHeight - FrameRect.height ) /2;
+				
+				//infos_txt.htmlText = "Total Frames : " + String ( myGIFPlayer.totalFrames ) + "<br>";
+				//infos_txt.htmlText += "Loop : " + String ( myGIFPlayer.loopCount ) + "<br>";
+				
+			}
+			
+			private function onFrameRendered ( pEvt:FrameEvent ):void
+				
+			{
+				
+				//render_txt.htmlText = String ( "Frame Width : " + pEvt.frame.bitmapData.width + " px<br>Frame Height : " + pEvt.frame.bitmapData.height + " px");
+				//render_txt.htmlText += String ( "Frame delay : " + pEvt.target.getDelay ( pEvt.target.currentFrame ) );
+				//render_txt.htmlText += String ( "Current frame : " + pEvt.target.currentFrame );
+				
+			}
+			
+			private function onInvalidFileLoaded ( pEvt:FileTypeEvent ):void
+			{
+				
+				//infos_txt.htmlText = "Invalid file loaded !";
+				
+			}
+			
+			private function onTimeoutError ( pEvt:TimeoutEvent ):void
+			{
+				
+				//infos_txt.htmlText = "<font color='#990000'>Sorry, TIME_OUT error, please try another GIF file</font>";
+				
+			}
+			private var imageFilter:FileFilter = new FileFilter("Image Files (*.gif)", "*.gif");
+		]]>
+	</fx:Script>
+	<mx:Image id="gifIm" toolTip="{toolTip}"/>
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+</s:Group>

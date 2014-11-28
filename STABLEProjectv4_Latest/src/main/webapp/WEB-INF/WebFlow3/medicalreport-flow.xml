@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="start" view="ManagePatient/Add/LabWork/medicalReport">
+		<on-entry>
+			<evaluate expression="doctorService.getMedicalTestReport(flowRequestContext)" />
+		</on-entry>
+		<transition on="cbcForm" to="selectForm" />
+		<transition on="bgForm" to="selectForm" />
+		<transition on="crpForm" to="selectForm" />
+		<transition on="csForm" to="selectForm" />
+		<transition on="elecForm" to="selectForm" />
+		<transition on="back" to="babyMenu" />
+	</view-state>
+
+
+	<action-state id="selectForm">
+		<evaluate expression="webFlowService.getViewName(flowRequestContext)" />
+		<transition on="success" to="medicalForm">
+			<evaluate expression="doctorService.getSelectedMedicalTest(flowRequestContext)" />
+		</transition>
+		<transition on="babymenu" to="babyMenu" />
+	</action-state>
+
+
+
+	<subflow-state id="babyMenu" subflow="babymenu-flow">
+		<transition on="medicalreport" to="start" />
+		<transition on="submit" to="start" />
+	</subflow-state>
+
+	<view-state id="medicalForm" view="ManagePatient/Add/LabWork/medicalForm">
+		<transition on="babymenu" to="babyMenu" />
+		<transition on="ttube" to="tTube" />
+		<transition on="manroe" to="manroe">
+			<evaluate expression="doctorService.getMedicalTestReport(flowRequestContext)" />
+		</transition>
+		<transition on="bloodculture" to="bloodCulture" />
+		<transition on="back" to="start" />
+		<transition on="medicalreport" to="medicalForm" />
+		<transition on="enterMedicalReport" to="medicalForm" />
+	</view-state>
+
+	<view-state id="tTube" view="ManagePatient/Add/LabWork/tTube">
+		<transition on="medicalreport" to="medicalForm" />
+	</view-state>
+	<end-state id="end" />
+
+	<view-state id="manroe" view="ManagePatient/Add/LabWork/manroe">
+		<transition on="submit" to="babyMenu">
+			<evaluate
+				expression="doctorService.submitManroe(requestParameters.isCBCpostive)"
+				result="conversationScope.cbcResult" />
+		</transition>
+		<transition on="medicalreport" to="medicalForm" />
+	</view-state>
+
+	<global-transitions>
+		<transition on="back" to="start" />
+		<transition on="logout" to="logout" />
+	</global-transitions>
+
+
+
+</flow>

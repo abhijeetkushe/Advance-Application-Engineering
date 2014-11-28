@@ -1,0 +1,40 @@
+## Velocity Template.
+<Template>
+		<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+		<View name="PatientRiskFactors"></View>
+		<ActionList>
+			<Action name="submit"></Action>
+			<Action name="back"></Action>			
+		</ActionList>
+		
+		<!--form action="$flowExecutionUrl&_eventId=submit" method="POST">
+			<input type="text" name="location"/><br/>
+			<input type="text" name="medicalRecNo"/><br/>
+			<input type="text" name="lastName"/><br/>
+			<input type="text" name="firstName"/><br/>
+			<input type="text" name="gender"/><br/>
+			<input type="text" name="height"/><br/>
+			<input type="text" name="weight"/><br/>
+			<input type="text" name="headCircumfrence"/><br/>
+			<input type="text" name="gestationalAge"/><br/>
+			<input type="text" name="birthDate"/><br/>
+			<input type="text" name="birthTime"/><br/>
+			<input type="text" name="birthOrder"/><br/>
+			<select name="resuscitationAtBirth">
+				<option value="RES1">RES1</option>
+				<option value="RES2">RES2</option>
+			</select><br/>
+			<textarea name="resuscitationMeds"></textarea><br/>
+			<textarea name="otherMeds"></textarea><br/>
+			
+			<input type="submit"/>			
+			 
+		</form-->
+		<form action="$flowExecutionUrl&_eventId=submit">
+			<input type="submit"/>
+		</form>
+		<form action="$flowExecutionUrl&_eventId=back">
+			<input type="submit"/>
+		</form>
+		
+</Template>

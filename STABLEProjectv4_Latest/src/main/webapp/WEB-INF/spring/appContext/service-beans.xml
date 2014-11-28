@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="securityService" class="org.stable.sdk.service.security.SecurityServiceImpl">
+		<property name="userAccountDao" ref="userAccountDao" />
+	</bean>
+
+	<bean id="doctorService" class="com.service.DoctorService3">
+		<property name="patientService" ref="patientService" />
+	</bean>
+	
+	<bean id="doctorService1" class="com.stable.sdk.service.lab.DoctorService4">
+		<property name="patientService" ref="patientService" />
+		<property name="deviceService" ref="device" />
+		<property name="encounterService" ref="encounter" />
+	</bean>
+	
+	<bean id="webFlowService" class="com.service.WebFlowServiceImple" />
+
+	<bean id="patientService" class="org.stable.sdk.service.patient.PatientService">
+		<property name="patientDao" ref="patientDao" />
+		<property name="clinicDao" ref="clinicDao" />
+		<property name="personDao" ref="personDao" />
+		<property name="deviceService" ref="device" />
+		<property name="birthDetailsDao" ref="birthDetailsDao" />
+	</bean>
+
+	<bean id="login" class="org.stable.sdk.service.useraccount.UserAccountService">
+		<property name="userAccountDAO" ref="userAccountDao" />
+	</bean>
+
+	<bean id="clinic" class="org.stable.sdk.service.clinic.ClinicService">
+		<property name="clinicalDao" ref="clinicDao" />
+		<property name="deviceDao" ref="deviceDao" />
+	</bean>
+
+	<bean id="device" class="org.stable.sdk.service.devices.DeviceService">
+		<property name="deviceDao" ref="deviceDao" />
+	</bean>
+
+	<bean id="measurement" class="org.stable.sdk.service.measurement.MeasurementService">
+		<property name="measurementDao" ref="measurementDao" />
+		<property name="deviceService" ref="device" />
+		<property name="patientService" ref="patientService" />
+	</bean>
+
+	<bean id="encounter" class="org.stable.sdk.service.encounter.EncounterService">
+		<property name="encounterDao" ref="encounterDao" />
+		<property name="patientService" ref="patientService" />
+		<property name="deviceService" ref="device" />
+		<property name="measurementService" ref="measurement" />
+	</bean>
+</beans>

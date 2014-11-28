@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RiskList>
+	<risk>
+		<type>Blood Pressure</type>
+		<figure>80/120</figure>
+		<unit></unit>
+	</risk>
+	<risk>
+		<type>Temperature</type>
+		<figure>97</figure>
+		<unit>F</unit>
+	</risk>
+	<risk>
+		<type>Resp Rate</type>
+		<figure>39</figure>
+		<unit></unit>
+	</risk>
+	<risk>
+		<type>Axilliary</type>
+		<figure>95</figure>
+		<unit></unit>
+	</risk>
+
+</RiskList>

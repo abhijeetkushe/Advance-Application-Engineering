@@ -1,0 +1,13 @@
+## Velocity Template.
+<Template>
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<View name="Menu1"></View>
+        <test></test>
+        <ActionList>
+                <Action name="next"></Action>
+                <Action name="back"></Action>
+        </ActionList>
+        step2
+        <a href="$flowExecutionUrl&_eventId=next">FINISH</a>
+        <a href="$flowExecutionUrl&_eventId=back">BACK</a>
+</Template>

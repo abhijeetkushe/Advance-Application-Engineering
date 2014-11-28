@@ -1,0 +1,24 @@
+<Template>
+	#set ($dateTool = $flowRequestContext.flowScope.dateTool)
+	#set ($medicalTests = $flowRequestContext.flowScope.selectedBaby.labDir.labTestList)
+        <flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+        <View name="TestTube">
+		<testList>
+			#foreach ($test in $medicalTests)
+			<test>
+				<name>$test.testName</name>
+				<measurementList>
+					#foreach ($measurement in $test.measurementCollection)
+					<measurement>
+						<deviceType>$measurement.device.deviceName</deviceType>
+						<methodType>MANUAL</methodType>
+						<measurementValue>$measurement.value</measurementValue>
+					</measurement>
+					#end	
+				</measurementList>	                                
+			</test>
+			 #end 
+		</testList>
+	</View>
+</Template>

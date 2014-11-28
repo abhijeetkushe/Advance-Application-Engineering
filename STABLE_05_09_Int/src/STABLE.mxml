@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:MobileApplication xmlns:fx="http://ns.adobe.com/mxml/2009"
+					 xmlns:s="library://ns.adobe.com/flex/spark"
+					 applicationComplete="mobileapplication1_applicationCompleteHandler(event)"
+					 backgroundColor="#FFFFFF" 
+					 firstView="views.TaskManager" 
+					 fontWeight="bold"
+					 splashScreenImage="@Embed(source='/assets/splash_new.png')"
+					 xmlns:views="views.*">
+	<fx:Style source="STABLE.css"/>
+	<fx:Declarations>
+		<views:ManroeChart/>
+		<views:TestTube/>
+		<views:csForm/>
+		<views:bgForm/>
+		<views:elecForm/>
+		<views:crpForm/>
+		<views:cbcForm/>
+		<views:selectMedicalTests/>
+		<views:ClinicalInfections/>
+		<views:NeonatalRisks/>
+		<views:MandbabyTests/>
+		<views:BMIGuide/>
+		<views:BMI/>
+		<views:ANCRange/>
+		<views:ANC_And_IT_Calc/>
+		<views:FourBs/>
+		<views:CBC/>
+		<views:CBCNormals/>
+		<views:medication/>
+		<views:ReferenceCardsHome/>
+		<views:CalcHome/>
+		<views:babyTests/>
+		<views:BabyMenu/>
+		<views:AddPatient/>
+		<views:CurrentState/>
+		<views:HomeDashboard/>
+		<views:LoginScreen/>
+		<views:MainScreen/>
+		<views:ManagePatients/>
+		<views:MothersRiskProfile/>
+		<views:PatientDashBoard/>
+		<views:PatientProfile/>
+		<views:PatientRiskFactors/>
+		<views:PregnancyProfile/>
+		<views:PSSATDashboard/>
+		<views:PSSATDirection/>
+		<views:PSSATForm/>
+		<views:PSSATPatientInformation/>
+		<views:PSSATSelfEvaluationQ/>
+		<views:PSSATSpecificInterventions/>
+		<views:PSSATTimeA/>
+		<views:PSSATTimeB/>
+		<views:PSSATTimeC/>
+		<views:RiskMonitoring/>
+		<views:TreatHazard/>
+		<views:TreatmentResult/>
+		<views:TryComp/>
+		<views:ViewPatientDetails/>
+		<views:MedicalTestList/>
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import flash.sampler.getInvocationCount;
+			
+			import model.ModelLocator;
+			
+			import mx.events.FlexEvent;
+			
+			import views.TaskManager;
+			
+			
+			protected function mobileapplication1_applicationCompleteHandler(event:FlexEvent):void
+			{
+				
+				//var tm:TaskManager = new TaskManager();
+				//tm.SelectNextTask("login");
+				this.stage.addEventListener(StageOrientationEvent.ORIENTATION_CHANGE,onOrientationChange);
+			}
+			
+			private function onOrientationChange(soe:StageOrientationEvent):void
+			{
+				switch ( soe.afterOrientation )
+				{
+					case StageOrientation.ROTATED_LEFT:
+					case StageOrientation.ROTATED_RIGHT:
+						ModelLocator.getInstance().portraitMode = false;
+						break;
+					default:
+						ModelLocator.getInstance().portraitMode = true;
+						break;
+				}
+				
+			}
+			
+		]]>
+	</fx:Script>
+	
+	
+	
+</s:MobileApplication>

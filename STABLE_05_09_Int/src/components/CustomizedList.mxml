@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="80%" height="90%" 
+		 xmlns:renderers="components.renderers.*"
+		 creationComplete="this.setDataSource()"
+		 >
+
+	<fx:Script>
+		<![CDATA[
+			import mx.collections.ArrayCollection;
+			import mx.collections.IList;
+			
+			import spark.components.View;
+			import spark.events.IndexChangeEvent;
+			
+			import views.AddPatient;
+			import views.CurrentState;
+			import views.ManagePatients;
+			import views.MothersRiskProfile;
+			import views.PSSATDirection;
+			import views.PSSATForm;
+			import views.PSSATPatientInformation;
+			import views.PSSATSelfEvaluationQ;
+			import views.PSSATSpecificInterventions;
+			import views.PSSATTimeA;
+			import views.PSSATTimeB;
+			import views.PSSATTimeC;
+			import views.PatientProfile;
+			import views.PatientRiskFactors;
+			import views.PregnancyProfile;
+			import views.vTask;
+			
+			[Bindable]	private 		var dataSource:IList;			
+			[Bindable]	protected 	var actions:ArrayCollection;
+			[Bindable]  public 		var vT:views.vTask;
+			
+			[Embed("assets/icon1.png")]
+			private var icon1:Class;
+			[Embed("assets/icon2.png")]
+			private var icon2:Class;
+			[Embed("assets/icon3.png")]
+			private var icon3:Class;
+			[Embed("assets/icon4.png")]
+			private var icon4:Class;
+			[Embed("assets/icon5.png")]
+			private var icon5:Class;
+			
+			public function  setDataSource ():void {
+			
+				actions = new ArrayCollection();
+				dataSource = vT.dataS;
+				trace(dataSource);
+				trace(dataSource.length);
+				
+				
+				for each (var item:String in dataSource) {
+					trace(item);
+					//trace(item);
+					if (item == "Manage Patients") {
+						actions.addItem(
+							{
+								name: item,
+								event:"managePatient",
+								icon:icon1,
+								link:ManagePatients}
+						);
+					}
+					if (item == "Manage Notes") {
+						actions.addItem(
+							{
+								name: item,
+								event:"manageNotes",
+								icon:icon2,
+								link:null}
+						);
+					}
+					if (item == "Tools") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"tools",
+								icon:icon3,
+								link:null}
+						);
+					}
+					if (item == "My Schedule") {
+						actions.addItem(
+							{
+								name: item,
+								event:"mySchedule",
+								icon:icon4,
+								link:null}
+						);
+					}
+					if (item == "FAQ") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"faq",
+								icon:icon5,
+								link:null}
+						);
+					}
+					if (item == "Add Patient") {
+						actions.addItem(
+							{
+								name: item,
+								event:"addpatient",
+								icon:null,
+								link:AddPatient}
+						);
+					}
+					if (item == "Monitor Patients") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"monitorPatients",
+								icon:null,
+								link:null}
+						);
+					}
+					if (item == "Search Patient") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"searchPatient",
+								icon:null,
+								link:null}
+						);
+					}
+					if (item == "Patient Profile") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"patientProfile",
+								icon:null,
+								link:PatientProfile}
+						);
+					}
+					if (item == "Patient Risk Factors") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"patientRiskFactors",
+								icon:null,
+								link:PatientRiskFactors}
+						);
+					}
+					
+					if (item == "Mothers Risk Profile") {
+						actions.addItem(
+							{
+								name: item,
+								event:"mothersRiskProfile",
+								icon:null,
+								link:MothersRiskProfile}
+						);
+					}
+					
+					if (item == "Pregnancy Profile") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"pregnancyProfile",
+								icon:null,
+								link:PregnancyProfile}
+						);
+					}
+					
+					if (item == "Current State") {
+						actions.addItem(
+							{
+								name: item,
+								event:"currentState",
+								icon:null,
+								link:CurrentState}
+						);
+					}
+					
+					if (item == "Lab Work") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"labWork",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					
+					if (item == "PSSAT Form") {
+						actions.addItem(
+							{
+								name: item,
+								event:"pssatForm",
+								icon:null,
+								link:PSSATDirection}
+						);
+					}
+					
+					if (item == "Setup Preferences") {
+						actions.addItem(
+							{
+								name: item,
+								event:"setupPreferences",
+								icon:null,
+								link:null}
+						);
+					}
+					if (item == "Patient Information") {
+						actions.addItem(
+							{
+								name: item,
+								event:"patientInformation",
+								icon:null,
+								link:PSSATPatientInformation}
+						);
+					}
+					if (item == "Time A") {
+						actions.addItem(
+							{
+								name: item,
+								event:"timeA",
+								icon:null,
+								link:PSSATTimeA}
+						);
+					}
+					if (item == "Time B") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"timeB",
+								icon:null,
+								link:PSSATTimeB}
+						);
+					}
+					if (item == "Time C") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"timeB",
+								icon:null,
+								link:PSSATTimeC}
+						);
+					}
+					if (item == "Specific Interventions") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"specificInterventions",
+								icon:null,
+								link:PSSATSpecificInterventions}
+						);
+					}
+					if (item == "Self Evaluation Q.") {
+						actions.addItem(
+							{
+								name: item, 
+								icon:null,
+								link:PSSATSelfEvaluationQ}
+						);
+					}
+					if (item == "View Recommened Test") {
+						actions.addItem(
+							{
+								name: item, 
+								icon:null,
+								link:null}
+						);
+					}
+					if (item == "Order Test") {
+						actions.addItem(
+							{
+								name: item, 
+								icon:null,
+								link:null}
+						);
+					}
+					if (item == "Enter Patient Reports") {
+						actions.addItem(
+							{
+								name: item, 
+								icon:null,
+								link:null}
+						);
+					}
+					if (item == "View Patient Reports") {
+						actions.addItem(
+							{
+								name: item, 
+								icon:null,
+								link:null}
+						);
+					}
+					if (item == "View Recommended Medications") {
+						actions.addItem(
+							{
+								name: item, 
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "Mint Tool") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"mintTools",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "Recommended Lab Tests") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"babyTests",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "Order Additional Lab Tests") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"mandbabyTests",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "CBC with Differential") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"cbcForm",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "CRP (C-Reactive Protein)") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"crpForm",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "Blood Gas") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"bgForm",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "Electrolytes") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"elecForm",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "Clotting Studies") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"csForm",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "Enter Medical Report") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"entermedicalreport",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "View Medical Report") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"medicalreport",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "Medication") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"medication",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "Lab Calculators") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"calc",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "Lab Reference") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"referencecards",
+								icon:null,
+								link:null}
+						);
+					}
+					if (item == "Back to Previous Page") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"back",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "ANC Ratio") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"anc_and_it_calc",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "CBCs") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"cbcnormals",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					if (item == "The 4Bs") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"fourbs",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					
+					if (item == "Neonatal Risks") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"neonatalrisks",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					
+					if (item == "I/T Ratio") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"anc_and_it_calc",
+								icon:null,
+								link:null}
+						);
+					}
+					
+					
+					if (item == "Clinical Infections") {
+						actions.addItem(
+							{
+								name: item, 
+								event:"clinicalinfections",
+								icon:null,
+								link:null}
+						);
+					}
+					
+				}		
+				
+			}
+			
+
+			protected function list_changeHandler(event:IndexChangeEvent):void
+			{
+				var action:Object = list.selectedItem;
+				//var view : View = this.parentDocument as View;
+				//view.navigator.pushView(action.link);
+				
+				trace(action.event);
+				vT.nextPageHandler(action.event);
+				//this.nextPageHandler("managePatient");
+				//var view : View = this.parentDocument as View;
+				//view.navigator.pushView(action.link);
+				
+				//trace(view);
+				
+			}
+
+		]]>
+	</fx:Script>
+	
+	
+		<s:Rect width="100%" height="100">
+			<s:fill>
+				<s:SolidColor color="#414141" />
+			</s:fill>
+		</s:Rect> 
+		<s:Image x="23" y="35" width="32" height="32" source="assets/selection2.png"/>
+		<s:Label x="75" y="41" fontFamily="_sans" fontSize="32" fontWeight="bold"
+				 text="Select Options" textAlign="center"/>
+		<s:List id="list" x="0" y="100" width="100%" height="100%" color="#2C2C2C"
+				contentBackgroundColor="#FFFFFF" dataProvider="{this.actions}"
+				selectionColor="#F89000" change="list_changeHandler(event)">
+			<s:itemRenderer>
+				<fx:Component>
+					<s:MobileIconItemRenderer labelField="name" iconField="icon"/>
+				</fx:Component>
+			</s:itemRenderer>
+		</s:List>
+
+</s:Group>

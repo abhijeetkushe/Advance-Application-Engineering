@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!--
+		Root Context: defines shared resources visible to all other web
+		components
+	-->
+	<bean id="c3p0dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3309/stabledb" />
+		<property name="user" value="root" />
+		<property name="password" value="admin" />
+		<property name="properties">
+			<props>
+				<prop key="c3p0.acquire_increment">5</prop>
+				<prop key="c3p0.idle_test_period">100</prop>
+				<prop key="c3p0.max_size">100</prop>
+				<prop key="c3p0.max_statements">0</prop>
+				<prop key="c3p0.min_size">10</prop>
+				<prop key="user">root</prop>
+				<prop key="password">admin</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="c3p0dataSource" />
+		<property name="mappingResources">
+			<list>
+				<value>org/stable/sdk/hibernate/mapping/AbstractDevice.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/BedLocation.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/BirthDetails.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/CareTeam.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/Clinic.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/Employee.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/IDevice.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/Measurement.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/MeasurementSubClasses.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/Patient.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/PatientBedLocation.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/Person.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/UserAccount.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/Encounter.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/Assessment.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/Treatment.hbm.xml</value>
+				<value>org/stable/sdk/hibernate/mapping/Order.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLInnoDBDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.connection.pool_size">100</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean name="openSessionInViewInterceptor"
+		class="org.springframework.orm.hibernate3.support.OpenSessionInViewInterceptor">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="singleSession" value="true" />
+		<property name="flushModeName" value="FLUSH_AUTO" />
+	</bean>
+	
+	<bean name="stableSessionInterceptor"
+		class="org.stable.web.spring.StableSessionInterceptor">
+	</bean>
+
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<import resource="dao-beans.xml" />
+
+	<import resource="service-beans.xml" />
+
+</beans>

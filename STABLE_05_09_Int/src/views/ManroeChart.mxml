@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<views2:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:views2="views.*"
+			  xmlns:charts="mx.charts.*"
+			  xmlns:series="mx.charts.series.*"
+			  xmlns:chartClasses="mx.charts.chartClasses.*"
+			  xmlns:components="components.*"
+			  chromeColor="#D2D2E0" color="#292A2E" contentBackgroundColor="#F6F0F0"
+			  title="ManroeChart" actionBarVisible="false" creationComplete="vtask1_creationCompleteHandler(event)">
+	
+<fx:Script>
+		<![CDATA[
+			import com.labtest.model.MonroeCurve;
+			import com.labtest.model.MonroeFactory;
+			
+			import flash.net.navigateToURL;
+			
+			import mx.collections.ArrayCollection;
+			import mx.collections.Sort;
+			import mx.collections.SortField;
+			import mx.controls.Alert;
+			import mx.controls.Image;
+			import mx.events.FlexEvent;
+			import mx.rpc.events.ResultEvent;
+			
+			[Bindable]
+			public var expenses:ArrayCollection = new ArrayCollection([
+				{Month:"Graph",ly:42,eos:1,baso:4, mono:3, segs:35, bands:15},
+				{Month:"Graph",ly:42,eos:1,baso:4, mono:3, segs:35, bands:15}
+				
+			]);
+			
+			
+			
+			[Bindable]
+			public var ncCountList:ArrayCollection = new ArrayCollection([1800,3600,5400,7200,9000,10800,12600,14400,16200,18000]);
+			/* 				{ncCount:0},
+			{ncCount:1800},
+			{ncCount:3600},
+			{ncCount:5400},
+			{ncCount:7200},
+			{ncCount:9000},
+			{ncCount:10800},
+			{ncCount:12600},
+			{ncCount:14400},
+			{ncCount:16200},
+			{ncCount:18000}]); */
+			
+			
+			[Bindable]
+			private var timeList:ArrayCollection = new ArrayCollection([6,12,18,24,30,36,42,48,54,60]); 
+			//[{time:0},{time:6},{time:12},{time:18},{time:24},{time:30},{time:36},{time:42},{time:48},{time:54},{time:60}]);
+			
+			[Bindable]
+			private var orderList:XMLList = new XMLList();
+			
+			[Bindable]
+			private var obj:Object=new Object();
+			
+			[Bindable]
+			private var previousStartingIndex:int=0;
+			
+			[Bindable]
+			private var test:Object=new Object();
+			
+			[Bindable]
+			private var normalList:ArrayCollection=new ArrayCollection();
+			[Bindable]
+			private var dangerList:ArrayCollection=new ArrayCollection();
+			
+			/* [Bindable]
+			public var expenses1:ArrayCollection = new ArrayCollection(); */
+			
+			[Bindable]
+			private var testList:XMLList = new XMLList();
+			public var expenses1:ArrayCollection = new ArrayCollection([
+				{ANCCount:2000, Time:2},
+				{ ANCCount:2000, Time:8},
+				{ ANCCount:3600, Time:3},
+				{ ANCCount:7250, Time:15},
+				{ ANCCount:14600, Time:14},
+				{ ANCCount:14900, Time:16},
+				{ ANCCount:5400, Time:12},
+				{ ANCCount:1600, Time:26},
+				{ ANCCount:6000, Time:28},
+				{ ANCCount:5200, Time:28},
+				{ ANCCount:6000, Time:45},
+				{ ANCCount:2400, Time:12}
+			]);  
+			 
+			
+		
+			
+			protected function panel1_creationCompleteHandler(event:FlexEvent):void
+			{
+					
+				/* 		// TODO Auto-generated method stub
+				for each(var point:Object in expenses1)
+				{
+				
+				
+				if(!ncCountList.contains(parseInt(point.Profit)))
+				{	
+				ncCountList.addItem(parseInt(point.Profit));
+				}
+				
+				
+				if(!timeList.contains(parseInt(point.Expenses)))
+				{	
+				timeList.addItem(parseInt(point.Expenses));
+				}
+				}
+				var dataSortField1:SortField = new SortField();
+				dataSortField1.name = null;
+				dataSortField1.numeric = true;
+				
+				var dataSortField2:SortField = new SortField();
+				dataSortField2.name = null;
+				dataSortField2.numeric = true;
+				
+				var countDataSort:Sort = new Sort();
+				countDataSort.fields = [dataSortField1];
+				
+				var timeDataSort:Sort=new Sort();
+				timeDataSort.fields=[dataSortField2];
+				
+				ncCountList.sort=countDataSort;
+				timeList.sort=timeDataSort;
+				ncCountList.refresh();
+				timeList.refresh();  */
+				
+				
+			}
+			
+
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				nextPageHandler('submit');
+				// TODO Auto-generated method stub
+			}
+
+
+			public override function getOutputVariables():URLVariables{
+				var urlVariables:URLVariables = new URLVariables();
+				if(dangerList.length>0){
+					urlVariables.isCBCpostive="true";
+				}else{
+					urlVariables.isCBCpostive="false";
+				}	
+				return urlVariables;				
+			}
+			
+
+
+			protected function vtask1_creationCompleteHandler(event:FlexEvent):void
+			 {
+				/*   if(inputVariables!=null )
+				{					
+					testList=inputVariables.testList.test;
+					if(testList!=null && testList.length()>0)
+					{
+						for each(var test:Object in testList)
+						{
+							if(test.name=="CBC"){
+								obj=test;
+								var hour:int=parseInt(obj.hour);								
+								var i:int=1;
+								var wbc:int;
+								var meta:int;
+								var segs:int;
+								var bands:int;
+								for each(var object:Object in obj.measurementList.measurement)
+								{
+									if(object.deviceType=='WBC'){
+										wbc=parseInt(object.measurementValue);
+									}else if(object.deviceType=='BANDS'){
+										bands=parseInt(object.measurementValue);
+									}else if(object.deviceType=='METAMYELOCYTES'){
+										meta=parseInt(object.measurementValue);
+									}else if(object.deviceType=='NEUTROPHILS'){
+										segs=parseInt(object.measurementValue);
+									}
+								}
+								var anc:Number=((wbc)*(bands+segs+meta)/100.0);
+								var manroeItem:Object=new Object();
+								manroeItem.ANCCount=anc;
+								manroeItem.Time=hour;
+								expenses1.addItem(manroeItem);
+							}	
+						}
+					}	   
+				} */
+				
+				var factory:MonroeFactory =new MonroeFactory();
+				
+				for each(var point:Object in expenses1)
+				{
+					var time:int=parseInt(point.Time);
+					var ANCCount:int=parseInt(point.ANCCount);
+					var temp:int=(time+6)/6;
+					
+					var curve:MonroeCurve =factory.getMonroeCurve(temp*6);
+					var band:int=curve.applyFunction(time,ANCCount);
+					
+					if(band==0){
+						normalList.addItem(point);
+					}
+					else{
+						dangerList.addItem(point);
+					}
+				}
+				// TODO Auto-generated method stub
+			}
+
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<mx:SolidColor id="danger" color="red" alpha="1.0" />
+		<mx:SolidColor id="normal" color="green" alpha="1.0" />
+	</fx:Declarations>
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="10" y="10" width="460" height="730" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="11" y="10" width="459" height="613" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<s:VGroup id="view" width="423" height="624" horizontalCenter="-5" verticalCenter="12" >
+	<mx:Canvas width="419" height="593">
+	<charts:PlotChart id="monroeChartGraph" x="23" y="42" width="296" height="288" showDataTips="true">
+		
+		<charts:verticalAxis>
+			<charts:LinearAxis displayName="ANC Count" minimum="0" maximum="18000" interval="1800"/>
+		</charts:verticalAxis>
+		
+		<charts:horizontalAxis>
+			<charts:LinearAxis  minimum="0" displayName="Time" maximum="60" interval="6"/>
+		</charts:horizontalAxis>
+		
+		<charts:series>
+			
+	
+			<series:PlotSeries 
+				xField="Time"
+				yField="ANCCount"
+				displayName="Plot 1"
+				dataProvider="{normalList}"
+				fill="{normal}"
+				/>
+			<series:PlotSeries 
+				xField="Time"
+				yField="ANCCount"
+				displayName="Plot 1"
+				dataProvider="{dangerList}"
+				fill="{danger}"
+				
+				/>
+		</charts:series>
+		<charts:backgroundElements>
+			<mx:Image 
+				source="@Embed('/../assets/monroe-chart2.JPG')" 
+				alpha=".2"
+				/>
+		</charts:backgroundElements>
+	</charts:PlotChart>
+		<s:Label text="The Region above or below the normal curve shows danger" textDecoration="none" fontWeight="bold" color="#FA170C" width="354" fontSize="15" x="23" y="353" height="47"/>
+		<s:Label text="The shaded region shows Normal Health" textDecoration="none" fontWeight="bold" color="#083E0D" width="312" fontSize="15" x="23" y="398" height="33"/>
+		<s:Label text="I/T ratio &gt; 0.8 correlated with a higher risk of death from sepsis" textDecoration="none" fontWeight="bold" color="#FA170C" width="368" fontSize="15" x="23" y="439" height="33"/>
+		<s:Label text="I/T ratio &gt; 0.25 raises index of suspicion for infection" textDecoration="none" fontWeight="bold" color="#083E0D" width="381" fontSize="15" x="22" y="490" height="32"/>
+		<components:BackButton x="17" y="532" width="93" height="51"
+							   click="nextPageHandler('medicalreport');"/>
+		<s:Label x="151" y="11" text="MANROE CHART"/>
+		<s:Label x="323" y="290" text="Time" fontSize="11" color="#f95a04"/>
+		<s:Label x="35" y="23" text="ANC Count" fontSize="11" color="#f95a04"/>
+	</mx:Canvas>
+		
+		
+		
+	</s:VGroup>
+	<components:SubmitButton x="319" y="613" width="103" height="47" 
+							click="button2_clickHandler(event);"/>
+</views2:vTask>

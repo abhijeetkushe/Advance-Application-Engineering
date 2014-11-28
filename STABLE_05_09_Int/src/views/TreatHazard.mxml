@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:risklist="services.risklist.*"
+		xmlns:treathazard="services.treathazard.*"
+		xmlns:mx="library://ns.adobe.com/flex/mx">
+		<!--initialize="this.getRisk()" title="Treat Hypoglycemia">-->
+	
+	<fx:Script>
+		<![CDATA[
+			import com.adobe.serializers.utility.TypeUtility;
+			protected function getData():void
+			{
+				getDataResult.token = treatHazard.getData();
+			}
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<s:CallResponder id="getDataResult"/>
+		<treathazard:TreatHazard id="treatHazard"/>
+	</fx:Declarations>
+	
+
+<!--	<s:navigationContent>
+		<s:Button id="homeButton" icon="@Embed(source='assets/HomeButton.png')" click="homeButton_clickHandler(event)"/>
+	</s:navigationContent>-->
+
+	<s:List id="list" left="0" right="0" top="0" bottom="0" contentBackgroundColor="#FFFFFF">
+		<s:AsyncListView list="{TypeUtility.convertToCollection(getDataResult.lastResult.option)}"/>
+	</s:List>
+	<s:HGroup x="0" y="0" width="100%" height="100" horizontalAlign="left" verticalAlign="middle" paddingRight="5">
+		<s:Label color="#000000" text="Height :"/>
+		<mx:Spacer width="100%"/>
+		<s:TextInput width="200" contentBackgroundColor="#FFFFFF"/>
+	</s:HGroup>
+	<s:HGroup x="0" y="102" width="100%" height="100" horizontalAlign="left" verticalAlign="middle" paddingRight="5">
+		<s:Label color="#000000" text="Weight :"/>
+		<mx:Spacer width="100%"/>
+		<s:TextInput width="200" contentBackgroundColor="#FFFFFF"/>
+	</s:HGroup>
+	<s:HGroup x="0" y="203" width="100%" height="100" horizontalAlign="left" verticalAlign="middle" paddingRight="5">
+		<s:Label color="#000000" text="Head Circumfence :"/>
+		<mx:Spacer width="100%"/>
+		<s:TextInput width="200" contentBackgroundColor="#FFFFFF"/>
+	</s:HGroup>
+	<s:Button left="35" bottom="180" label="Classify"/>
+</views:vTask>

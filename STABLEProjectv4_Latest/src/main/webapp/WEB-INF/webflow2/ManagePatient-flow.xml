@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flow start-state="ManagePatient" xmlns="http://www.springframework.org/schema/webflow"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/webflow
+ http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="ManagePatient" view="ManagePatient/ManagePatientMenu">
+    	<!--on-entry>
+        	<evaluate expression="patientService.searchForPatients()"
+         	result="flowScope.clinicName">
+        	</evaluate>
+    	</on-entry-->
+    
+    	<transition on="addpatient" 	to="addpatient"/>
+    	<transition on="monitorpatient" to="monitorpatient"/>
+		<transition on="searchpatient" 	to="searchpatient"/>
+    	<transition on="cancel" 		to="back"/>
+	</view-state>
+
+	<subflow-state id="addpatient" subflow="ManagePatientAdd-flow">
+    	<transition on="done" to="ManagePatient"/>
+    	<transition on="cancel" to="back"/>
+	</subflow-state>
+
+	<subflow-state id="monitorpatient" subflow="ManagePatientMonitor-flow">
+    	<transition on="done" to="ManagePatient"/>
+    	<transition on="cancel" to="back"/>
+	</subflow-state>
+	
+	<subflow-state id="searchpatient" subflow="ManagePatientSearch-flow">
+    	<transition on="done" to="ManagePatient"/>
+    	<transition on="cancel" to="back"/>
+	</subflow-state>
+
+	<!--view-state id="viewpatient" view="ManagePatient/View/ViewAllPatient">
+    	<transition on="next" to="viewAllPatientNext2"/>
+    	<transition on="back" to="addpatient"/>
+    	<transition on="cancel" to="back"/>
+	</view-state>
+
+	<view-state id="viewAllPatientNext2" view="ManagePatient/View/step2">
+    	<transition on="cancel" to="end"/>
+    	<transition on="back" to="viewpatient"/>
+    	<transition on="cancel" to="back"/>
+	</view-state-->
+
+	<end-state id="back"/>
+</flow>

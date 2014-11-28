@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow start-state="start" xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<view-state id="start" view="login">		
+		<transition on="validate" to="validate" />
+	</view-state>
+
+	<action-state id="validate">
+
+		<!--evaluate expression="clinic.getClinicName(1)" result="conversationScope.clinicName"/-->
+		<evaluate
+			expression="login.validateUser(requestParameters.username,requestParameters.password)"
+			result="conversationScope.userAccount" />
+			<!-- evaluate expression="conversationScope.userAccount"/-->
+		<transition on="success" to="roleCheck" />
+		<transition on="null" to="login" />
+	</action-state>
+
+	<action-state id="roleCheck">
+		<evaluate expression="login.checkRole(conversationScope.userAccount)" />
+		<transition on="role1" to="role1" />
+		<transition on="role2" to="role2" />
+	</action-state>
+
+	<view-state id="role1" view="role1">
+		<transition on="managePatient" to="managePatient" />
+		<transition on="notes" to="notes" />
+		<transition on="tools" to="tools" />
+		<transition on="schedule" to="schedule" />
+		<transition on="faq" to="faq"/>
+		<transition on="logout" to="start"></transition>
+	</view-state>
+
+	<view-state id="role2" view="role1">
+		<transition on="managePatient" to="managePatient" />
+		<transition on="notes" to="notes" />
+		<transition on="schedule" to="schedule" />
+		<transition on="faq" to="faq"/>
+		<transition on="logout" to="start"></transition>
+	</view-state>
+	
+	<subflow-state id="managePatient" subflow="ManagePatient-flow">
+		<transition on="back" to="roleCheck" />
+		<transition on="logout" to="start" />
+	</subflow-state>
+	<subflow-state id="tools" subflow="Tools-flow">
+		<transition on="back" to="roleCheck" />
+		<transition on="logout" to="start" />
+	</subflow-state>
+
+
+	<subflow-state id="notes" subflow="Notes-flow">
+		<transition on="back" to="roleCheck" />
+		<transition on="logout" to="start" />
+	</subflow-state>
+	
+	<subflow-state id="schedule" subflow="Schedule-flow">
+		<transition on="back" to="roleCheck" />
+		<transition on="logout" to="start" />
+	</subflow-state>
+	
+	<subflow-state id="faq" subflow="Faq-flow">
+		<transition on="back" to="roleCheck" />
+		<transition on="logout" to="start" />
+	</subflow-state>
+	
+
+	
+	
+
+	<!-- <view-state id="Menu1" view="Menu1/Menu1"> <transition on="addPaitent" 
+		to="addPatient"/> <transition on="viewPatient" to="viewPatient"/> </view-state> 
+		<subflow-state id="addPatient" subflow="addpatient-flow"> <transition on="finish" 
+		to="start"/> <transition on="done" to="Menu1"/> </subflow-state> <subflow-state 
+		id="viewuser" subflow="viewpatient-flow"> <transition on="finish" to="start"/> 
+		<transition on="done" to="Menu1"/> </subflow-state> -->
+
+	<view-state id="manageNotes" view="ManageNotes/ManageNotesMenu">
+		<transition on="next" to="addnote" />
+		<transition on="role1" />
+		<transition on="role2" />
+		<transition on="logout" to="start" />
+
+	</view-state>
+
+	<!-- <view-state id="Menu3"></view-state> <view-state id="Menu4"> <transition 
+		to="addpatient"></transition> </view-state> <subflow-state id="sugar" subflow="addpatient-flow"> 
+		<transition to="start" on="finish"></transition> <transition to="Menu4"></transition> 
+		</subflow-state> -->
+	<end-state id="end" />
+</flow>

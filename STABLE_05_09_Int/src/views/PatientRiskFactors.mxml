@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:patientservice="services.patientservice.*"
+		initialize="init()" xmlns:components="components.*" xmlns:mx="library://ns.adobe.com/flex/mx">	
+
+	<fx:Script>		
+		<![CDATA[
+			
+		
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+				//navigator.popToFirstView();
+			}
+					
+			protected function init():void{
+				this.submitButton.caption="Submit";
+				this.temperature.textInput = "Temperature";
+				this.axillaryOrRectal.textInput = "Axillary/Rectal";
+				this.heartRate.textInput="Heart Rate";
+				this.respRate.textInput="Resp. Rate";
+				this.bp.textInput="BP";
+				this.bpmean.textInput="BP Mean";
+				this.perfusion.textInput="Perfusion/CRT";
+				this.pulses.textInput="Pulses";
+				this.pulsesEqual.textInput="Pulses Equal";
+				this.respSupport.textInput="Respiratory Support";
+				this.retractionSeverity.textInput="Retraction Severity";
+				this.o2sat.textInput="O2 saturation";
+				this.fio2.textInput="FiO2"; 
+				this.pao2.textInput="PaO2";
+				this.paco2.textInput="PaCO2";
+				this.congenitalAnomaly.textInput = "Congenital Anomaly";
+				this.bloodgroup.textInput = "Blood Group";
+//					
+			}
+			
+			
+		]]>
+	</fx:Script>
+
+
+	
+<!--	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>-->
+	<fx:Declarations>
+		<s:CallResponder id="getDataResult"/>
+		<patientservice:PatientService id="patientService"/>
+	</fx:Declarations>		
+		
+	
+<!--	<s:titleContent>
+		<mx:Spacer width="5"/>
+		<components:BackButton click="navigator.popView()"/>
+		<s:Label text="Patient Risk Profile" color="#ffffff" textAlign="center" width="100%" />
+		<components:SubmitButton click="navigator.pushView(MothersRiskProfile)"/>
+		<mx:Spacer width="5"/>
+	</s:titleContent>-->
+	
+	<s:Scroller width="100%" height="100%" visible="true">		
+	<s:VGroup width="100%" height="100%" fontSize="18" fontStyle="normal" lineThrough="false"
+				  paddingLeft="20" paddingRight="20" paddingTop="20">
+			<components:ComboEntry color="#000000" id="temperature"/>
+			<components:TextFieldEntry color="#000000" id="axillaryOrRectal"/>
+			<components:TextFieldEntry color="#000000" id="heartRate"/>
+			<components:TextFieldEntry color="#000000" id="respRate"/>
+			<components:DoubleTextInputEntry color="#000000" id="bp"/>
+			<components:TextFieldEntry color="#000000" id="bpmean"/>
+			<components:DropDownListEntry color="#000000" id="perfusion"/>
+			<components:DropDownListEntry color="#000000" id="pulses"/>
+			<components:RadioButtonEntry color="#000000" id="pulsesEqual"/>
+		    <components:DropDownListEntry color="#000000" id="respSupport"/>
+		    <components:DropDownListEntry color="#000000" id="retractionSeverity"/>		
+			<components:TextInputWithPercentageEntry color="#000000" id="o2sat"/>
+			<components:TextInputWithPercentageEntry color="#000000" id="fio2"/>
+			<components:TextInputWithPercentageEntry color="#000000" id="pao2"/>
+			<components:TextInputWithPercentageEntry color="#000000" id="paco2"/>
+			<components:TextFieldEntry color="#000000" id="congenitalAnomaly"/>
+		    <components:DropDownListEntry color="#000000" id="bloodgroup"/>
+		    <components:LoginButton width="97%" id="submitButton" click="navigator.pushView(MothersRiskProfile)"/>				
+	</s:VGroup>
+	</s:Scroller>
+	<mx:Spacer height="100"/>
+</views:vTask>

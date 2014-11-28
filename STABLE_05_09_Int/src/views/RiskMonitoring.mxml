@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:risklist="services.risklist.*"
+		title="Risk Monitoring"
+		initialize="this.getRisk()">
+	
+	<fx:Script>
+		<![CDATA[
+			protected function getRisk():void
+			{
+				getDataResult.token = riskList.getData();
+			}
+		]]>
+	</fx:Script>
+<!--	<s:navigationContent>
+		<s:Button id="homeButton" icon="@Embed(source='assets/HomeButton.png')" click="homeButton_clickHandler(event)"/>
+	</s:navigationContent>-->
+	<fx:Declarations>
+		<s:CallResponder id="getDataResult"/>
+		<risklist:RiskList id="riskList"/>
+		
+	</fx:Declarations>
+	<s:List id="list" left="0" right="0" top="0" bottom="0" labelField="type">
+		<s:AsyncListView list="{getDataResult.lastResult}"/>
+	</s:List>
+</views:vTask>

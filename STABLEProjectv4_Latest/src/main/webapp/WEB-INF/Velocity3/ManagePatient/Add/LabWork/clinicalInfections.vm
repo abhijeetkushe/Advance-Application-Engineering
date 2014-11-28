@@ -1,0 +1,10 @@
+<Template>
+
+        <flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+
+        <View name="ClinicalInfections">
+
+	</View>
+	
+</Template>

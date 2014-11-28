@@ -1,0 +1,17 @@
+<Template>
+
+        <flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+    <ActionList>
+            <Action name="Back to Previous Page"/>
+            <Action name="CBCs"/>
+			<Action name="The 4Bs"/>
+            <Action name="Neonatal Risks"/>
+            <Action name="Clinical Infections"/>
+         </ActionList>
+
+        <View name="ReferenceCardsHome">
+
+	</View>
+	
+</Template>

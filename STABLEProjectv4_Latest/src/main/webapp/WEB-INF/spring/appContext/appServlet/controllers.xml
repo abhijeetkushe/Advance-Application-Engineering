@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ http://www.sprin gframework.org/schema/mvc http://www.sprin gframework.org/schema/mvc/sprin g-mvc-3.0.xsd
+ http://www.sprin gframework.org/schema/context http://www.sprin gframework.org/schema/context/sprin g-context-3.0.xsd ">
+
+<!--
+Scans within the base package of the application for @Components to
+configure as beans
+-->
+
+<!--<context:component-scan base-package="org.stable.sdk" />-->
+
+	<bean name="testController" class="org.stable.web.controller.HomeController">
+		<property name="userAccountDao" ref="userAccountDao" />
+		<property name="employeeDao" ref="employeeDao" />
+		<property name="patientDao" ref="patientDao" />
+		<property name="clinicDao" ref="clinicDao" />
+		<property name="careTeamDao" ref="careTeamDao" />
+		<property name="measurementDao" ref="measurementDao" />
+	</bean>
+
+	<bean name="loginController" class="org.stable.web.controller.LoginController">
+		<property name="securityService" ref="securityService" />
+	</bean>
+	<bean name="saveController" class="org.stable.web.controller.TestSave">
+		<property name="userAccountDao" ref="userAccountDao" />
+		<property name="employeeDao" ref="employeeDao" />
+		<property name="patientDao" ref="patientDao" />
+		<property name="clinicDao" ref="clinicDao" />
+		<property name="careTeamDao" ref="careTeamDao" />
+		<property name="measurementDao" ref="measurementDao" />
+		<property name="personDao" ref="personDao"/>
+		<property name="deviceDao" ref="deviceDao"></property>
+	</bean>
+
+
+
+	<bean id="homeFlowController" class="org.springframework.webflow.mvc.servlet.FlowController">
+    	<property name="flowExecutor" ref="flowExecutor">
+    	</property>
+	</bean>
+	
+	
+	
+	
+
+</beans>

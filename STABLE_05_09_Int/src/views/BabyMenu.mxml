@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views2:vTask  xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   xmlns:components="components.*"
+			   chromeColor="#F3F3FA" contentBackgroundColor="#FFFFFF" title="BabyMenu" xmlns:views2="views.*">
+	
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+		<![CDATA[
+
+
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				//navigator.popView();
+			}
+
+			protected function button3_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				//navigator.pushView(Login);
+			}
+			
+			protected function button2_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				//navigator.pushView(BabyHome);
+			}
+
+
+			protected function button4_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				//navigator.pushView(BabyProfile);
+			}
+
+			protected function button5_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				//navigator.pushView(BabyRisk);
+			}
+			
+			protected function button6_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				//navigator.pushView(DoctorWorkArea);
+			}
+
+
+			protected function image1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+			}
+
+
+			protected function menubar1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+
+				//menu1.Color="e9a014";
+				nextPageHandler('mandbabyTests');
+				
+			}
+			
+			protected function menubar0_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				
+				
+				//menu1.Color="e9a014";
+				nextPageHandler('babyTests');
+				
+			}
+
+		]]>
+
+	</fx:Script>
+	
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	<s:Rect x="10" y="14" width="460" height="776" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+	<!--<mx:MenuBar id="menu1" x="24" y="187" width="426" height="66" chromeColor="#FFFFFF" 
+				click="menubar1_clickHandler(event)" cornerRadius="0" selectionColor="#F89000"></mx:MenuBar>
+	<mx:MenuBar id="menu0" x="24" y="123" width="426" height="66" chromeColor="#FFFFFF" 
+				click="menubar0_clickHandler(event)" cornerRadius="0" selectionColor="#F89000"></mx:MenuBar>
+	<s:Label x="120" y="207" backgroundColor="#FFFFFF" click="nextPageHandler('mandbabyTests');"
+			 color="#333030" fontFamily="Arial" fontSize="20" fontWeight="bold"
+			 text="Order Additional Lab Tests"/>
+	<s:Label x="117" y="144" backgroundColor="#FFFFFF" click="nextPageHandler('babyTests');"
+			 color="#333030" fontFamily="Arial" fontSize="20" fontWeight="bold"
+			 text="Recommended Lab Tests"/>
+	<mx:MenuBar x="24" y="251" width="426" height="63" chromeColor="#FFFFFF"
+				click="nextPageHandler('entermedicalreport');" cornerRadius="0" selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="127" y="270" backgroundColor="#FFFFFF" click="nextPageHandler('entermedicalreport');"
+			 color="#333030" fontFamily="Arial" fontSize="20" fontWeight="bold"
+			 text="Enter Medical Report"/>
+	<mx:MenuBar x="24" y="313" width="426" height="63" chromeColor="#FFFFFF"
+				click="nextPageHandler('medicalreport');" cornerRadius="0" selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="132" y="339" backgroundColor="#FFFFFF" click="nextPageHandler('medicalreport');"
+			 color="#333030" fontFamily="Arial" fontSize="20" fontWeight="bold"
+			 text="View Medical Report"/>
+	<mx:MenuBar x="24" y="376" width="426" height="62" chromeColor="#FFFFFF"
+				click="nextPageHandler('medication');" cornerRadius="0" selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="174" y="401" width="113" backgroundColor="#FFFFFF"
+			 click="nextPageHandler('medication');" color="#333030" fontFamily="Arial" fontSize="20"
+			 fontWeight="bold" text="Medication"/>-->
+	<mx:MenuBar x="23" y="26" width="427" height="97" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="192" y="55" color="#FCFCFC" fontFamily="Arial" fontSize="22" text="Infant Home Menu"/>
+	<s:Image x="46" y="39" width="52" height="47" source="../assets/downicon.jpg"/>
+	
+	<s:VGroup x="25" y="21" width="90%" height="90%">
+		<components:CustomizedList width="100%" height="100%"  vT="{this}"/>
+	</s:VGroup>
+</views2:vTask>

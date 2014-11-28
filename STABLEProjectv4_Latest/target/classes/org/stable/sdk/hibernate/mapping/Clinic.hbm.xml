@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.stable.sdk.model.clinic.Clinic" table="clinic">
+		<id name="clinicID" type="int">
+			<column name="clinic_id" length="10" />
+			<generator class="native" />
+		</id>
+		<property name="clinicName" length="50" type="java.lang.String"
+			not-null="true">
+			<column name="name" />
+		</property>
+		<set name="patientList" table="patient" lazy="true" order-by="patient_tag"
+			optimistic-lock="true" fetch="select">
+			<key>
+				<column name="clinic_id" not-null="true" />
+			</key>
+			<one-to-many class="org.stable.sdk.model.patient.Patient" />
+		</set>
+		<set name="employeeDirectory" table="employee" lazy="true"
+			order-by="last_name" optimistic-lock="true" fetch="select">
+			<key>
+				<column name="clinic_id" not-null="true" />
+			</key>
+			<one-to-many class="org.stable.sdk.model.person.Employee" />
+		</set>
+		<map name="deviceInventoryList" table="device" lazy="true"
+			order-by="name" optimistic-lock="true" fetch="select">
+			<key>
+				<column name="clinic_id" not-null="true" />
+			</key>
+			<map-key column="inventory_no" type="java.lang.String" />
+			<one-to-many class="org.stable.sdk.model.device.IDevice" />
+		</map>
+		<map name="bedLocations" table="bed_location" lazy="true"
+			order-by="location" optimistic-lock="true" fetch="select">
+			<key>
+				<column name="clinic_id" not-null="true" />
+			</key>
+			<map-key column="location" type="java.lang.String" />
+			<one-to-many class="org.stable.sdk.model.bedlocation.BedLocation" />
+		</map>
+		<map name="careTeams" table="care_team" lazy="true" order-by="team_name"
+			optimistic-lock="true" fetch="select">
+			<key>
+				<column name="clinic_id" not-null="true" />
+			</key>
+			<map-key column="team_name" type="java.lang.String" />
+			<one-to-many class="org.stable.sdk.model.clinic.CareTeam" />
+		</map>
+		<list name="userAccountDirectory" table="useraccount" lazy="true"
+			fetch="select" optimistic-lock="true">
+			<key>
+				<column name="clinic_id" />
+			</key>
+			<list-index column="useraccount_id" base="1" />
+			<one-to-many class="org.stable.sdk.model.person.UserAccount" />
+		</list>
+	</class>
+</hibernate-mapping>

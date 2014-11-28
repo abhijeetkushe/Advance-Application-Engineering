@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template>
+	#set($dateTool = $flowRequestContext.flowScope.dateTool)
+	#set($medicalTests = $flowRequestContext.flowScope.medicalTests)
+	#set($viewName=$flowRequestContext.flowScope.viewName)
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+	<View name="$viewName">
+		<testList>
+			#foreach ($test in $medicalTests)
+			<test>
+				<name>$test.testName</name>
+				<date>$dateTool.format("MM-dd-yyyy",$test.date)</date>
+				<hour>$dateTool.format("HH",$test.date)</hour>
+				<min>$dateTool.format("mm",$test.date)</min>
+				<measurementList>
+					#foreach ($measurement in $test.measurementCollection)
+					<measurement>
+						<deviceType>$measurement.device.deviceName</deviceType>
+						<methodType>MANUAL</methodType>
+						<measurementValue>$measurement.value</measurementValue>
+					</measurement>
+					#end
+				</measurementList>
+			</test>
+			#end			
+		</testList>
+		</View>
+</Template>

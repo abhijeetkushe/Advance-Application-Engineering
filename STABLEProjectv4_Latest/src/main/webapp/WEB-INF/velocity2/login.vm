@@ -1,0 +1,8 @@
+<Template>
+    <flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+	<View name="LoginScreen"/>
+    <ActionList>
+                <Action name="validate"/>
+    </ActionList>
+</Template>

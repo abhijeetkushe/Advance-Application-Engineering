@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		xmlns:c="components.*"
+		color="0x5B5A4B"		
+		contentBackgroundColor="0xD1DBBD"		>
+
+	<fx:Script>
+		<![CDATA[
+	
+			
+			protected function loginButton_clickHandler(event:MouseEvent):void
+			{
+				// Placeholder credential check
+				if ( true ) 
+				{
+					//navigator.popAll();
+					// Set the new root
+					//navigator.pushView(HomeDashboard);
+				}				
+				else
+				{
+					trace("Login failure");					
+					this.username.text = "";
+					this.password.text = "";
+				}			
+				
+			}
+		]]>
+	</fx:Script>	
+	
+	<!-- Background -->
+	<s:Rect width="100%" height="646">
+		<s:fill>
+			<s:SolidColor color="0x3E3E3E"/>						  
+		</s:fill>
+	</s:Rect>
+	
+	<s:VGroup x="35" y="23" width="408" height="623">	
+			<s:Rect width="100%" height="587" radiusY="25" radiusX="25">
+				<s:fill>
+					<s:SolidColor color="0xFFFFFF"/>						  
+				</s:fill>
+			</s:Rect>
+		<s:VGroup width="100%">
+
+			
+		</s:VGroup>
+		<s:VGroup width="100%" height="100%">
+			<s:List id="patientList" width="100%" height="100%" borderColor="0x7C7C7C"
+					contentBackgroundColor="#FFFFFF" fontSize="14" fontWeight="bold" labelField="fname">
+			<!--	<s:AsyncListView list="{getDataResult.lastResult}"/>-->
+				
+			</s:List>		
+			
+		</s:VGroup>
+
+		
+		
+		<mx:Spacer height="100%"/>
+		
+		<!-- Bottom bar -->
+	</s:VGroup>
+	
+	
+	
+</views:vTask>

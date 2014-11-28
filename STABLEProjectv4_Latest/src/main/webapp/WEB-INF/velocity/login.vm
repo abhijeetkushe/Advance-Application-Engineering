@@ -1,0 +1,13 @@
+<Template>
+    <flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+	<View name="LoginScreen"/>
+    <ActionList>
+                <Action name="validate"/>
+    </ActionList>        
+    <form action="$flowExecutionUrl&_eventId=validate" method="POST">
+    	<input name="username" type="text"/><br/>
+    	<input name="password" type="text"/><br/>
+    	<input type="submit"/>
+    </form>
+</Template>

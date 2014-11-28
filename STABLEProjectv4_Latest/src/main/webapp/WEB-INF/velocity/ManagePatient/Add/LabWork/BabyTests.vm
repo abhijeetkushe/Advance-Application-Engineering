@@ -1,0 +1,20 @@
+<Template>
+	#set ($riskList = $flowRequestContext.flowScope.rfDir.riskList)
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+
+	<View name="babyTests">
+		<persons><person><patient><infants><infant><riskFactors>
+			#foreach ($risk in $riskList)
+         
+			<riskFactor>
+				<name>$risk.name</name>
+				<value>$risk.value</value>
+                         </riskFactor>
+                    
+                         #end
+		</riskFactors></infant></infants></patient></person></persons>
+
+	</View>
+
+</Template>

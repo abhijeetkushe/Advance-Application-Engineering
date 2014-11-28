@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.stable.sdk.model.person.Employee" table="employee">
+		<id name="employeeID" type="int">
+			<column name="employee_id" length="10" />
+			<generator class="native" />
+		</id>
+		<property name="firstName" length="50" not-null="false"
+			type="java.lang.String">
+			<column name="first_name" />
+		</property>
+		<property name="lastName" length="50" not-null="false"
+			type="java.lang.String">
+			<column name="last_name" />
+		</property>
+		<property name="middleName" length="50" not-null="false"
+			type="java.lang.String">
+			<column name="middle_name" />
+		</property>
+		<property name="preferredName" length="50" not-null="false"
+			type="java.lang.String">
+			<column name="preferred_name" />
+		</property>
+		<property name="gender" length="1" type="int">
+			<column name="gender" />
+		</property>
+		<property name="isActive" type="boolean" access="field">
+			<column name="is_active" />
+		</property>
+		<property name="role" length="3" type="int">
+			<column name="role" />
+		</property>
+		<map name="careTeams" table="careteam_employee" lazy="true"
+			optimistic-lock="true" fetch="select">
+			<key>
+				<column name="employee_id" />
+			</key>
+			<map-key type="java.lang.String">
+				<formula>(SELECT ct.team_name FROM care_team AS ct WHERE
+					ct.careteam_id = careteam_id)</formula>
+			</map-key>
+			<many-to-many column="careteam_id"
+				class="org.stable.sdk.model.clinic.CareTeam" />
+		</map>
+		<list name="currentPBLList" table="employee_pbl" optimistic-lock="true"
+			fetch="select" lazy="true">
+			<key>
+				<column name="employee_id" />
+			</key>
+			<list-index column="id" base="1"/>
+			<many-to-many column="patient_bedlocation_id"
+				class="org.stable.sdk.model.patient.PatientBedLocation" />
+		</list>
+	</class>
+</hibernate-mapping>

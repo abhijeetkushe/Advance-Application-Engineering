@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template>
+	#set ($dateTool = $flowRequestContext.flowScope.dateTool)
+	#set($encounterTestList =	$flowRequestContext.flowScope.patient.encounters)	
+	<flowExecutionUrl>
+		$flowExecutionUrl
+    </flowExecutionUrl>
+	<flowExecutionKey>
+		$flowExecutionKey
+    </flowExecutionKey>
+	<View name="selectMedicalTests">
+		<testList>
+			#foreach ($encounter in $encounterTestList)
+			#set($encounterDate=$dateTool.parseLong($encounter.encounterDate))
+				<test>				
+				#foreach($order in $encounter.treatment.orderList)
+					#if($order.class.name=="org.stable.sdk.model.test.CBC")
+						<name>CBC</name>
+						<date>$dateTool.format("MM-dd-yyyy",$encounterDate)</date>
+						<time>$dateTool.format("HH",$encounterDate):$dateTool.format("mm",$encounterDate)</time>	
+ 					#elseif($order.class.name=="org.stable.sdk.model.test.CRP")
+	 					<name>CRP</name>		 									
+						<date>$dateTool.format("MM-dd-yyyy",$encounterDate)</date>
+						<time>$dateTool.format("HH",$encounterDate):$dateTool.format("mm",$encounterDate)</time>	
+		 			#elseif($order.class.name=="org.stable.sdk.model.test.Clotting")
+			 			<name>CS</name>
+						<date>$dateTool.format("MM-dd-yyyy",$encounterDate)</date>
+						<time>$dateTool.format("HH",$encounterDate):$dateTool.format("mm",$encounterDate)</time>			 			
+					#elseif($order.class.name=="org.stable.sdk.model.test.Electrolytes")
+		 				<name>ELEC</name>
+						<date>$dateTool.format("MM-dd-yyyy",$encounterDate)</date>
+						<time>$dateTool.format("HH",$encounterDate):$dateTool.format("mm",$encounterDate)</time>		 				
+					#elseif($order.class.name=="org.stable.sdk.model.test.BloodGas")
+						<name>BG</name>
+						<date>$dateTool.format("MM-dd-yyyy",$encounterDate)</date>
+						<time>$dateTool.format("HH",$encounterDate):$dateTool.format("mm",$encounterDate)</time>	
+					#end					
+				#end
+				</test>	
+			#end
+			
+		</testList>
+	</View>
+
+</Template>

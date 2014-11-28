@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="PatientProfile"
+		contentBackgroundColor="#FFFFFF">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	<s:titleContent>
+		<s:Button width="130" label="Back"/>
+		<s:Label x="103" width="217" text="Patient Profile" verticalAlign="middle" textAlign="center"/>
+		<s:Button width="130" label="Submit"/>
+	</s:titleContent>
+	<s:Label x="10" y="20" text="Location"/>
+	<s:Label x="11" y="68" text="Lastname"/>
+	<s:Label x="10" y="102" text="Firstname"/>
+	<s:ComboBox x="176" y="10" width="286"/>
+	<s:TextInput x="176" y="51" width="285" height="33"/>
+	<s:TextInput x="176" y="92" width="285" height="33"/>
+	<s:Label x="10" y="143" text="Gender"/>
+	<s:ComboBox x="176" y="133" width="285"/>
+	<s:ComboBox x="175" y="421" width="287"/>
+	<s:ComboBox x="288" y="174" width="172"/>
+	<s:ComboBox x="288" y="215" width="172"/>
+	<s:ComboBox x="286" y="256" width="172"/>
+	<s:ComboBox x="286" y="298" width="172"/>
+	<s:ComboBox x="287" y="339" width="172"/>
+	<s:ComboBox x="287" y="380" width="172"/>
+	<s:TextInput x="175" y="215" width="103" height="33"/>
+	<s:Label x="8" y="184" text="Height"/>
+	<s:Label x="10" y="225" text="Weight"/>
+	<s:Label x="10" y="267" text="Head Circ."/>
+	<s:Label x="10" y="308" text="Gest. Age"/>
+	<s:Label x="10" y="349" text="Birth Time"/>
+	<s:Label x="9" y="390" text="Birth Order"/>
+	<s:Label x="5" y="480" text="Resuscitation&#xd;Meds"/>
+	<s:Label x="10" y="592" text="Other Meds"/>
+	<s:Label x="10" y="421" text="Resuscitation&#xd;At Birth"/>
+	<s:TextInput x="175" y="174" width="103" height="33"/>
+	<s:TextInput x="175" y="257" width="103" height="33"/>
+	<s:TextInput x="175" y="298" width="104" height="33"/>
+	<s:TextInput x="175" y="339" width="104" height="33"/>
+	<s:TextInput x="175" y="380" width="104" height="33"/>
+	<s:TextArea x="176" y="473" width="286" height="67"/>
+	<s:TextArea x="176" y="548" width="286" height="67"/>
+</views:vTask>

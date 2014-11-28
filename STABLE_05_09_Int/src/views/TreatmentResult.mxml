@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:risklist="services.risklist.*"
+		title="Results"
+		>
+	
+
+<!--	<s:navigationContent>
+		<s:Button id="homeButton" icon="@Embed(source='assets/HomeButton.png')" click="homeButton_clickHandler(event)"/>
+	</s:navigationContent>-->
+
+	<s:List id="list" left="0" right="0" top="0" bottom="0" contentBackgroundColor="#FFFFFF">
+
+	</s:List>
+	<s:TextArea x="20" y="70" height="244" color="#000000" contentBackgroundColor="#FFFFFF"
+				text="The infant is SGA. Please proceed to check the glucose level of the infant"/>
+	<s:Button x="166" y="415" height="43" label="Proceed"/>
+</views:vTask>

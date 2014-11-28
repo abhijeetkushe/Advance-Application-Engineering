@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beansProjectDescription>
+	<version>1</version>
+	<pluginVersion><![CDATA[2.6.0.201103160035-RELEASE]]></pluginVersion>
+	<configSuffixes>
+		<configSuffix><![CDATA[xml]]></configSuffix>
+	</configSuffixes>
+	<enableImports><![CDATA[true]]></enableImports>
+	<configs>
+		<config>src/main/webapp/WEB-INF/spring/appContext/root-context.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appContext/dao-beans.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appContext/service-beans.xml</config>
+		<config>src/main/webapp/WEB-INF/spring/appServlet/webflow.xml</config>
+	</configs>
+	<configSets>
+	</configSets>
+</beansProjectDescription>

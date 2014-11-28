@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<flow start-state="startAddPatient" xmlns="http://www.springframework.org/schema/webflow"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/webflow
+ http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd ">
+
+	<view-state id="startAddPatient" view="ManagePatient/Add/AddPatientMenu">
+	    <transition on="patientProfile" 	to="patientProfile"/>
+	    <transition on="patientRiskFactors" to="patientRiskFactors"/>
+	    <transition on="mothersRiskProfile" to="mothersRiskProfile"/>
+	    <transition on="pregnancyProfile" 	to="pregnancyProfile"/>
+	    <transition on="currentState" 		to="currentState"/>
+	    <transition on="labWork" 			to="labWork"/>
+	    <transition on="pssatForm" 			to="pssatForm"/>	    
+	    <transition on="back" 				to="done"/>
+	</view-state>
+
+	<subflow-state id="patientProfile" subflow="ManagePatientAdd_PatientProfile-flow">
+	    <transition on="back" to="startAddPatient"/>
+	    <transition on="next" to="done"/>
+	</subflow-state>
+	<subflow-state id="patientRiskFactors" subflow="ManagePatientAdd_PatientRiskFactors-flow">
+	    <transition on="back" to="startAddPatient"/>
+	    <transition on="next" to="done"/>
+	</subflow-state>
+		<subflow-state id="mothersRiskProfile" subflow="ManagePatientAdd_MothersRiskProfile-flow">
+	    <transition on="back" to="startAddPatient"/>
+	    <transition on="next" to="done"/>
+	</subflow-state>
+		<subflow-state id="pregnancyProfile" subflow="ManagePatientAdd_PregnancyProfile-flow">
+	    <transition on="back" to="startAddPatient"/>
+	    <transition on="next" to="done"/>
+	</subflow-state>
+		<subflow-state id="currentState" subflow="ManagePatientAdd_CurrentState-flow">
+	    <transition on="back" to="startAddPatient"/>
+	    <transition on="next" to="done"/>
+	</subflow-state>
+		<subflow-state id="labWork" subflow="ManagePatientAdd_LabWork-flow">
+	    <transition on="back" to="startAddPatient"/>
+	    <transition on="next" to="done"/>
+	</subflow-state>
+		<subflow-state id="pssatForm" subflow="ManagePatientAdd_PSSATForm">
+	    <transition on="back" to="startAddPatient"/>
+	    <transition on="next" to="done"/>
+	</subflow-state>
+	<end-state id="done">
+	</end-state>
+</flow>

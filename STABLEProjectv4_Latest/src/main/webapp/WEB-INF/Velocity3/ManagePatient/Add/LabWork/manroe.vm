@@ -1,0 +1,27 @@
+<Template>
+	#set($cbcTestList = $flowRequestContext.flowScope.selectedBaby.labDir.cbcTestList)
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+	<View name="ManroeChart">
+		<testList>
+			#foreach ($test in $cbcTestList)
+			<test>
+				<name>$test.testName</name>
+				<date>$dateTool.format("MM-dd-yyyy",$test.date)</date>
+				<hour>$dateTool.format("HH",$test.date)</hour>
+				<min>$dateTool.format("mm",$test.date)</min>
+				<measurementList>
+					#foreach ($measurement in $test.measurementCollection)
+					<measurement>
+						<deviceType>$measurement.device</deviceType>
+						<methodType>MANUAL</methodType>
+						<measurementValue>$measurement.value</measurementValue>
+					</measurement>
+					#end
+				</measurementList>
+			</test>
+			#end
+		</testList>	
+	</View>
+
+</Template>

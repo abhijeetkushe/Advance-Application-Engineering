@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:mx="library://ns.adobe.com/flex/mx"
+		color="{FONT_COLOR_LIGHT}"
+		fontSize="{FONT_SIZE_NORMAL}"	
+		currentState="{(ModelLocator.getInstance().portraitMode) ? 'portrait' : 'landscape'}"
+		title="Patient Details">
+	
+<!--	<s:states>
+		<s:State name="portrait"/>
+		<s:State name="landscape"/>
+	</s:states>
+-->	
+	<fx:Script>
+		<![CDATA[
+
+			import model.ModelLocator;
+			import mx.collections.ArrayCollection;
+			import spark.effects.ViewTransition;
+		
+			private const FONT_SIZE_LARGE:int = 26;			
+			private const FONT_SIZE_NORMAL:int = 20;
+			private const FONT_SIZE_SMALL:int = 16;
+			private const FONT_COLOR_LIGHT:Number = 0x908C90;	
+			private const FONT_COLOR_LIGHTER:Number = 0xFFFFFF;
+			
+			private var responses:ArrayCollection;
+			
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+				//navigator.popAll();
+				//navigator.pushView(HomeDashboard);
+			}
+			
+				
+		]]>
+	</fx:Script>
+	
+<!--	<s:navigationContent>
+		<s:Button id="homeButton" icon="@Embed(source='assets/HomeButton.png')" click="homeButton_clickHandler(event)"/>
+	</s:navigationContent>-->
+	
+	<!-- Summary area -->
+<!--	<s:Image id="image" width.portrait="180" height.portrait="239" right.portrait="20" top.portrait="20" visible.portrait="true" visible.landscape="false"
+			 source="@Embed(source='assets/SamplePhoto.jpg')"/>-->
+	
+	<s:VGroup width="100%" height="100%">				
+<!--		<s:Group width="100%" minHeight.portrait="265" minHeight.landscape="90">
+			<s:layout.portrait>
+				<s:VerticalLayout/>				
+			</s:layout.portrait>
+			<s:layout.landscape>
+				<s:HorizontalLayout/>
+			</s:layout.landscape>
+			
+			<s:VGroup width="100%" paddingLeft="20" paddingTop="20" paddingRight="20">
+				<s:Label text="Name:" color="{FONT_COLOR_LIGHTER}" fontSize="{FONT_SIZE_LARGE}"/>
+				<s:Label id="nameLabel" text="..."/>
+			</s:VGroup>
+			<s:VGroup width="100%" paddingLeft="20" paddingTop="20" paddingRight="20">
+				<s:Label text="Date taken:" color="{FONT_COLOR_LIGHTER}" fontSize="{FONT_SIZE_LARGE}"/>
+				<s:Label id="dateLabel" text="..."/>
+			</s:VGroup>
+			<s:VGroup width="100%" paddingLeft="20" paddingTop="20" paddingRight="20">
+				<s:Label text="Email:" color="{FONT_COLOR_LIGHTER}" fontSize="{FONT_SIZE_LARGE}"/>
+				<s:Label id="emailLabel" text="..."/>
+			</s:VGroup>
+		</s:Group>-->
+		
+		<s:List id="questionList" width="100%" height="100%">
+			<s:itemRenderer>
+				<fx:Component>
+					<s:MobileIconItemRenderer labelFunction="getLabel" messageFunction="getMessage" fontSize="14">
+						<fx:Script>
+							<![CDATA[								
+								private function getLabel(item:Object):String
+								{
+									return "Question: " + item.question;
+								}
+								
+								private function getMessage(item:Object):String
+								{
+									var response:String = "";
+									if ( !item.answer || item.answer == "" )
+									{
+										response = "(no response)";
+									}
+									else
+									{
+										response = item.answer;
+									}
+									return response;
+								}
+							]]>
+						</fx:Script>
+					</s:MobileIconItemRenderer>
+				</fx:Component>
+			</s:itemRenderer>
+		</s:List>
+	</s:VGroup>
+</views:vTask>

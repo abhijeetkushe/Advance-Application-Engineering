@@ -1,0 +1,16 @@
+<Template>
+        <flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+		<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+		<ActionList>
+            <Action name="Back to Previous Page"/>
+			<Action name="Recommended Lab Tests"/>
+            <Action name="Order Additional Lab Tests"/>
+            <Action name="Enter Medical Report"/>
+			<Action name="View Medical Report"/>
+			<Action name="Medication"/>
+			<Action name="Lab Calculators"/>
+			<Action name="Lab Reference"/>
+        </ActionList>
+        <View name="BabyMenu">
+		</View>	
+</Template>

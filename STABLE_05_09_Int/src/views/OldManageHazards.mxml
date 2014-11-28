@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" 
+		xmlns:c="components.*"		
+		title="Hazards"		
+		xmlns:mx="library://ns.adobe.com/flex/mx">		
+
+	<s:navigationContent>
+		<s:Button id="homeButton" icon="@Embed(source='assets/HomeButton.png')" click="homeButton_clickHandler(event)"/>
+	</s:navigationContent>
+	
+	<!-- Background -->
+	<s:Rect width="100%" height="100%">
+		<s:fill>
+			<s:SolidColor color="0xF8F8F8"/>
+		</s:fill>
+	</s:Rect>
+	<s:List left="0" right="0" top="0" bottom="0"></s:List>
+	
+	
+	
+</views:vTask>

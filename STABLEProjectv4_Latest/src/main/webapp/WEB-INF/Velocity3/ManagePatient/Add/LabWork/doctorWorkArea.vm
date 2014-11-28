@@ -1,0 +1,12 @@
+<Template>
+
+	<ActionList>
+		<Action name="Back"></Action>
+	</ActionList>
+	
+	<flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+	
+	<View name="DoctorWorkAreaNew"></View>
+	
+</Template>

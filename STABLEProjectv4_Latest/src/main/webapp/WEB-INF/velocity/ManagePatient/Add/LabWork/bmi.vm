@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template>
+
+        <flowExecutionUrl>$flowExecutionUrl</flowExecutionUrl>
+	<flowExecutionKey>$flowExecutionKey</flowExecutionKey>
+
+        <View name="BMI">
+
+	</View>
+	
+</Template>

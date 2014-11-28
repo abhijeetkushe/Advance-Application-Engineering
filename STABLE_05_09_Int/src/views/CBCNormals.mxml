@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views2:vTask xmlns:fx="http://ns.adobe.com/mxml/2009"
+			  xmlns:s="library://ns.adobe.com/flex/spark"
+			  xmlns:mx="library://ns.adobe.com/flex/mx"
+			  xmlns:views2="views.*"
+			  xmlns:components="components.*"
+			  actionBarVisible="false" chromeColor="#D2D2E0" contentBackgroundColor="#F6F0F0">
+	<fx:Declarations>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<!-- Place non-visual elements (e.g., services, value objects) here -->
+
+		<![CDATA[
+
+
+		]]>
+
+	</fx:Script>
+	<s:Rect width="480" height="100%">
+		<s:fill>
+			<s:SolidColor color="#000000"/>
+		</s:fill>
+	</s:Rect>
+	
+	<s:Rect x="11" y="12" width="459" height="729" radiusX="20" radiusY="20">
+		<s:fill>
+			<s:SolidColor color="#FFFFFF"/>
+		</s:fill>
+	</s:Rect>
+
+	<s:Image x="11" y="193" width="459" height="209" source="/assets/haemoglobin.jpg"/>
+	<s:Image x="10" y="409" width="460" height="213" source="/assets/platelets.jpg"/>
+	<components:BackButton x="23" y="656" width="94" height="49" click="nextPageHandler('referencecards');"/>
+	<s:Button x="239" y="649" width="213" height="58" label="CBC Parameters &gt;&gt;" fontSize="15" click="nextPageHandler('cbc');"/>
+	<mx:MenuBar x="15" y="29" width="451" height="82" chromeColor="#0F0E0E"
+				click="nextPageHandler('babyTests');" color="#FBFBFD" cornerRadius="0"
+				selectionColor="#FFFFFF"></mx:MenuBar>
+	<s:Label x="163" y="60" color="#FCFCFC" fontFamily="Arial" fontSize="22"
+			 text=" Normal Range"/>
+	<s:Image x="35" y="48" width="52" height="47" source="../assets/downicon.jpg"/>
+</views2:vTask>

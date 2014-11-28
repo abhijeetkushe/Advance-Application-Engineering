@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views:vTask xmlns:views="views.*" xmlns:fx="http://ns.adobe.com/mxml/2009"
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:patientservice="services.patientservice.*"
+		xmlns:c="components.*"
+		xmlns:components="components.*" xmlns:mx="library://ns.adobe.com/flex/mx">	
+	
+	<fx:Script>		
+		<![CDATA[
+			
+			protected function submitPregProfileButton_clickHandler(event:MouseEvent):void
+			{
+				// Placeholder credential check				
+				//navigator.popAll();
+				// Set the new root
+				//navigator.pushView(views.PatientRiskFactors);
+				
+			}
+			protected function homeButton_clickHandler(event:MouseEvent):void
+			{
+				//navigator.popToFirstView();
+			}
+			
+
+		]]>
+	</fx:Script>
+	
+<!--	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	
+	<s:titleContent>
+		<mx:Spacer width="5"/>
+		<components:BackButton click="navigator.popView()"/>
+		<s:Label text="PSSAT Form" color="#4B4949" textAlign="center" width="100%" />
+		<components:SubmitButton/>
+		<mx:Spacer width="5"/>
+	</s:titleContent>-->
+		
+	<s:Scroller width="100%" height="100%" visible="true">
+		<s:VGroup width="100%" height="100%" fontSize="18" fontStyle="normal" lineThrough="false"
+				  paddingLeft="20" paddingRight="20" paddingTop="20" gap="25">
+			<s:Label width="100%" height="20" backgroundColor="#707070"
+					 text="Time A - Transport Team Called" textAlign="center" verticalAlign="middle"/>
+			<s:HGroup width="100%" height="35" paddingLeft="5" paddingRight="5"
+					  verticalAlign="middle">
+				<s:Label color="#424242" text="Time of calling" verticalAlign="middle"/>
+				<mx:Spacer width="100%"/>
+				<s:TextInput y="14" width="214" height="28"/>
+			</s:HGroup>
+			<s:HGroup width="100%" height="62" paddingLeft="5" paddingRight="5"
+					  verticalAlign="middle">
+				<s:Label color="#424242" text="Patient Alive" verticalAlign="middle"/>
+				<mx:Spacer width="100%"/>
+				<s:RadioButton label="Yes" color="#434343"/>
+				<s:RadioButton label="No" color="#434343"/>
+			</s:HGroup>	
+			<s:HGroup width="100%" height="94" paddingLeft="5" paddingRight="5"
+					  verticalAlign="middle">
+				<s:Label color="#424242" text="Age of baby" verticalAlign="middle"/>
+				<mx:Spacer width="100%"/>
+				<s:VGroup y="10" height="59">
+					<c:DropDownList />
+					<s:Label width="111" color="#303030" text="Day" textAlign="center"
+							 verticalAlign="middle"/>
+				</s:VGroup>
+				<s:VGroup y="10" height="59">
+					<c:DropDownList />
+					<s:Label width="111" color="#303030" text="Day" textAlign="center"
+							 verticalAlign="middle"/>
+				</s:VGroup>
+			</s:HGroup>			
+			<s:HGroup width="100%" height="35" paddingLeft="5" paddingRight="5"
+					  verticalAlign="middle">
+				<s:Label color="#424242" text="Temperature" verticalAlign="middle"/>
+				<mx:Spacer width="100%"/>
+				<c:DropDownList />
+				<c:DropDownList />
+			</s:HGroup>	
+			<s:HGroup width="100%" height="35" paddingLeft="5" paddingRight="5"
+					  verticalAlign="middle">
+				<s:Label color="#424242" text="Temperature Method" verticalAlign="middle"/>
+				<mx:Spacer width="100%"/>
+				<c:DropDownList />
+			</s:HGroup>		
+			<s:Label width="100%" height="20" backgroundColor="#707070"
+					 text="Time A - Transport Team Called" textAlign="center" verticalAlign="middle"/>
+			<s:HGroup width="100%" height="35" paddingLeft="5" paddingRight="5"
+					  verticalAlign="middle">
+				<s:Label color="#424242" text="Heart Rate" verticalAlign="middle"/>
+				<mx:Spacer width="100%"/>
+				<s:TextInput y="14" width="214" height="28"/>
+			</s:HGroup>		
+			<s:HGroup width="100%" height="35" paddingLeft="5" paddingRight="5"
+					  verticalAlign="middle">
+				<s:Label color="#424242" text="Respiratory Rate" verticalAlign="middle"/>
+				<mx:Spacer width="100%"/>
+				<s:TextInput y="14" width="214" height="28"/>
+			</s:HGroup>		
+			<s:HGroup width="100%" height="35" paddingLeft="5" paddingRight="5"
+					  verticalAlign="middle">
+				<s:Label color="#424242" text="Blood Pressure
+						 (Sys/ Dia)" verticalAlign="middle"/>
+				<mx:Spacer width="100%"/>
+				<s:TextInput y="14" width="110" height="28"/>
+				<s:TextInput y="14" width="110" height="28"/>
+			</s:HGroup>		
+			<s:HGroup width="100%" height="35" paddingLeft="5" paddingRight="5"
+					  verticalAlign="middle">
+				<s:Label color="#424242" text="Mean" verticalAlign="middle"/>
+				<mx:Spacer width="100%"/>
+				<s:TextInput y="14" width="214" height="28"/>
+			</s:HGroup>		
+			<s:HGroup width="100%" height="35" paddingLeft="5" paddingRight="5"
+					  verticalAlign="middle">
+				<s:Label color="#424242" text="Method" verticalAlign="middle"/>
+				<mx:Spacer width="100%"/>
+				<c:DropDownList />
+			</s:HGroup>				
+		</s:VGroup>
+	</s:Scroller>
+	<c:ButtonBar height="80" width="100%"/>
+</views:vTask>

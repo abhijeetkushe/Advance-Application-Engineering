@@ -1,0 +1,245 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<subclass name="org.stable.sdk.model.device.AbstractDevice"
+		extends="org.stable.sdk.model.device.IDevice" discriminator-value="AbstractDevice"
+		lazy="false" abstract="true">
+
+		<!-- Airway devices -->
+		<subclass
+			name="org.stable.sdk.model.device.airway.baseexcess.BaseExcessDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="BaseExcessDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.airway.cpap.CPAPDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="CPAPDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.airway.dopamine.DopamineDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="DopamineDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.airway.ettube.ETTubeDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="ETTubeDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.airway.o2inuse.O2InUseDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="O2InUseDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.airway.ppv.PPVDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="PPVDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.airway.trachealincubation.TrachealIncubationDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="TrachealIncubationDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.airway.volumebolusamount.VolumeBolusAmountDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="VolumeBolusAmountDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.airway.volumebolustype.VolumeBolusTypeDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="VolumeBolusTypeDevice" lazy="false" />
+
+		<!-- Blood pressure devices  -->
+		<subclass
+			name="org.stable.sdk.model.device.bloodpressure.capillaryrefilltime.CapillaryRefillTimeDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="CapillaryRefillTimeDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.bloodpressure.pulsepressure.PulsePressureDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="PulsePressureDevice" lazy="false" />
+
+		<!-- Lab work Devices -->
+		<subclass
+			name="org.stable.sdk.model.device.labwork.bloodgas.MetHb.MetHbDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="MetHbDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.labwork.cbc.bands.BandsDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="BandsDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.labwork.cbc.basos.BasosDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="BasosDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.labwork.cbc.eos.EosDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="EosDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.labwork.cbc.hct.HctDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="HctDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.labwork.cbc.hgb.HgbDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="HgbDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.cbc.lymphs.LymphsDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="LymphsDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.cbc.metamyelocytes.MetamyelocytesDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="MetamyelocytesDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.labwork.cbc.monos.MonosDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="MonosDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.cbc.neutrophils.NeutrophilsDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="NeutrophilsDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.labwork.cbc.plts.PLTSDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="PLTSDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.labwork.cbc.wbc.WBCDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="WBCDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.clotting.fibrinogen.FibrinogenDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="FibrinogenDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.clotting.pt.ProthrombinTimeDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="ProthrombinTimeDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.clotting.ptt.PartialThromboplastinTimeDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="PartialThromboplastinTimeDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.crp.C_ReactiveProteinDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="C_ReactiveProteinDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.electrolytes.Cl.ClDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="ClDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.electrolytes.CO2.CO2Device"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="CO2Device" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.electrolytes.ionizedcalcium.IonizedCalciumDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="IonizedCalciumDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.labwork.electrolytes.K.KDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="KDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.electrolytes.Na.NaDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="NaDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.electrolytes.totalcalcium.TotalCalciumDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="TotalCalciumDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.labwork.bloodgas.PO2.PO2Device"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="PO2Device" lazy="false" />
+
+		<!-- Sugar Devices -->
+		<subclass
+			name="org.stable.sdk.model.device.sugar.birthorder.BirthOrderDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="BirthOrderDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.gestationalage.GestationalAgeDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="GestationalAgeDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.glucoselevel.GlucoseLevelDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="GlucoseLevelDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.headcircumference.HeadCircumferenceDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="HeadCircumferenceDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.sugar.height.HeightDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="HeightDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.treatment.bolusdose.BolusDoseDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="BolusDoseDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.treatment.bolusconc.BolusConcDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="BolusConcDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.treatment.bolusinfusionrate.BolusInfusionRateDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="BolusInfusionRateDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.treatment.dextroseinfusionrate.DextroseInfusionRateDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="DextroseInfusionRateDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.treatment.dextroseconc.DextroseConcDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="DextroseConcDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.treatment.dextrosehourlyinfusionrate.DextroseHourlyInfusionRateDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="DextroseHourlyInfusionRateDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.treatment.ivat.IVAtDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="IVAtDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.treatment.ivtype.IVTypeDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="IVTypeDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.treatment.uvcat.UVCDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="UVCDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.sugar.treatment.vacat.UACDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="UACDevice" lazy="false" />
+
+		<!-- Vital signs devices -->
+		<subclass
+			name="org.stable.sdk.model.device.vitalsigns.bloodgas.BloodGasDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="BloodGasDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.vitalsigns.bloodgroup.BloodGroupDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="BloodGroupDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.vitalsigns.bloodpressure.BloodPressureDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="BloodPressureDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.vitalsigns.fio2.FiO2Device"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="FiO2Device" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.vitalsigns.hco3.HCO3Device"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="HCO3Device" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.vitalsigns.heartrate.HeartRateDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="HeartRateDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.vitalsigns.o2saturation.O2SaturationDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="O2SaturationDevice" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.vitalsigns.pco2.PCO2Device"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="PCO2Device" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.vitalsigns.pHlevel.pHLevelDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="pHLevelDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.vitalsigns.respiratoryrate.RespiratoryRateDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="RespiratoryRateDevice" lazy="false" />
+		<subclass
+			name="org.stable.sdk.model.device.vitalsigns.temperature.TemperatureDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="Temperature_Device" lazy="false" />
+		<subclass name="org.stable.sdk.model.device.vitalsigns.weight.WeightDevice"
+			extends="org.stable.sdk.model.device.AbstractDevice"
+			discriminator-value="WeightDevice" lazy="false" />
+
+	</subclass>
+</hibernate-mapping>

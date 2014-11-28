@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hazard name="Hypoglycemia">
+	<options>
+		<option>Classify Infant</option>
+		<option>Determine Glucose Level</option>
+		<option>IV Treatment</option>
+		<option>IV Bolus</option>
+	</options>
+</hazard>

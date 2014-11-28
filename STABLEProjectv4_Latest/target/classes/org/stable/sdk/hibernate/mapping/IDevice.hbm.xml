@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="org.stable.sdk.model.device.IDevice" table="device"
+		abstract="true">
+		<id name="deviceID" type="int">
+			<column name="device_id" length="10" not-null="true" />
+			<generator class="native" />
+		</id>		
+ 		<discriminator column="discriminator" type="java.lang.String" force="true" />
+		<property name="deviceName" type="java.lang.String" length="100"
+			not-null="true">
+			<column name="name" />
+		</property>
+		<property name="modelNumber" type="java.lang.String" length="50">
+			<column name="model_no" />
+		</property>
+		<property name="inventoryNumber" type="java.lang.String"
+			length="100">
+			<column name="inventory_no" />
+		</property>
+		<property name="deviceStatus" type="int" length="2">
+			<column name="status" />
+		</property>
+		<property name="deviceType" type="int" length="2">
+			<column name="type" />
+		</property>
+		<property name="measurementType" type="int" length="3">
+			<column name="measurement_type" />
+		</property>
+		<bag name="patientBedLocList" table="device_pbl" lazy="true"
+			fetch="select" optimistic-lock="true" where="status = 1">
+			<key>
+				<column name="device_id" />
+			</key>
+		
+			<many-to-many column="patientbedlocation_id"
+				class="org.stable.sdk.model.patient.PatientBedLocation" />
+		</bag>
+		<many-to-one name="clinic" class="org.stable.sdk.model.clinic.Clinic" unique="true" fetch="select">
+            <column name="clinic_id" />
+        </many-to-one>
+	</class>
+</hibernate-mapping>
